@@ -7,9 +7,12 @@ Scope: landing pages, multi-step forms, plan comparison, confirmation, login/reg
 
 **Active brand: Pacifico** — set in `tokens/aliases.css`
 
-> For coding rules, import order, layout patterns, and component catalogue — see `design-system-codegen/REFERENCE.md`.
-> For visual quality and composition principles — see `design-taste/REFERENCE.md`.
-> Consult these when you need specifics. They are references, not required pre-reads.
+> **MANDATORY before writing any CSS or HTML:**
+> 1. Read `design-system-codegen/REFERENCE.md` in full (once per session)
+> 2. Read `design-taste/REFERENCE.md` in full (once per session)
+> 3. For each component the page needs, read its `.css` file and copy the styles into `page.css`
+>
+> Do NOT write a single line of CSS or HTML until steps 1–2 are complete.
 
 ---
 
@@ -110,6 +113,19 @@ All in `components/[name].html + [name].css`:
 `button` · `text-field` · `checkbox` · `radio-button` · `dropdown` · `search-input` · `stepper` · `accordion` · `pill-tabs` · `badge` · `tag` · `tooltip` · `alert`
 
 When building pages, copy needed component styles into the page CSS rather than linking component files directly.
+
+### Pre-output checklist — verify every item before committing CSS or HTML
+
+- [ ] Zero hardcoded values — every colour, size, spacing, radius, shadow, transition is a CSS custom property
+- [ ] No raw brand tokens (`--pacifico-*`, `--sanna-*`, `--tsana-*`) in any CSS — only `--color-brand-*` aliases
+- [ ] All `<select>` / dropdown fields use `.dropdown` component markup + JS (never native `<select>`)
+- [ ] All autocomplete / search fields use `.search-input` component markup + JS (never `<input list="">`)
+- [ ] All buttons use `.btn` + `.btn__label` + `.btn__dots`; hover lift (`translateY(-1px)` + `shadow-down-medium`) applied
+- [ ] `opacity` values use `var(--opacity-soft)` etc. — never a hardcoded float
+- [ ] `letter-spacing` only via `var(--letter-spacing-*)` tokens — never a hardcoded value
+- [ ] Breakpoints are **mobile-first** (`min-width`) — never `max-width` unless explicitly justified
+- [ ] Every interactive element has a focus style using `--color-brand-primary-medium` (light) or `--neutral-color-xlow` (dark surface)
+- [ ] Every interactive element meets minimum height `var(--size-touch)` (44px)
 
 ---
 
