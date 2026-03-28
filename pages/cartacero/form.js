@@ -96,7 +96,9 @@ function showAlert(message, type = 'success') {
   const area = document.getElementById('alertArea');
   area.innerHTML = '';
   const div = document.createElement('div');
-  div.className = `alert alert--${type}`;
+  // Use alert--danger (not alert--error) to match the alert component
+  const variantClass = type === 'error' ? 'alert--danger' : `alert--${type}`;
+  div.className = `alert ${variantClass}`;
   div.textContent = message;
   area.appendChild(div);
   setTimeout(() => div.remove(), 6000);
