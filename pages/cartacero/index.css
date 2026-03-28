@@ -757,6 +757,8 @@
 
 .form__row--hidden  { display: none; }
 .form__row--visible { display: grid; grid-template-columns: 1fr; }
+/* Always single-column regardless of breakpoint */
+.form__row--stacked { grid-template-columns: 1fr !important; }
 
 /* Mobile base: stacked actions, full-width buttons */
 .form__actions {
