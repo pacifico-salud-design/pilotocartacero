@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design System — Pill Tabs</title>
+
+    <!-- Font + Token layer: font → global → brand → aliases → base -->
+    <link rel="stylesheet" href="../fonts/roboto.css" />
+    <link rel="stylesheet" href="../tokens/global.css" />
+    <link rel="stylesheet" href="../tokens/pacifico.css" />
+    <link rel="stylesheet" href="../tokens/aliases.css" />
+    <link rel="stylesheet" href="../tokens/base.css" />
+
+    <!-- Shared showcase + component styles -->
+    <link rel="stylesheet" href="showcase.css" />
+    <link rel="stylesheet" href="pill-tabs.css" />
+  </head>
+  <body>
+    <main class="showcase">
+
+      <header class="showcase__header">
+        <h1 class="showcase__title">Pill Tabs</h1>
+        <p class="showcase__subtitle">Horizontal scrollable tab row with active state — quick-action navigation</p>
+      </header>
+
+      <!-- ================================================================
+           Pill tabs — default (SANNA "¿Qué quieres hacer hoy?" row)
+           Ref: reference/Screenshot 2026-03-15 142440.png
+           ================================================================ -->
+      <section class="showcase__section showcase__section--card">
+        <h2 class="showcase__section-title">Default — quick actions</h2>
+        <p class="showcase__label">¿Qué quieres hacer hoy?</p>
+        <nav class="pill-tabs" aria-label="Acciones rápidas">
+          <ul class="pill-tabs__list" role="tablist">
+            <li role="none">
+              <button
+                class="pill-tabs__tab pill-tabs__tab--active"
+                role="tab"
+                aria-selected="true"
+              >
+                Sacar cita
+              </button>
+            </li>
+            <li role="none">
+              <button
+                class="pill-tabs__tab"
+                role="tab"
+                aria-selected="false"
+              >
+                Anulación
+              </button>
+            </li>
+            <li role="none">
+              <button
+                class="pill-tabs__tab"
+                role="tab"
+                aria-selected="false"
+              >
+                Orientación
+              </button>
+            </li>
+            <li role="none">
+              <button
+                class="pill-tabs__tab"
+                role="tab"
+                aria-selected="false"
+              >
+                Ambulancias
+              </button>
+            </li>
+            <li role="none">
+              <button
+                class="pill-tabs__tab"
+                role="tab"
+                aria-selected="false"
+              >
+                App móvil
+              </button>
+            </li>
+            <li role="none">
+              <button
+                class="pill-tabs__tab"
+                role="tab"
+                aria-selected="false"
+              >
+                Ver médicos
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </section>
+
+      <!-- ================================================================
+           Pill tabs — with icons
+           ================================================================ -->
+      <section class="showcase__section showcase__section--card">
+        <h2 class="showcase__section-title">With icons</h2>
+        <nav class="pill-tabs" aria-label="Especialidades">
+          <ul class="pill-tabs__list" role="tablist">
+            <li role="none">
+              <button class="pill-tabs__tab pill-tabs__tab--active" role="tab" aria-selected="true">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M8 2a6 6 0 100 12A6 6 0 008 2z" stroke="currentColor" stroke-width="1.2" fill="none"/>
+                  <path d="M8 5v3l2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                </svg>
+                Consultas médicas
+              </button>
+            </li>
+            <li role="none">
+              <button class="pill-tabs__tab" role="tab" aria-selected="false">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <rect x="3" y="3" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.2" fill="none"/>
+                  <path d="M8 6v4M6 8h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                </svg>
+                Medicina general
+              </button>
+            </li>
+            <li role="none">
+              <button class="pill-tabs__tab" role="tab" aria-selected="false">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <circle cx="6" cy="6" r="4" stroke="currentColor" stroke-width="1.2" fill="none"/>
+                  <circle cx="10" cy="10" r="4" stroke="currentColor" stroke-width="1.2" fill="none"/>
+                </svg>
+                Pediatría
+              </button>
+            </li>
+            <li role="none">
+              <button class="pill-tabs__tab" role="tab" aria-selected="false">
+                Cardiología
+              </button>
+            </li>
+            <li role="none">
+              <button class="pill-tabs__tab" role="tab" aria-selected="false">
+                Neurología
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </section>
+
+      <!-- ================================================================
+           Pill tabs — on dark background
+           ================================================================ -->
+      <section class="showcase__section showcase__section--dark">
+        <h2 class="showcase__section-title showcase__section-title--light">On dark surface</h2>
+        <nav class="pill-tabs pill-tabs--inverted" aria-label="Categorías">
+          <ul class="pill-tabs__list" role="tablist">
+            <li role="none">
+              <button class="pill-tabs__tab pill-tabs__tab--active" role="tab" aria-selected="true">Todos los planes</button>
+            </li>
+            <li role="none">
+              <button class="pill-tabs__tab" role="tab" aria-selected="false">Salud</button>
+            </li>
+            <li role="none">
+              <button class="pill-tabs__tab" role="tab" aria-selected="false">Dental</button>
+            </li>
+            <li role="none">
+              <button class="pill-tabs__tab" role="tab" aria-selected="false">Oncológico</button>
+            </li>
+          </ul>
+        </nav>
+      </section>
+
+    </main>
+
+    <script>
+      // Pill tabs — keyboard navigation and click selection
+      document.querySelectorAll('.pill-tabs').forEach(function(nav) {
+        var tabs = nav.querySelectorAll('[role="tab"]');
+
+        tabs.forEach(function(tab) {
+          tab.addEventListener('click', function() {
+            // Deactivate all tabs in this group
+            tabs.forEach(function(t) {
+              t.classList.remove('pill-tabs__tab--active');
+              t.setAttribute('aria-selected', 'false');
+            });
+            // Activate clicked tab
+            tab.classList.add('pill-tabs__tab--active');
+            tab.setAttribute('aria-selected', 'true');
+          });
+
+          // Arrow key navigation
+          tab.addEventListener('keydown', function(e) {
+            var tabArray = Array.from(tabs);
+            var index = tabArray.indexOf(document.activeElement);
+            if (e.key === 'ArrowRight') {
+              var next = tabArray[(index + 1) % tabArray.length];
+              next.focus();
+            } else if (e.key === 'ArrowLeft') {
+              var prev = tabArray[(index - 1 + tabArray.length) % tabArray.length];
+              prev.focus();
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

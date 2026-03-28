@@ -1,0 +1,125 @@
+/* ==========================================================================
+   pill-tabs.css — Pill Tabs component
+   Import order: global.css → pacifico.css → aliases.css → showcase.css → pill-tabs.css
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Pill tabs — wrapper
+   Handles horizontal overflow scrolling on mobile
+   -------------------------------------------------------------------------- */
+.pill-tabs {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Fade-out mask on right edge to hint scrollability.
+   Override --pill-tabs-bg when parent background differs from xlow. */
+.pill-tabs::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: var(--spacing-xl);
+  height: 100%;
+  background: linear-gradient(to right, transparent, var(--neutral-color-xlow));
+  pointer-events: none;
+}
+
+/* On dark backgrounds the mask uses the dark surface color */
+.pill-tabs--inverted::after {
+  background: linear-gradient(to right, transparent, var(--color-brand-primary-xhigh));
+}
+
+/* --------------------------------------------------------------------------
+   Pill tabs — list
+   -------------------------------------------------------------------------- */
+.pill-tabs__list {
+  list-style: none;
+  display: flex;
+  gap: var(--spacing-xs);
+  overflow-x: auto;
+  padding-bottom: var(--spacing-xs); /* space for scrollbar */
+  /* Hide scrollbar visually */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.pill-tabs__list::-webkit-scrollbar {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   Pill tabs — individual tab button
+   -------------------------------------------------------------------------- */
+.pill-tabs__tab {
+  /* Pill shape — outlined by default */
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  white-space: nowrap;
+  padding: var(--spacing-xs) var(--spacing-m);
+  border-radius: var(--border-radius-circular);
+  border: var(--border-width-small) solid var(--neutral-color-medium);
+  background-color: transparent;
+  color: var(--neutral-color-high);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-regular);
+  cursor: pointer;
+  /* Minimum touch target — var(--size-touch) = 44px */
+  min-height: var(--size-touch);
+  transition:
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    color var(--transition-base);
+}
+
+.pill-tabs__tab:hover {
+  /* Hover — brand primary tint border */
+  border-color: var(--color-brand-primary-medium);
+  color: var(--color-brand-primary-medium);
+  background-color: var(--color-brand-primary-xlow);
+}
+
+.pill-tabs__tab:focus-visible {
+  outline: var(--border-width-medium) solid var(--color-brand-primary-medium);
+  outline-offset: var(--focus-outline-offset);
+}
+
+/* --------------------------------------------------------------------------
+   Pill tabs — active state
+   -------------------------------------------------------------------------- */
+.pill-tabs__tab--active {
+  /* Filled brand primary */
+  background-color: var(--color-brand-primary-medium);
+  border-color: var(--color-brand-primary-medium);
+  color: var(--neutral-color-xlow);
+  font-weight: var(--font-weight-medium);
+}
+
+.pill-tabs__tab--active:hover {
+  background-color: var(--color-brand-primary-high);
+  border-color: var(--color-brand-primary-high);
+  color: var(--neutral-color-xlow);
+}
+
+/* --------------------------------------------------------------------------
+   Pill tabs — inverted variant (on dark backgrounds)
+   -------------------------------------------------------------------------- */
+.pill-tabs--inverted .pill-tabs__tab {
+  border-color: var(--color-brand-primary-high);
+  color: var(--color-brand-primary-low);
+}
+
+.pill-tabs--inverted .pill-tabs__tab:hover {
+  background-color: var(--color-brand-primary-high);
+  border-color: var(--color-brand-primary-low);
+  color: var(--neutral-color-xlow);
+}
+
+.pill-tabs--inverted .pill-tabs__tab--active {
+  background-color: var(--color-brand-primary-medium);
+  border-color: var(--color-brand-primary-medium);
+  color: var(--neutral-color-xlow);
+}

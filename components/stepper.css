@@ -1,0 +1,121 @@
+/* ==========================================================================
+   stepper.css — Stepper component
+   Import order: global.css → pacifico.css → aliases.css → showcase.css → stepper.css
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Stepper — layout
+   -------------------------------------------------------------------------- */
+.stepper {
+  width: 100%;
+}
+
+.stepper__list {
+  list-style: none;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Each step item: connector + bubble + label stacked */
+.stepper__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  position: relative;
+  flex: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Stepper — connector line
+   Sits between bubbles, positioned at exact vertical center of bubble
+   -------------------------------------------------------------------------- */
+.stepper__connector {
+  position: absolute;
+  /* Center connector at half the bubble height (size-icon-step / 2 = 1rem = 16px) */
+  top: calc(var(--size-icon-step) / 2);
+  right: 50%;
+  width: 100%;
+  height: var(--border-width-small);
+  /* Pending connector — neutral muted */
+  background-color: var(--neutral-color-medium);
+  opacity: var(--opacity-medium);
+  transform: translateX(-50%);
+}
+
+/* Connector that follows a completed step — brand primary */
+.stepper__connector--completed {
+  background-color: var(--color-brand-primary-medium);
+  opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Stepper — bubble (step number or checkmark)
+   Uses --size-icon-step (32px) token
+   -------------------------------------------------------------------------- */
+.stepper__bubble {
+  width: var(--size-icon-step);
+  height: var(--size-icon-step);
+  border-radius: var(--border-radius-circular);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-bold);
+  position: relative;
+  z-index: var(--z-raised);
+  transition:
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    color var(--transition-base);
+}
+
+/* --------------------------------------------------------------------------
+   Stepper — state: pending
+   -------------------------------------------------------------------------- */
+.stepper__item--pending .stepper__bubble {
+  background-color: var(--neutral-color-xlow);
+  border: var(--border-width-medium) solid var(--neutral-color-medium);
+  color: var(--neutral-color-medium);
+}
+
+/* --------------------------------------------------------------------------
+   Stepper — state: active
+   -------------------------------------------------------------------------- */
+.stepper__item--active .stepper__bubble {
+  background-color: var(--color-brand-primary-medium);
+  border: var(--border-width-medium) solid var(--color-brand-primary-medium);
+  color: var(--neutral-color-xlow);
+}
+
+/* --------------------------------------------------------------------------
+   Stepper — state: completed
+   -------------------------------------------------------------------------- */
+.stepper__item--completed .stepper__bubble {
+  background-color: var(--feedback-color-success-medium);
+  border: var(--border-width-medium) solid var(--feedback-color-success-medium);
+  color: var(--neutral-color-xlow);
+}
+
+/* --------------------------------------------------------------------------
+   Stepper — label
+   -------------------------------------------------------------------------- */
+.stepper__label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  color: var(--neutral-color-medium);
+  text-align: center;
+  white-space: nowrap;
+  letter-spacing: var(--letter-spacing-small);
+}
+
+.stepper__item--active .stepper__label {
+  font-weight: var(--font-weight-medium);
+  color: var(--neutral-color-xhigh);
+}
+
+.stepper__item--completed .stepper__label {
+  color: var(--neutral-color-high);
+}

@@ -1,0 +1,26 @@
+/* ==========================================================================
+   sanna.css — Sanna brand raw tokens
+   Do not use these directly in components — reference via aliases.css
+   ========================================================================== */
+
+:root {
+
+  /* --------------------------------------------------------------------------
+     Sanna — Primary (Greens)
+     -------------------------------------------------------------------------- */
+  --sanna-color-primary-xhigh:  #00230C;
+  --sanna-color-primary-high:   #00652C;
+  --sanna-color-primary-medium: #01A355;
+  --sanna-color-primary-low:    #77D296;
+  --sanna-color-primary-xlow:   #D6F5DF;
+
+  /* --------------------------------------------------------------------------
+     Sanna — Secondary (Blues)
+     -------------------------------------------------------------------------- */
+  --sanna-color-secondary-xhigh:  #101332;
+  --sanna-color-secondary-high:   #323693;
+  --sanna-color-secondary-medium: #5D59EF;
+  --sanna-color-secondary-low:    #A2ADFB;
+  --sanna-color-secondary-xlow:   #F3F2FF;
+
+}

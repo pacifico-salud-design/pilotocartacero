@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/pages/sanna-app/" />
+    <title>Sanna App — Inicio</title>
+
+    <link rel="stylesheet" href="../../fonts/roboto.css" />
+    <link rel="stylesheet" href="../../tokens/global.css" />
+    <link rel="stylesheet" href="../../tokens/sanna.css" />
+    <link rel="stylesheet" href="../../tokens/aliases-sanna.css" />
+    <link rel="stylesheet" href="../../tokens/base.css" />
+    <link rel="stylesheet" href="home.css" />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Ir al contenido</a>
+
+    <main id="main" class="app" aria-label="Inicio Sanna">
+      <header class="app__header" aria-label="Cabecera principal">
+        <div class="app__status" aria-hidden="true">
+          <span>8:28</span>
+          <span>📶 🔋</span>
+        </div>
+
+        <div class="app__nav">
+          <a href="#" class="app__icon-btn" aria-label="Abrir menú">
+            <svg class="app__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </a>
+
+          <div class="app__logo" aria-label="Sanna">
+            <svg class="app__logo-mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M10 3h4v7h7v4h-7v7h-4v-7H3v-4h7V3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+            <span>SANNA</span>
+          </div>
+
+          <a href="#" class="app__icon-btn app__icon-btn--end" aria-label="Notificaciones">
+            <svg class="app__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 4a5 5 0 0 0-5 5v3.5L5 15v1h14v-1l-2-2.5V9a5 5 0 0 0-5-5z" stroke="currentColor" stroke-width="2"/>
+              <path d="M10 18a2 2 0 0 0 4 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </a>
+        </div>
+      </header>
+
+      <section class="app__content" aria-label="Resumen de inicio">
+        <h1 class="app__greeting">Hola Luis 👋🏻</h1>
+
+        <div class="app__banner-track" aria-label="Promociones">
+          <article class="promo-banner">
+            <img src="../../assets/nappy-J5UTvRgse7Q-unsplash.jpg" alt="Promoción médica" class="promo-banner__image" />
+            <div>
+              <p class="promo-banner__title">¡La prevención empieza HOY! Paquetes desde S/239</p>
+              <p class="promo-banner__cta">Agenda aquí</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="app__dots" aria-hidden="true">
+          <span class="app__dot app__dot--active"></span>
+          <span class="app__dot"></span>
+          <span class="app__dot"></span>
+          <span class="app__dot"></span>
+        </div>
+
+        <section class="service-grid" aria-label="Servicios principales">
+          <a class="service-card" href="#">
+            <svg class="service-card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3v3M17 3v3M4 9h16M5 6h14a1 1 0 0 1 1 1v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="2"/></svg>
+            <span>Agendar cita</span>
+          </a>
+          <a class="service-card" href="step-1-patient.html">
+            <svg class="service-card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z" stroke="currentColor" stroke-width="2"/><path d="M12 8v6M9 11h6" stroke="currentColor" stroke-width="2"/></svg>
+            <span>Agendar chequeo</span>
+          </a>
+          <a class="service-card" href="#">
+            <svg class="service-card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 5h18v11H3zM8 19h8" stroke="currentColor" stroke-width="2"/></svg>
+            <span>Dr. Online</span>
+          </a>
+          <a class="service-card" href="#">
+            <svg class="service-card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 6v12M6 12h12" stroke="currentColor" stroke-width="2"/><rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="2"/></svg>
+            <span>Médico a domicilio</span>
+          </a>
+          <a class="service-card" href="#">
+            <svg class="service-card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 10h8M8 14h5" stroke="currentColor" stroke-width="2"/></svg>
+            <span>Mis citas</span>
+          </a>
+          <a class="service-card" href="#">
+            <svg class="service-card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 3v8a3 3 0 1 1-6 0V3M6 11v10" stroke="currentColor" stroke-width="2"/><path d="M16 3l4 7h-8l4-7zM16 10v11" stroke="currentColor" stroke-width="2"/></svg>
+            <span>Mis exámenes</span>
+          </a>
+        </section>
+
+        <p class="app__empty"><strong>Aún no tienes atenciones programadas.</strong>Cuando agendes una cita o servicio podrás verla aquí.</p>
+      </section>
+
+      <a class="app__emergency" href="#" aria-label="Pedir ambulancia">
+        <span aria-hidden="true">🚨</span>
+        <span>Pedir ambulancia</span>
+      </a>
+    </main>
+  </body>
+</html>

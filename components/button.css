@@ -1,0 +1,324 @@
+/* ==========================================================================
+   button.css — Button component
+   Import order: global.css → pacifico.css → aliases.css → showcase.css → button.css
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Button showcase — state grid: 6 columns (label + 5 states)
+   -------------------------------------------------------------------------- */
+.btn-grid {
+  display: grid;
+  grid-template-columns: var(--size-showcase-col-xs) repeat(5, 1fr);
+  gap: var(--spacing-m);
+  align-items: center;
+}
+
+.btn-grid__col-header {
+  /* Column header labels — typography labels */
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--neutral-color-medium);
+  letter-spacing: var(--letter-spacing-small);
+  text-align: center;
+}
+
+.btn-grid__col-header:first-child {
+  text-align: left;
+}
+
+.btn-grid__row-label {
+  /* Row variant label */
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-medium);
+  color: var(--neutral-color-medium);
+  letter-spacing: var(--letter-spacing-small);
+}
+
+.btn-grid__cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Dark background section for negative variants */
+.btn-grid--dark {
+  background-color: var(--neutral-color-xhigh);
+  border-radius: var(--border-radius-medium);
+  padding: var(--spacing-l);
+}
+
+.btn-grid--dark .btn-grid__col-header,
+.btn-grid--dark .btn-grid__row-label {
+  color: var(--neutral-color-medium);
+}
+
+/* --------------------------------------------------------------------------
+   Button — base
+   -------------------------------------------------------------------------- */
+.btn {
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+
+  /* Sizing — Button padding: spacing-s vertical, spacing-l horizontal */
+  padding: var(--spacing-s) var(--spacing-l);
+  height: var(--size-input); /* 48px */
+  min-width: max-content;
+
+  /* Shape — Buttons: border-radius-circular */
+  border-radius: var(--border-radius-circular);
+  border: var(--border-width-small) solid transparent;
+
+  /* Typography — body medium */
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-xlarge);
+  letter-spacing: var(--letter-spacing-medium);
+  white-space: nowrap;
+  text-align: center;
+  text-decoration: none;
+
+  /* Interaction */
+  cursor: pointer;
+  appearance: none;
+  transition: background-color var(--transition-base),
+              color var(--transition-base),
+              border-color var(--transition-base),
+              opacity var(--transition-base);
+
+  /* Overflow (for loading dots) */
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:focus-visible {
+  outline: var(--border-width-medium) solid var(--color-brand-primary-medium);
+  outline-offset: var(--focus-outline-offset);
+}
+
+/* --------------------------------------------------------------------------
+   Variant: Primary
+   bg=primary-medium · text=neutral-xlow · no visible border
+   -------------------------------------------------------------------------- */
+.btn--primary {
+  /* Brand primary — semantic alias */
+  background-color: var(--color-brand-primary-medium);
+  color: var(--neutral-color-xlow);
+  border-color: transparent;
+}
+
+.btn--primary:hover,
+.btn--primary.is-hover {
+  background-color: var(--color-brand-primary-high);
+}
+
+.btn--primary:active,
+.btn--primary.is-pressed {
+  background-color: var(--color-brand-primary-xhigh);
+}
+
+.btn--primary:disabled,
+.btn--primary.is-disabled {
+  background-color: var(--color-brand-primary-medium);
+  opacity: var(--opacity-medium); /* 32% */
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Primary — negative (dark background) */
+.btn--primary.btn--negative {
+  background-color: var(--neutral-color-xlow);
+  color: var(--color-brand-primary-medium);
+}
+
+.btn--primary.btn--negative:hover,
+.btn--primary.btn--negative.is-hover {
+  background-color: var(--color-brand-primary-xlow);
+  color: var(--color-brand-primary-high);
+}
+
+.btn--primary.btn--negative:active,
+.btn--primary.btn--negative.is-pressed {
+  background-color: var(--color-brand-primary-xlow);
+  color: var(--color-brand-primary-xhigh);
+}
+
+/* --------------------------------------------------------------------------
+   Variant: Secondary
+   bg=neutral-xlow · text+border=primary-medium
+   -------------------------------------------------------------------------- */
+.btn--secondary {
+  /* Brand primary border + text, surface background */
+  background-color: var(--neutral-color-xlow);
+  color: var(--color-brand-primary-medium);
+  border-color: var(--color-brand-primary-medium);
+}
+
+.btn--secondary:hover,
+.btn--secondary.is-hover {
+  color: var(--color-brand-primary-high);
+  border-color: var(--color-brand-primary-high);
+}
+
+.btn--secondary:active,
+.btn--secondary.is-pressed {
+  color: var(--neutral-color-xhigh);
+  border-color: var(--neutral-color-xhigh);
+}
+
+.btn--secondary:disabled,
+.btn--secondary.is-disabled {
+  opacity: var(--opacity-medium);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Secondary — negative */
+.btn--secondary.btn--negative {
+  background-color: transparent;
+  color: var(--neutral-color-xlow);
+  border-color: var(--neutral-color-xlow);
+}
+
+.btn--secondary.btn--negative:hover,
+.btn--secondary.btn--negative.is-hover {
+  color: var(--color-brand-primary-low);
+  border-color: var(--color-brand-primary-low);
+}
+
+.btn--secondary.btn--negative:active,
+.btn--secondary.btn--negative.is-pressed {
+  color: var(--neutral-color-low);
+  border-color: var(--neutral-color-low);
+}
+
+/* --------------------------------------------------------------------------
+   Variant: Ghost
+   bg=neutral-xlow · text=primary-medium · no border
+   -------------------------------------------------------------------------- */
+.btn--ghost {
+  /* No border, transparent background */
+  background-color: var(--neutral-color-xlow);
+  color: var(--color-brand-primary-medium);
+  border-color: transparent;
+}
+
+.btn--ghost:hover,
+.btn--ghost.is-hover {
+  background-color: var(--color-brand-primary-xlow);
+  color: var(--color-brand-primary-high);
+}
+
+.btn--ghost:active,
+.btn--ghost.is-pressed {
+  background-color: var(--color-brand-primary-xlow);
+  color: var(--neutral-color-xhigh);
+}
+
+.btn--ghost:disabled,
+.btn--ghost.is-disabled {
+  opacity: var(--opacity-medium);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Ghost — negative */
+.btn--ghost.btn--negative {
+  background-color: transparent;
+  color: var(--neutral-color-xlow);
+}
+
+.btn--ghost.btn--negative:hover,
+.btn--ghost.btn--negative.is-hover {
+  background-color: var(--overlay-color-light-soft);
+  color: var(--color-brand-primary-low);
+}
+
+.btn--ghost.btn--negative:active,
+.btn--ghost.btn--negative.is-pressed {
+  background-color: var(--overlay-color-light-soft);
+  color: var(--neutral-color-low);
+}
+
+/* --------------------------------------------------------------------------
+   Variant: Danger
+   bg=neutral-xlow · text=danger-medium · no border
+   -------------------------------------------------------------------------- */
+.btn--danger {
+  /* Feedback danger tokens */
+  background-color: var(--neutral-color-xlow);
+  color: var(--feedback-color-danger-medium);
+  border-color: transparent;
+}
+
+.btn--danger:hover,
+.btn--danger.is-hover {
+  background-color: var(--feedback-color-danger-xlow);
+  color: var(--feedback-color-danger-high);
+}
+
+.btn--danger:active,
+.btn--danger.is-pressed {
+  background-color: var(--feedback-color-danger-xlow);
+  color: var(--feedback-color-danger-xhigh);
+}
+
+.btn--danger:disabled,
+.btn--danger.is-disabled {
+  opacity: var(--opacity-medium);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Loading state — animated dots
+   Hides label text, shows three bouncing dots
+   -------------------------------------------------------------------------- */
+.btn--loading {
+  cursor: wait;
+  pointer-events: none;
+}
+
+.btn--loading .btn__label {
+  opacity: 0;
+}
+
+.btn__dots {
+  display: none;
+  position: absolute;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2xs);
+}
+
+.btn--loading .btn__dots {
+  display: flex;
+}
+
+.btn__dot {
+  width: var(--size-dot-small);
+  height: var(--size-dot-small);
+  border-radius: var(--border-radius-circular);
+  background-color: currentColor;
+  animation: btn-bounce 1.2s ease-in-out infinite;
+}
+
+.btn__dot:nth-child(1) { animation-delay: 0s; }
+.btn__dot:nth-child(2) { animation-delay: 0.2s; }
+.btn__dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes btn-bounce {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40%           { transform: scale(1);   opacity: 1; }
+}
+
+/* --------------------------------------------------------------------------
+   Full-width modifier
+   -------------------------------------------------------------------------- */
+.btn--full-width {
+  width: 100%;
+}

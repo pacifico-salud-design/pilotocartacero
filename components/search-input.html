@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design System — Search Input</title>
+
+    <!-- Font + Token layer: font → global → brand → aliases → base -->
+    <link rel="stylesheet" href="../fonts/roboto.css" />
+    <link rel="stylesheet" href="../tokens/global.css" />
+    <link rel="stylesheet" href="../tokens/pacifico.css" />
+    <link rel="stylesheet" href="../tokens/aliases.css" />
+    <link rel="stylesheet" href="../tokens/base.css" />
+
+    <!-- Shared showcase + component styles -->
+    <link rel="stylesheet" href="showcase.css" />
+    <link rel="stylesheet" href="search-input.css" />
+  </head>
+  <body>
+    <main class="showcase">
+
+      <header class="showcase__header">
+        <h1 class="showcase__title">Search Input</h1>
+        <p class="showcase__subtitle">Autocomplete — type to filter, click to select</p>
+      </header>
+
+      <!-- ================================================================
+           INTERACTIVE DEMO
+           ================================================================ -->
+      <h2 class="showcase__section-title">Interactive demo</h2>
+
+      <div class="si-demo">
+        <div class="search-input" id="si-live">
+          <label class="search-input__label" for="si-live-input">
+            Diagnóstico principal
+          </label>
+          <div class="search-input__field">
+            <div class="search-input__container">
+              <!-- Search icon -->
+              <span class="search-input__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="currentColor"/>
+                </svg>
+              </span>
+              <input
+                class="search-input__input"
+                id="si-live-input"
+                type="text"
+                placeholder="Buscar diagnóstico..."
+                autocomplete="off"
+                role="combobox"
+                aria-expanded="false"
+                aria-autocomplete="list"
+                aria-controls="si-live-menu"
+              >
+              <!-- Clear button — hidden when empty -->
+              <button
+                class="search-input__clear"
+                type="button"
+                aria-label="Limpiar búsqueda"
+                hidden
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/>
+                </svg>
+              </button>
+            </div>
+            <!-- Dropdown menu -->
+            <ul
+              class="search-input__menu"
+              id="si-live-menu"
+              role="listbox"
+              aria-label="Resultados de búsqueda"
+            ></ul>
+          </div>
+          <p class="search-input__helper" id="si-live-helper">
+            Escriba al menos 1 carácter para buscar
+          </p>
+        </div>
+      </div>
+
+      <!-- ================================================================
+           STATIC STATES SHOWCASE
+           ================================================================ -->
+      <h2 class="showcase__section-title">All states</h2>
+
+      <!-- ── Empty ── -->
+      <div class="si-grid">
+        <span class="si-grid__row-label">Empty</span>
+        <div class="search-input">
+          <label class="search-input__label" for="si-empty">Diagnóstico principal</label>
+          <div class="search-input__field">
+            <div class="search-input__container">
+              <span class="search-input__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="currentColor"/>
+                </svg>
+              </span>
+              <input class="search-input__input" id="si-empty" type="text" placeholder="Buscar diagnóstico..." autocomplete="off" tabindex="-1">
+            </div>
+          </div>
+          <p class="search-input__helper">Escriba al menos 1 carácter para buscar</p>
+        </div>
+      </div>
+
+      <!-- ── Typing / Results showing ── -->
+      <div class="si-grid si-grid--open">
+        <span class="si-grid__row-label">Resultados</span>
+        <div class="search-input is-open">
+          <label class="search-input__label" for="si-typing">Diagnóstico principal</label>
+          <div class="search-input__field">
+            <div class="search-input__container">
+              <span class="search-input__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="currentColor"/>
+                </svg>
+              </span>
+              <input class="search-input__input" id="si-typing" type="text" value="diab" autocomplete="off" tabindex="-1">
+              <button class="search-input__clear" type="button" aria-label="Limpiar">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/>
+                </svg>
+              </button>
+            </div>
+            <ul class="search-input__menu" role="listbox">
+              <li class="search-input__option" role="option"><mark>Diab</mark>etes mellitus tipo 1</li>
+              <li class="search-input__option" role="option"><mark>Diab</mark>etes mellitus tipo 2</li>
+            </ul>
+          </div>
+          <p class="search-input__helper">2 resultados encontrados</p>
+        </div>
+      </div>
+
+      <!-- ── Hover over option ── -->
+      <div class="si-grid si-grid--open">
+        <span class="si-grid__row-label">Opción activa</span>
+        <div class="search-input is-open">
+          <label class="search-input__label" for="si-hover-opt">Diagnóstico principal</label>
+          <div class="search-input__field">
+            <div class="search-input__container">
+              <span class="search-input__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="currentColor"/>
+                </svg>
+              </span>
+              <input class="search-input__input" id="si-hover-opt" type="text" value="hiper" autocomplete="off" tabindex="-1">
+              <button class="search-input__clear" type="button" aria-label="Limpiar">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/>
+                </svg>
+              </button>
+            </div>
+            <ul class="search-input__menu" role="listbox">
+              <li class="search-input__option is-hover" role="option"><mark>Hiper</mark>tensión arterial</li>
+              <li class="search-input__option" role="option"><mark>Hiper</mark>tiroidismo</li>
+            </ul>
+          </div>
+          <p class="search-input__helper">2 resultados encontrados</p>
+        </div>
+      </div>
+
+      <!-- ── Selected ── -->
+      <div class="si-grid">
+        <span class="si-grid__row-label">Seleccionado</span>
+        <div class="search-input search-input--selected">
+          <label class="search-input__label" for="si-selected">Diagnóstico principal</label>
+          <div class="search-input__field">
+            <div class="search-input__container">
+              <span class="search-input__icon search-input__icon--active" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="currentColor"/>
+                </svg>
+              </span>
+              <input class="search-input__input search-input__input--has-value" id="si-selected" type="text" value="Diabetes mellitus tipo 2" autocomplete="off" tabindex="-1">
+              <button class="search-input__clear" type="button" aria-label="Limpiar">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <p class="search-input__helper search-input__helper--selected">Diagnóstico seleccionado</p>
+        </div>
+      </div>
+
+      <!-- ── No results ── -->
+      <div class="si-grid si-grid--open">
+        <span class="si-grid__row-label">Sin resultados</span>
+        <div class="search-input is-open">
+          <label class="search-input__label" for="si-noresults">Diagnóstico principal</label>
+          <div class="search-input__field">
+            <div class="search-input__container">
+              <span class="search-input__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="currentColor"/>
+                </svg>
+              </span>
+              <input class="search-input__input" id="si-noresults" type="text" value="xyzzy" autocomplete="off" tabindex="-1">
+              <button class="search-input__clear" type="button" aria-label="Limpiar">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/>
+                </svg>
+              </button>
+            </div>
+            <ul class="search-input__menu" role="listbox">
+              <li class="search-input__empty" role="option">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="currentColor"/>
+                </svg>
+                No se encontraron resultados para "<strong>xyzzy</strong>"
+              </li>
+            </ul>
+          </div>
+          <p class="search-input__helper">Sin coincidencias. Intente con otro término.</p>
+        </div>
+      </div>
+
+      <!-- ── Disabled ── -->
+      <div class="si-grid">
+        <span class="si-grid__row-label">Deshabilitado</span>
+        <div class="search-input search-input--disabled">
+          <label class="search-input__label" for="si-disabled">Diagnóstico principal</label>
+          <div class="search-input__field">
+            <div class="search-input__container">
+              <span class="search-input__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="currentColor"/>
+                </svg>
+              </span>
+              <input class="search-input__input" id="si-disabled" type="text" placeholder="Buscar diagnóstico..." autocomplete="off" disabled>
+            </div>
+          </div>
+          <p class="search-input__helper">Campo no disponible</p>
+        </div>
+      </div>
+
+    </main>
+
+    <script>
+      /* ====================================================================
+         Search Input — Autocomplete Logic
+         ==================================================================== */
+      const DIAGNOSES = [
+        'Anemia ferropénica',
+        'Artritis reumatoide',
+        'Asma bronquial',
+        'Depresión mayor',
+        'Diabetes mellitus tipo 1',
+        'Diabetes mellitus tipo 2',
+        'Dislipidemia mixta',
+        'Enfermedad pulmonar obstructiva crónica',
+        'Fibromialgia',
+        'Gastritis crónica',
+        'Hipertensión arterial',
+        'Hipertiroidismo',
+        'Hipotiroidismo',
+        'Infarto agudo de miocardio',
+        'Insuficiencia cardíaca congestiva',
+        'Insuficiencia renal crónica',
+        'Lupus eritematoso sistémico',
+        'Osteoporosis',
+        'Trastorno de ansiedad generalizado',
+        'Úlcera péptica',
+      ];
+
+      function initSearchInput(wrapperId) {
+        const wrapper = document.getElementById(wrapperId);
+        if (!wrapper) return;
+
+        const input   = wrapper.querySelector('.search-input__input');
+        const menu    = wrapper.querySelector('.search-input__menu');
+        const clear   = wrapper.querySelector('.search-input__clear');
+        const helper  = wrapper.querySelector('.search-input__helper');
+
+        let activeIndex = -1;
+        let isSelected  = false;
+
+        /* ---- helpers ---- */
+        function escapeHtml(str) {
+          return str.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+        }
+
+        function highlight(text, query) {
+          if (!query) return escapeHtml(text);
+          const idx = text.toLowerCase().indexOf(query.toLowerCase());
+          if (idx === -1) return escapeHtml(text);
+          return (
+            escapeHtml(text.slice(0, idx)) +
+            '<mark>' + escapeHtml(text.slice(idx, idx + query.length)) + '</mark>' +
+            escapeHtml(text.slice(idx + query.length))
+          );
+        }
+
+        function filter(query) {
+          if (!query.trim()) return DIAGNOSES;
+          const q = query.toLowerCase();
+          return DIAGNOSES.filter(d => d.toLowerCase().includes(q));
+        }
+
+        function setHelper(msg, type) {
+          helper.textContent = msg;
+          helper.className = 'search-input__helper';
+          if (type) helper.classList.add('search-input__helper--' + type);
+        }
+
+        /* ---- render ---- */
+        function renderMenu(query) {
+          const results = filter(query);
+          menu.innerHTML = '';
+          activeIndex = -1;
+
+          if (results.length === 0) {
+            menu.innerHTML =
+              '<li class="search-input__empty" role="option">' +
+              '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
+              '<path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="currentColor"/></svg>' +
+              'No se encontraron resultados para "<strong>' + escapeHtml(query) + '</strong>"' +
+              '</li>';
+            setHelper('Sin coincidencias. Intente con otro término.');
+            return;
+          }
+
+          results.forEach(function(item) {
+            const li = document.createElement('li');
+            li.className = 'search-input__option';
+            li.setAttribute('role', 'option');
+            li.innerHTML = highlight(item, query);
+            li.addEventListener('mousedown', function(e) {
+              e.preventDefault(); // keep focus on input
+              selectValue(item);
+            });
+            menu.appendChild(li);
+          });
+
+          const count = results.length;
+          setHelper(count + (count === 1 ? ' resultado encontrado' : ' resultados encontrados'));
+        }
+
+        /* ---- open / close ---- */
+        function openMenu() {
+          renderMenu(input.value);
+          wrapper.classList.add('is-open');
+          input.setAttribute('aria-expanded', 'true');
+        }
+
+        function closeMenu() {
+          wrapper.classList.remove('is-open');
+          input.setAttribute('aria-expanded', 'false');
+          activeIndex = -1;
+          updateActiveItem();
+        }
+
+        /* ---- selection ---- */
+        function selectValue(value) {
+          isSelected = true;
+          input.value = value;
+          input.classList.add('search-input__input--has-value');
+          wrapper.classList.add('search-input--selected');
+          clear.hidden = false;
+          closeMenu();
+          setHelper('Diagnóstico seleccionado', 'selected');
+        }
+
+        function clearValue() {
+          isSelected = false;
+          input.value = '';
+          input.classList.remove('search-input__input--has-value');
+          wrapper.classList.remove('search-input--selected');
+          clear.hidden = true;
+          input.focus();
+          setHelper('Escriba al menos 1 carácter para buscar');
+          openMenu();
+        }
+
+        /* ---- keyboard navigation ---- */
+        function updateActiveItem() {
+          const options = menu.querySelectorAll('.search-input__option');
+          options.forEach(function(opt, i) {
+            if (i === activeIndex) {
+              opt.classList.add('is-active');
+              opt.scrollIntoView({ block: 'nearest' });
+              input.setAttribute('aria-activedescendant', opt.id || '');
+            } else {
+              opt.classList.remove('is-active');
+            }
+          });
+        }
+
+        /* ---- events ---- */
+        input.addEventListener('input', function() {
+          isSelected = false;
+          wrapper.classList.remove('search-input--selected');
+          input.classList.remove('search-input__input--has-value');
+          clear.hidden = !input.value;
+          if (input.value) {
+            openMenu();
+          } else {
+            openMenu(); // show full list when empty
+            setHelper('Escriba al menos 1 carácter para buscar');
+          }
+        });
+
+        input.addEventListener('focus', function() {
+          openMenu();
+        });
+
+        input.addEventListener('blur', function() {
+          setTimeout(function() { closeMenu(); }, 150);
+        });
+
+        input.addEventListener('keydown', function(e) {
+          const options = menu.querySelectorAll('.search-input__option');
+          if (!wrapper.classList.contains('is-open')) return;
+
+          if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            activeIndex = Math.min(activeIndex + 1, options.length - 1);
+            updateActiveItem();
+          } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            activeIndex = Math.max(activeIndex - 1, 0);
+            updateActiveItem();
+          } else if (e.key === 'Enter' && activeIndex >= 0) {
+            e.preventDefault();
+            selectValue(options[activeIndex].textContent);
+          } else if (e.key === 'Escape') {
+            closeMenu();
+            input.blur();
+          }
+        });
+
+        clear.addEventListener('click', clearValue);
+
+        // Initial helper text
+        setHelper('Escriba al menos 1 carácter para buscar');
+      }
+
+      initSearchInput('si-live');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,129 @@
+/* ==========================================================================
+   showcase.css — Shared component showcase layout
+   Requires base.css to be loaded first (provides reset + body defaults).
+   Import in every component HTML BEFORE the component's own CSS:
+     <link rel="stylesheet" href="../tokens/base.css" />
+     <link rel="stylesheet" href="showcase.css" />
+     <link rel="stylesheet" href="component.css" />
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Showcase — outer wrapper
+   Default max-width 900px; use modifier classes for wider/narrower contexts
+   -------------------------------------------------------------------------- */
+.showcase {
+  max-width: var(--size-showcase-width-default);
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+/* Wide: for full-bleed / page-level components (navbar, hero, footer) */
+.showcase--wide {
+  max-width: var(--size-showcase-width-wide);
+}
+
+/* Narrow: for focused components (info-card, accordion, tooltip) */
+.showcase--narrow {
+  max-width: var(--size-showcase-width-narrow);
+}
+
+/* --------------------------------------------------------------------------
+   Showcase — header
+   -------------------------------------------------------------------------- */
+.showcase__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.showcase__title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-small);
+  letter-spacing: var(--letter-spacing-xlarge);
+  color: var(--neutral-color-xhigh);
+}
+
+.showcase__subtitle {
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-regular);
+  color: var(--neutral-color-medium);
+  letter-spacing: var(--letter-spacing-small);
+}
+
+/* --------------------------------------------------------------------------
+   Showcase — section
+   -------------------------------------------------------------------------- */
+.showcase__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-m);
+}
+
+/* Card-style section — wraps component in a white surface */
+.showcase__section--card {
+  background-color: var(--neutral-color-xlow);
+  border-radius: var(--border-radius-medium);
+  padding: var(--spacing-l);
+  box-shadow: var(--shadow-down-small);
+}
+
+/* Dark section — for inverted/dark-background components */
+.showcase__section--dark {
+  background-color: var(--color-brand-primary-xhigh);
+  border-radius: var(--border-radius-medium);
+  padding: var(--spacing-l);
+}
+
+.showcase__section-title {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--neutral-color-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-small);
+}
+
+/* Light section title — for dark sections */
+.showcase__section-title--light {
+  color: var(--color-brand-primary-low);
+}
+
+/* --------------------------------------------------------------------------
+   Showcase — frame
+   Bordered preview area for full-width components shown in context
+   -------------------------------------------------------------------------- */
+.showcase__frame {
+  border-radius: var(--border-radius-medium);
+  overflow: hidden;
+  box-shadow: var(--shadow-down-medium);
+}
+
+/* --------------------------------------------------------------------------
+   Showcase — label
+   Short contextual label above a component instance
+   -------------------------------------------------------------------------- */
+.showcase__label {
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-medium);
+  color: var(--neutral-color-xhigh);
+}
+
+/* --------------------------------------------------------------------------
+   Showcase — state grid (for button/input state matrices)
+   -------------------------------------------------------------------------- */
+.showcase__state-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-l);
+  flex-wrap: wrap;
+}
+
+.showcase__state-label {
+  font-size: var(--font-size-xs);
+  color: var(--neutral-color-medium);
+  letter-spacing: var(--letter-spacing-small);
+  min-width: 4rem;
+}

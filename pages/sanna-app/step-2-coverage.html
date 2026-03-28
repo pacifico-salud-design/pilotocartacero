@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/pages/sanna-app/" />
+    <title>Sanna App — Paso 2</title>
+    <link rel="stylesheet" href="../../fonts/roboto.css" />
+    <link rel="stylesheet" href="../../tokens/global.css" />
+    <link rel="stylesheet" href="../../tokens/sanna.css" />
+    <link rel="stylesheet" href="../../tokens/aliases-sanna.css" />
+    <link rel="stylesheet" href="../../tokens/base.css" />
+    <link rel="stylesheet" href="flow.css" />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Ir al contenido</a>
+    <main id="main" class="flow">
+      <header class="flow__header">
+        <div class="flow__status" aria-hidden="true"><span>8:26</span><span>📶 🔋</span></div>
+        <div class="flow__toolbar">
+          <a class="flow__icon-btn" href="step-1-patient.html" aria-label="Volver">
+            <svg class="flow__icon" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2"/></svg>
+          </a>
+          <h1 class="flow__toolbar-title">Solicita una cita para chequeo</h1>
+          <a class="flow__icon-btn" href="home.html" aria-label="Cerrar">
+            <svg class="flow__icon" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2"/></svg>
+          </a>
+        </div>
+      </header>
+
+      <section class="flow__content">
+        <div class="stepper">
+          <div class="stepper__item"><span class="stepper__circle stepper__circle--done">1</span><span class="stepper__line stepper__line--done"></span></div>
+          <div class="stepper__item"><span class="stepper__circle stepper__circle--active">2</span><span class="stepper__line"></span></div>
+          <div class="stepper__item"><span class="stepper__circle">3</span><span class="stepper__line"></span></div>
+          <div class="stepper__item"><span class="stepper__circle">4</span><span class="stepper__line"></span></div>
+          <div class="stepper__item"><span class="stepper__circle">5</span></div>
+        </div>
+
+        <h2 class="flow__title">¿Con qué cobertura de salud deseas atenderte?</h2>
+        <p class="flow__subtitle">Selecciona tu cobertura o beneficio.</p>
+        <p class="flow__hint">Verificaremos que posees este beneficio en tu Plan de salud.</p>
+
+        <div class="flow-list">
+          <a class="flow-card" href="step-3-checkups.html">
+            <p class="flow-card__title">Pacífico EPS</p>
+            <p class="flow-card__text">Tu cita será por cuenta de tu seguro</p>
+          </a>
+          <a class="flow-card" href="step-3-checkups.html">
+            <p class="flow-card__title">Pacífico Seguros</p>
+            <p class="flow-card__text">Tu cita será por cuenta de tu seguro</p>
+          </a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

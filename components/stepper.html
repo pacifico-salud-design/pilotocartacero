@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design System — Stepper</title>
+
+    <!-- Font + Token layer: font → global → brand → aliases → base -->
+    <link rel="stylesheet" href="../fonts/roboto.css" />
+    <link rel="stylesheet" href="../tokens/global.css" />
+    <link rel="stylesheet" href="../tokens/pacifico.css" />
+    <link rel="stylesheet" href="../tokens/aliases.css" />
+    <link rel="stylesheet" href="../tokens/base.css" />
+
+    <!-- Shared showcase + component styles -->
+    <link rel="stylesheet" href="showcase.css" />
+    <link rel="stylesheet" href="stepper.css" />
+  </head>
+  <body>
+    <main class="showcase showcase--narrow">
+
+      <header class="showcase__header">
+        <h1 class="showcase__title">Stepper</h1>
+        <p class="showcase__subtitle">Horizontal multi-step progress indicator — all states</p>
+      </header>
+
+      <!-- ================================================================
+           Step 1 active (steps 2, 3 pending)
+           ================================================================ -->
+      <section class="showcase__section">
+        <h2 class="showcase__section-title">Step 1 — Active</h2>
+        <nav class="stepper" aria-label="Progreso del formulario">
+          <ol class="stepper__list">
+            <li class="stepper__item stepper__item--active" aria-current="step">
+              <span class="stepper__bubble">1</span>
+              <span class="stepper__label">Nachito y tú</span>
+            </li>
+            <li class="stepper__item stepper__item--pending">
+              <span class="stepper__connector" aria-hidden="true"></span>
+              <span class="stepper__bubble">2</span>
+              <span class="stepper__label">Plan</span>
+            </li>
+            <li class="stepper__item stepper__item--pending">
+              <span class="stepper__connector" aria-hidden="true"></span>
+              <span class="stepper__bubble">3</span>
+              <span class="stepper__label">Pago</span>
+            </li>
+          </ol>
+        </nav>
+      </section>
+
+      <!-- ================================================================
+           Step 2 active (step 1 completed, step 3 pending)
+           ================================================================ -->
+      <section class="showcase__section">
+        <h2 class="showcase__section-title">Step 2 — Active (1 completed)</h2>
+        <nav class="stepper" aria-label="Progreso del formulario">
+          <ol class="stepper__list">
+            <li class="stepper__item stepper__item--completed">
+              <!-- Checkmark icon -->
+              <span class="stepper__bubble">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span class="stepper__label">Nachito y tú</span>
+            </li>
+            <li class="stepper__item stepper__item--active" aria-current="step">
+              <span class="stepper__connector stepper__connector--completed" aria-hidden="true"></span>
+              <span class="stepper__bubble">2</span>
+              <span class="stepper__label">Plan</span>
+            </li>
+            <li class="stepper__item stepper__item--pending">
+              <span class="stepper__connector" aria-hidden="true"></span>
+              <span class="stepper__bubble">3</span>
+              <span class="stepper__label">Pago</span>
+            </li>
+          </ol>
+        </nav>
+      </section>
+
+      <!-- ================================================================
+           Step 3 active (steps 1, 2 completed)
+           ================================================================ -->
+      <section class="showcase__section">
+        <h2 class="showcase__section-title">Step 3 — Active (1 &amp; 2 completed)</h2>
+        <nav class="stepper" aria-label="Progreso del formulario">
+          <ol class="stepper__list">
+            <li class="stepper__item stepper__item--completed">
+              <span class="stepper__bubble">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span class="stepper__label">Nachito y tú</span>
+            </li>
+            <li class="stepper__item stepper__item--completed">
+              <span class="stepper__connector stepper__connector--completed" aria-hidden="true"></span>
+              <span class="stepper__bubble">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span class="stepper__label">Plan</span>
+            </li>
+            <li class="stepper__item stepper__item--active" aria-current="step">
+              <span class="stepper__connector stepper__connector--completed" aria-hidden="true"></span>
+              <span class="stepper__bubble">3</span>
+              <span class="stepper__label">Pago</span>
+            </li>
+          </ol>
+        </nav>
+      </section>
+
+    </main>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+/* ==========================================================================
+   tsana.css — Tsana brand raw tokens
+   Do not use these directly in components — reference via aliases.css
+   ========================================================================== */
+
+:root {
+
+  /* --------------------------------------------------------------------------
+     Tsana — Primary (Purples)
+     -------------------------------------------------------------------------- */
+  --tsana-color-primary-xhigh:  #101332;
+  --tsana-color-primary-high:   #323693;
+  --tsana-color-primary-medium: #5D59EF;
+  --tsana-color-primary-low:    #A2ADFB;
+  --tsana-color-primary-xlow:   #F3F6FF;
+
+  /* --------------------------------------------------------------------------
+     Tsana — Secondary (Greens)
+     -------------------------------------------------------------------------- */
+  --tsana-color-secondary-xhigh:  #00230C;
+  --tsana-color-secondary-high:   #00652C;
+  --tsana-color-secondary-medium: #01A355;
+  --tsana-color-secondary-low:    #77D296;
+  --tsana-color-secondary-xlow:   #D6F5DF;
+
+}

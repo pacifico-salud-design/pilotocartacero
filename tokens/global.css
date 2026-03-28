@@ -1,0 +1,206 @@
+/* ==========================================================================
+   global.css — Shared tokens across all brands
+   Import order: global.css → [brand].css → aliases.css
+   ========================================================================== */
+
+:root {
+
+  /* --------------------------------------------------------------------------
+     Neutral colors
+     -------------------------------------------------------------------------- */
+  --neutral-color-xhigh:  #121314;
+  --neutral-color-high:   #2E2F33;
+  --neutral-color-medium: #6A6C74;
+  --neutral-color-low:    #F0F1F2;
+  --neutral-color-xlow:   #FDFDFD;
+
+  /* --------------------------------------------------------------------------
+     Feedback / Success
+     -------------------------------------------------------------------------- */
+  --feedback-color-success-xhigh:  #0B3D33;
+  --feedback-color-success-high:   #137A66;
+  --feedback-color-success-medium: #1FA78D;
+  --feedback-color-success-low:    #4DDDC0;
+  --feedback-color-success-xlow:   #CCF5EA;
+
+  /* --------------------------------------------------------------------------
+     Feedback / Danger
+     -------------------------------------------------------------------------- */
+  --feedback-color-danger-xhigh:  #541C1C;
+  --feedback-color-danger-high:   #B3261E;
+  --feedback-color-danger-medium: #DC3B31;
+  --feedback-color-danger-low:    #F37C72;
+  --feedback-color-danger-xlow:   #FDEAEA;
+
+  /* --------------------------------------------------------------------------
+     Feedback / Warning
+     -------------------------------------------------------------------------- */
+  --feedback-color-warning-xhigh:  #4A2A0F;
+  --feedback-color-warning-high:   #A65400;
+  --feedback-color-warning-medium: #DF670C;
+  --feedback-color-warning-low:    #F7B66A;
+  --feedback-color-warning-xlow:   #FFF3E6;
+
+  /* --------------------------------------------------------------------------
+     Feedback / Info
+     -------------------------------------------------------------------------- */
+  --feedback-color-info-xhigh:  #1B2D3A;
+  --feedback-color-info-high:   #0253C6;
+  --feedback-color-info-medium: #237CF3;
+  --feedback-color-info-low:    #85B8FD;
+  --feedback-color-info-xlow:   #E9F2FF;
+
+  /* --------------------------------------------------------------------------
+     Typography — Font family
+     -------------------------------------------------------------------------- */
+  --font-family-base: 'Roboto', sans-serif;
+
+  /* --------------------------------------------------------------------------
+     Typography — Font sizes
+     -------------------------------------------------------------------------- */
+  --font-size-xs:  0.75rem;   /* 12px — captions */
+  --font-size-s:   0.875rem;  /* 14px — labels */
+  --font-size-m:   1rem;      /* 16px — body */
+  --font-size-l:   1.5rem;    /* 24px — subheadings */
+  --font-size-xl:  2rem;      /* 32px — headings */
+  --font-size-2xl: 3rem;      /* 48px — display */
+  --font-size-3xl: 4rem;      /* 64px — display */
+  --font-size-4xl: 5rem;      /* 80px — display */
+
+  /* --------------------------------------------------------------------------
+     Typography — Font weights
+     -------------------------------------------------------------------------- */
+  --font-weight-light:   300;
+  --font-weight-regular: 400;
+  --font-weight-medium:  500;
+  --font-weight-bold:    700;
+
+  /* --------------------------------------------------------------------------
+     Typography — Line heights
+     -------------------------------------------------------------------------- */
+  --line-height-small:  1.32;  /* displays 32px–80px */
+  --line-height-medium: 1.36;  /* 12px */
+  --line-height-large:  1.44;  /* 14px */
+  --line-height-xlarge: 1.52;  /* 16px */
+
+  /* --------------------------------------------------------------------------
+     Typography — Letter spacing
+     -------------------------------------------------------------------------- */
+  --letter-spacing-small:  0.015rem;   /* labels (12px, 14px) */
+  --letter-spacing-medium: 0.01rem;    /* body text (16px) */
+  --letter-spacing-large:  0rem;       /* subheadings (24px) */
+  --letter-spacing-xlarge: -0.01rem;   /* displays (32px–80px) */
+
+  /* --------------------------------------------------------------------------
+     Spacing
+     -------------------------------------------------------------------------- */
+  --spacing-none: 0;
+  --spacing-2xs:  0.25rem;  /* 4px */
+  --spacing-xs:   0.5rem;   /* 8px */
+  --spacing-s:    0.75rem;  /* 12px */
+  --spacing-m:    1rem;     /* 16px */
+  --spacing-l:    1.5rem;   /* 24px */
+  --spacing-xl:   2rem;     /* 32px */
+  --spacing-2xl:  3rem;     /* 48px */
+  --spacing-3xl:  4rem;     /* 64px */
+  --spacing-4xl:  5rem;     /* 80px */
+  --spacing-5xl:  6rem;     /* 96px */
+  --spacing-6xl:  10rem;    /* 160px */
+
+  /* --------------------------------------------------------------------------
+     Border radius
+     -------------------------------------------------------------------------- */
+  --border-radius-none:     0px;
+  --border-radius-small:    0.5rem;  /* 8px — buttons, inputs */
+  --border-radius-medium:   1rem;    /* 16px — cards */
+  --border-radius-large:    1.5rem;  /* 24px — modals */
+  --border-radius-circular: 500px;
+
+  /* --------------------------------------------------------------------------
+     Border width
+     -------------------------------------------------------------------------- */
+  --border-width-none:   0px;
+  --border-width-small:  1px;
+  --border-width-medium: 2px;
+
+  /* --------------------------------------------------------------------------
+     Opacity
+     -------------------------------------------------------------------------- */
+  --opacity-none:   1;     /* 100% */
+  --opacity-soft:   0.88;  /* 88% */
+  --opacity-medium: 0.32;  /* 32% */
+  --opacity-high:   0.16;  /* 16% */
+
+  /* --------------------------------------------------------------------------
+     Shadows
+     -------------------------------------------------------------------------- */
+  --shadow-down-small:  0px 2px 8px rgba(18, 19, 20, 0.08);
+  --shadow-down-medium: 0px 4px 16px rgba(18, 19, 20, 0.12);
+  --shadow-down-large:  0px 8px 32px rgba(18, 19, 20, 0.16);
+  --shadow-up-small:    0px -2px 8px rgba(18, 19, 20, 0.08);
+  --shadow-up-medium:   0px -4px 16px rgba(18, 19, 20, 0.12);
+  --shadow-up-large:    0px -8px 32px rgba(18, 19, 20, 0.16);
+
+  /* --------------------------------------------------------------------------
+     Transitions
+     -------------------------------------------------------------------------- */
+  --transition-fast:   150ms ease;          /* micro-interactions (color, opacity) */
+  --transition-base:   200ms ease;          /* standard state changes */
+  --transition-slow:   300ms ease-in-out;   /* complex animations */
+
+  /* --------------------------------------------------------------------------
+     Z-index scale
+     -------------------------------------------------------------------------- */
+  --z-base:     0;
+  --z-raised:   10;
+  --z-sticky:   100;   /* sticky headers */
+  --z-dropdown: 200;   /* dropdowns, menus */
+  --z-tooltip:  300;   /* tooltips */
+  --z-modal:    400;   /* modals, drawers */
+
+
+  /* --------------------------------------------------------------------------
+     Overlay colors
+     -------------------------------------------------------------------------- */
+  --overlay-color-dark-soft:    rgba(0, 0, 0, 0.08);
+  --overlay-color-dark-medium:  rgba(0, 0, 0, 0.1);
+  --overlay-color-light-soft:   rgba(253, 253, 253, 0.12);
+  --overlay-color-light-medium: rgba(255, 255, 255, 0.2);
+
+  /* --------------------------------------------------------------------------
+     Component helper sizing (showcases + micro-elements)
+     -------------------------------------------------------------------------- */
+  --size-dot-small:              0.375rem;   /* 6px */
+  --size-dot-medium:             0.75rem;    /* 12px */
+  --size-tag-remove:             1.25rem;    /* 20px */
+  --size-tooltip-arrow:          0.3125rem;  /* 5px */
+  --size-tooltip-max-width:      13.75rem;   /* 220px */
+  --size-menu-max-height:        16.5rem;    /* 264px */
+  --size-showcase-col-xs:        6.25rem;    /* 100px */
+  --size-showcase-col-s:         8.125rem;   /* 130px */
+  --size-showcase-col-m:         8.75rem;    /* 140px */
+  --size-showcase-col-l:         10rem;      /* 160px */
+  --size-showcase-width-default: 56.25rem;   /* 900px */
+  --size-showcase-width-wide:    75rem;      /* 1200px */
+  --size-showcase-width-narrow:  40rem;      /* 640px */
+  --size-search-demo-max-width:  30rem;      /* 480px */
+  --size-search-grid-max-width:  36.25rem;   /* 580px */
+  --size-dropdown-open-space:    22.5rem;    /* 360px */
+  --size-search-open-space:      12.5rem;    /* 200px */
+  --size-badge-font-xs:          0.625rem;   /* 10px */
+
+  /* --------------------------------------------------------------------------
+     Focus helpers
+     -------------------------------------------------------------------------- */
+  --focus-outline-offset:        0.125rem;   /* 2px */
+  --focus-outline-offset-tight:  0.0625rem;  /* 1px */
+  /* --------------------------------------------------------------------------
+     Component sizing
+     -------------------------------------------------------------------------- */
+  --size-input:        3rem;      /* 48px — universal interactive element height */
+  --size-touch:        2.75rem;   /* 44px — minimum touch target */
+  --size-icon-ui:      1.5rem;    /* 24px — inline / UI icons */
+  --size-icon-step:    2rem;      /* 32px — step indicator bubbles */
+  --size-icon-feature: 3rem;      /* 48px — feature / benefit section icons */
+
+}

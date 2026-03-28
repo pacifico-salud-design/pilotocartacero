@@ -1,0 +1,176 @@
+/* ==========================================================================
+   tooltip.css — Tooltip primitive
+   Import order: global.css → pacifico.css → aliases.css → showcase.css → tooltip.css
+   CSS-only — triggered by :hover and :focus-within on wrapper
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Tooltip — wrapper
+   Position relative anchor for the tooltip bubble
+   -------------------------------------------------------------------------- */
+.tooltip-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* --------------------------------------------------------------------------
+   Tooltip — trigger button
+   -------------------------------------------------------------------------- */
+.tooltip-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-icon-ui);
+  height: var(--size-icon-ui);
+  border-radius: var(--border-radius-circular);
+  border: var(--border-width-small) solid var(--neutral-color-medium);
+  background: none;
+  color: var(--neutral-color-medium);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+  transition:
+    color var(--transition-base),
+    border-color var(--transition-base),
+    background-color var(--transition-base);
+}
+
+.tooltip-trigger:hover {
+  color: var(--color-brand-primary-medium);
+  border-color: var(--color-brand-primary-medium);
+  background-color: var(--color-brand-primary-xlow);
+}
+
+.tooltip-trigger:focus-visible {
+  outline: var(--border-width-medium) solid var(--color-brand-primary-medium);
+  outline-offset: var(--focus-outline-offset);
+}
+
+/* --------------------------------------------------------------------------
+   Tooltip — bubble (hidden by default)
+   -------------------------------------------------------------------------- */
+.tooltip {
+  position: absolute;
+  z-index: var(--z-tooltip);
+  /* Neutral dark background */
+  background-color: var(--neutral-color-xhigh);
+  color: var(--neutral-color-xlow);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-large);
+  padding: var(--spacing-xs) var(--spacing-s);
+  border-radius: var(--border-radius-small);
+  white-space: nowrap;
+  max-width: var(--size-tooltip-max-width);
+  white-space: normal;
+  pointer-events: none;
+  /* Hidden by default — shown on hover/focus */
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--transition-fast),
+    visibility var(--transition-fast);
+}
+
+/* Show tooltip on hover or keyboard focus */
+.tooltip-wrap:hover .tooltip,
+.tooltip-wrap:focus-within .tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* --------------------------------------------------------------------------
+   Tooltip — positions
+   Default: top-center
+   -------------------------------------------------------------------------- */
+
+/* Top (default) */
+.tooltip {
+  bottom: calc(100% + var(--spacing-xs));
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Arrow — points down */
+.tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: var(--size-tooltip-arrow) solid transparent;
+  border-top-color: var(--neutral-color-xhigh);
+}
+
+/* Bottom */
+.tooltip--bottom {
+  top: calc(100% + var(--spacing-xs));
+  bottom: auto;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.tooltip--bottom::after {
+  top: auto;
+  bottom: 100%;
+  border-top-color: transparent;
+  border-bottom-color: var(--neutral-color-xhigh);
+}
+
+/* Left */
+.tooltip--left {
+  right: calc(100% + var(--spacing-xs));
+  left: auto;
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+}
+
+.tooltip--left::after {
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  border-top-color: transparent;
+  border-left-color: var(--neutral-color-xhigh);
+}
+
+/* Right */
+.tooltip--right {
+  left: calc(100% + var(--spacing-xs));
+  right: auto;
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+}
+
+.tooltip--right::after {
+  top: 50%;
+  right: 100%;
+  left: auto;
+  transform: translateY(-50%);
+  border-top-color: transparent;
+  border-right-color: var(--neutral-color-xhigh);
+}
+
+/* --------------------------------------------------------------------------
+   Showcase helpers — demo spacing
+   -------------------------------------------------------------------------- */
+.tooltip-demo-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2xl);
+  padding: var(--spacing-xl) var(--spacing-l);
+  flex-wrap: wrap;
+}
+
+.tooltip-demo-label {
+  font-size: var(--font-size-xs);
+  color: var(--neutral-color-medium);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-s);
+}

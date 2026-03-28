@@ -1,0 +1,116 @@
+/* ==========================================================================
+   tag.css — Tag primitive
+   Import order: global.css → pacifico.css → aliases.css → showcase.css → tag.css
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Tag — base
+   Selectable or removable content labels (filter chips, category chips)
+   -------------------------------------------------------------------------- */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  border-radius: var(--border-radius-circular);
+  border: var(--border-width-small) solid var(--neutral-color-medium);
+  background-color: transparent;
+  color: var(--neutral-color-high);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-regular);
+  /* Default: medium size — min touch target */
+  padding: var(--spacing-xs) var(--spacing-m);
+  min-height: var(--size-touch);
+  white-space: nowrap;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    color var(--transition-base);
+}
+
+.tag:hover {
+  border-color: var(--color-brand-primary-medium);
+  color: var(--color-brand-primary-medium);
+  background-color: var(--color-brand-primary-xlow);
+}
+
+.tag:focus-visible {
+  outline: var(--border-width-medium) solid var(--color-brand-primary-medium);
+  outline-offset: var(--focus-outline-offset);
+}
+
+/* --------------------------------------------------------------------------
+   Tag — small size
+   -------------------------------------------------------------------------- */
+.tag--sm {
+  font-size: var(--font-size-xs);
+  padding: var(--spacing-2xs) var(--spacing-s);
+  min-height: var(--spacing-none);
+}
+
+/* --------------------------------------------------------------------------
+   Tag — selected state (filled brand primary)
+   -------------------------------------------------------------------------- */
+.tag--selected {
+  background-color: var(--color-brand-primary-medium);
+  border-color: var(--color-brand-primary-medium);
+  color: var(--neutral-color-xlow);
+  font-weight: var(--font-weight-medium);
+}
+
+.tag--selected:hover {
+  background-color: var(--color-brand-primary-high);
+  border-color: var(--color-brand-primary-high);
+  color: var(--neutral-color-xlow);
+}
+
+/* --------------------------------------------------------------------------
+   Tag — removable variant (has × dismiss button inside)
+   -------------------------------------------------------------------------- */
+.tag--removable {
+  padding-right: var(--spacing-xs);
+}
+
+.tag__remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-tag-remove);
+  height: var(--size-tag-remove);
+  border-radius: var(--border-radius-circular);
+  border: none;
+  background: none;
+  color: currentColor;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  opacity: var(--opacity-soft);
+  transition: opacity var(--transition-base), background-color var(--transition-base);
+  font-family: inherit;
+}
+
+.tag__remove:hover {
+  opacity: 1;
+  background-color: var(--overlay-color-dark-medium);
+}
+
+.tag__remove:focus-visible {
+  outline: var(--border-width-medium) solid var(--color-brand-primary-medium);
+  outline-offset: var(--focus-outline-offset-tight);
+}
+
+/* On selected (filled) tags, the remove button hover bg uses white overlay */
+.tag--selected .tag__remove:hover {
+  background-color: var(--overlay-color-light-medium);
+}
+
+/* --------------------------------------------------------------------------
+   Tag group — horizontal flex wrap
+   -------------------------------------------------------------------------- */
+.tag-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}

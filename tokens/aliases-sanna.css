@@ -1,0 +1,29 @@
+/* ==========================================================================
+   aliases-sanna.css — Semantic bridge for Sanna brand
+   Maps semantic color names to Sanna's raw tokens.
+   Import this INSTEAD OF aliases.css when building Sanna brand pages.
+
+   Active brand: Sanna (Greens + Blues)
+   ========================================================================== */
+
+:root {
+
+  /* --------------------------------------------------------------------------
+     Brand primary scale — Sanna Greens
+     -------------------------------------------------------------------------- */
+  --color-brand-primary-xhigh:  var(--sanna-color-primary-xhigh);
+  --color-brand-primary-high:   var(--sanna-color-primary-high);
+  --color-brand-primary-medium: var(--sanna-color-primary-medium);
+  --color-brand-primary-low:    var(--sanna-color-primary-low);
+  --color-brand-primary-xlow:   var(--sanna-color-primary-xlow);
+
+  /* --------------------------------------------------------------------------
+     Brand secondary scale — Sanna Blues/Purples
+     -------------------------------------------------------------------------- */
+  --color-brand-secondary-xhigh:  var(--sanna-color-secondary-xhigh);
+  --color-brand-secondary-high:   var(--sanna-color-secondary-high);
+  --color-brand-secondary-medium: var(--sanna-color-secondary-medium);
+  --color-brand-secondary-low:    var(--sanna-color-secondary-low);
+  --color-brand-secondary-xlow:   var(--sanna-color-secondary-xlow);
+
+}

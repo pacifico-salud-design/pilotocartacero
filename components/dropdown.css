@@ -1,0 +1,305 @@
+/* ==========================================================================
+   dropdown.css — Dropdown / Select component
+   Import order: global.css → pacifico.css → aliases.css → showcase.css → dropdown.css
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Dropdown showcase — state grid
+   -------------------------------------------------------------------------- */
+.dd-grid {
+  display: grid;
+  grid-template-columns: var(--size-showcase-col-s) repeat(2, 1fr);
+  gap: var(--spacing-m) var(--spacing-l);
+  align-items: start;
+}
+
+.dd-grid--wide {
+  grid-template-columns: var(--size-showcase-col-s) 1fr;
+  /* Reserve vertical space so the open menu doesn't overlap the next row */
+  padding-bottom: var(--size-dropdown-open-space);
+}
+
+.dd-grid__col-header {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--neutral-color-medium);
+  letter-spacing: var(--letter-spacing-small);
+  padding-top: var(--spacing-l); /* align with trigger top after label */
+}
+
+.dd-grid__col-header:first-child { /* empty corner */ }
+
+.dd-grid__row-label {
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-medium);
+  color: var(--neutral-color-medium);
+  letter-spacing: var(--letter-spacing-small);
+  padding-top: var(--spacing-l); /* align with trigger */
+}
+
+/* --------------------------------------------------------------------------
+   Dropdown — wrapper
+   -------------------------------------------------------------------------- */
+.dropdown {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   Label
+   -------------------------------------------------------------------------- */
+.dropdown__label {
+  /* Labels: font-size-xs (12px), regular */
+  display: block;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-medium);
+  letter-spacing: var(--letter-spacing-small);
+  color: var(--neutral-color-high);
+  /* Margin bottom — spacing-2xs (4px) */
+  margin-bottom: var(--spacing-2xs);
+}
+
+.dropdown__required {
+  color: var(--feedback-color-danger-medium);
+  margin-left: var(--focus-outline-offset);
+}
+
+/* Label — disabled */
+.dropdown--disabled .dropdown__label {
+  color: var(--neutral-color-medium);
+}
+
+/* --------------------------------------------------------------------------
+   Trigger
+   -------------------------------------------------------------------------- */
+.dropdown__trigger {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  /* Gap: spacing-xs (8px) */
+  gap: var(--spacing-xs);
+
+  /* Sizing — interactive element height */
+  height: var(--size-input);
+  /* Padding: spacing-m horizontal (16px) */
+  padding: 0 var(--spacing-m);
+  width: 100%;
+
+  /* Shape — border-radius-small (8px) */
+  border-radius: var(--border-radius-small);
+  border: var(--border-width-small) solid var(--neutral-color-medium);
+
+  /* Default: surface bg, neutral-medium text (placeholder) */
+  background-color: var(--neutral-color-xlow);
+  color: var(--neutral-color-medium);
+
+  /* Interaction */
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+
+  /* Transition */
+  transition: border-color var(--transition-base),
+              background-color var(--transition-base),
+              color var(--transition-base);
+}
+
+/* Trigger text (value span) */
+.dropdown__value {
+  flex: 1;
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-xlarge);
+  letter-spacing: var(--letter-spacing-medium);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: inherit;
+}
+
+/* When a real value is selected, text becomes neutral-xhigh */
+.dropdown__trigger--has-value {
+  color: var(--neutral-color-xhigh);
+}
+
+/* Chevron icon */
+.dropdown__chevron {
+  flex-shrink: 0;
+  color: var(--neutral-color-medium);
+  transition: transform var(--transition-base);
+}
+
+/* --------------------------------------------------------------------------
+   Trigger states: hover / focus / active
+   -------------------------------------------------------------------------- */
+.dropdown__trigger:hover,
+.dropdown.is-hover .dropdown__trigger {
+  border-color: var(--neutral-color-high);
+}
+
+.dropdown__trigger:focus,
+.dropdown__trigger:focus-visible,
+.dropdown.is-focus .dropdown__trigger {
+  border-color: var(--neutral-color-high);
+  color: var(--neutral-color-xhigh);
+  outline: none;
+}
+
+/* Open state — chevron rotates, trigger connects to menu below */
+.dropdown.is-open .dropdown__trigger {
+  border-color: var(--neutral-color-high);
+  color: var(--neutral-color-xhigh);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-color: var(--neutral-color-low);
+}
+
+.dropdown.is-open .dropdown__chevron {
+  transform: rotate(180deg);
+}
+
+/* --------------------------------------------------------------------------
+   Variant: Success
+   -------------------------------------------------------------------------- */
+.dropdown--success .dropdown__trigger {
+  border-color: var(--feedback-color-success-medium);
+}
+
+.dropdown--success .dropdown__trigger:hover,
+.dropdown--success.is-hover .dropdown__trigger {
+  border-color: var(--feedback-color-success-high);
+}
+
+.dropdown--success .dropdown__trigger:focus,
+.dropdown--success.is-focus .dropdown__trigger {
+  border-color: var(--feedback-color-success-high);
+}
+
+/* --------------------------------------------------------------------------
+   Variant: Error
+   -------------------------------------------------------------------------- */
+.dropdown--error .dropdown__trigger {
+  background-color: var(--feedback-color-danger-xlow);
+  border-color: var(--feedback-color-danger-medium);
+}
+
+.dropdown--error .dropdown__trigger:hover,
+.dropdown--error.is-hover .dropdown__trigger {
+  background-color: var(--feedback-color-danger-xlow);
+  border-color: var(--feedback-color-danger-high);
+}
+
+.dropdown--error .dropdown__trigger:focus,
+.dropdown--error.is-focus .dropdown__trigger {
+  border-color: var(--feedback-color-danger-high);
+}
+
+.dropdown--error .dropdown__chevron {
+  color: var(--feedback-color-danger-medium);
+}
+
+/* --------------------------------------------------------------------------
+   State: Disabled
+   -------------------------------------------------------------------------- */
+.dropdown--disabled .dropdown__trigger {
+  background-color: var(--neutral-color-low);
+  border-color: transparent;
+  color: var(--neutral-color-medium);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.dropdown--disabled .dropdown__chevron {
+  color: var(--neutral-color-medium);
+}
+
+/* --------------------------------------------------------------------------
+   Menu (listbox)
+   -------------------------------------------------------------------------- */
+.dropdown__menu {
+  /* Positioning — flush below the trigger (connected) */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: var(--z-dropdown);
+
+  /* Shape — top corners flat (connected to trigger), bottom rounded */
+  border-radius: 0 0 var(--border-radius-medium) var(--border-radius-medium);
+  border: var(--border-width-small) solid var(--neutral-color-high);
+  border-top: none;
+
+  /* Surface */
+  background-color: var(--neutral-color-xlow);
+
+  /* Shadow */
+  box-shadow: var(--shadow-down-large);
+
+  /* Scroll — max 264px */
+  max-height: var(--size-menu-max-height);
+  overflow-y: auto;
+
+  /* Padding: spacing-s vertical, spacing-2xs horizontal */
+  padding: var(--spacing-s) var(--spacing-2xs);
+
+  /* Hidden by default */
+  display: none;
+}
+
+/* Menu visible when open */
+.dropdown.is-open .dropdown__menu {
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   Option items
+   -------------------------------------------------------------------------- */
+.dropdown__option {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-xs);
+
+  /* Sizing — interactive element height */
+  height: var(--size-input);
+  /* Padding: spacing-s vertical, spacing-m horizontal */
+  padding: var(--spacing-s) var(--spacing-m);
+
+  /* Text */
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-xlarge);
+  letter-spacing: var(--letter-spacing-medium);
+  color: var(--neutral-color-xhigh);
+
+  /* Interaction */
+  cursor: pointer;
+  border-radius: var(--border-radius-small);
+  transition: background-color var(--transition-fast);
+}
+
+.dropdown__option:hover,
+.dropdown__option.is-hover {
+  /* Option hover: brand primary-xlow */
+  background-color: var(--color-brand-primary-xlow);
+}
+
+/* Selected option */
+.dropdown__option--selected {
+  font-weight: var(--font-weight-medium);
+}
+
+/* Selected checkmark — hidden by default */
+.dropdown__option-check {
+  display: none;
+  flex-shrink: 0;
+  color: var(--neutral-color-xhigh);
+}
+
+.dropdown__option--selected .dropdown__option-check {
+  display: block;
+}

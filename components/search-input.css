@@ -1,0 +1,386 @@
+/* ==========================================================================
+   search-input.css — Search Input / Autocomplete component
+   Import order: global.css → pacifico.css → aliases.css → showcase.css → search-input.css
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Search input showcase — interactive demo wrapper (constrains width)
+   -------------------------------------------------------------------------- */
+.si-demo {
+  max-width: var(--size-search-demo-max-width);
+}
+
+/* State grid: row-label col + component col */
+.si-grid {
+  display: grid;
+  grid-template-columns: var(--size-showcase-col-m) 1fr;
+  gap: var(--spacing-m) var(--spacing-l);
+  align-items: start;
+  /* Reserve space so open menus don't overlap the next row */
+  max-width: var(--size-search-grid-max-width);
+}
+
+.si-grid--open {
+  /* Extra bottom padding for the open dropdown */
+  padding-bottom: var(--size-search-open-space);
+}
+
+.si-grid__row-label {
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-medium);
+  color: var(--neutral-color-medium);
+  letter-spacing: var(--letter-spacing-small);
+  /* Align with input top after label */
+  padding-top: var(--spacing-l);
+}
+
+/* --------------------------------------------------------------------------
+   Search Input — wrapper
+   -------------------------------------------------------------------------- */
+.search-input {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   Label — same spec as text-field__label
+   -------------------------------------------------------------------------- */
+.search-input__label {
+  display: block;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-medium);
+  letter-spacing: var(--letter-spacing-small);
+  /* Label color — neutral-high */
+  color: var(--neutral-color-high);
+  /* Margin bottom — spacing-2xs (4px) */
+  margin-bottom: var(--spacing-2xs);
+}
+
+/* Label — disabled */
+.search-input--disabled .search-input__label {
+  color: var(--neutral-color-medium);
+}
+
+/* --------------------------------------------------------------------------
+   Field — positions the container + dropdown together
+   -------------------------------------------------------------------------- */
+.search-input__field {
+  position: relative;
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   Container — styled border box (mirrors text-field__container)
+   -------------------------------------------------------------------------- */
+.search-input__container {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  /* Sizing — interactive element height */
+  height: var(--size-input);
+  /* Padding: spacing-xs (8px) each side, extra left for icon */
+  padding: 0 var(--spacing-xs) 0 var(--spacing-m);
+
+  /* Shape — border-radius-small (8px) */
+  border-radius: var(--border-radius-small);
+  border: var(--border-width-small) solid var(--neutral-color-medium);
+
+  /* Surface */
+  background-color: var(--neutral-color-xlow);
+
+  /* Transition */
+  transition: border-color var(--transition-base),
+              background-color var(--transition-base);
+}
+
+/* Open state — container border becomes brand primary */
+.search-input.is-open .search-input__container {
+  border-color: var(--neutral-color-high);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-color: var(--neutral-color-low);
+}
+
+/* Hover */
+.search-input:not(.search-input--disabled):hover .search-input__container {
+  border-color: var(--neutral-color-high);
+}
+
+/* Focus-within — standard focus ring per CLAUDE.md */
+.search-input__container:focus-within {
+  border-color: var(--color-brand-primary-medium);
+  outline: var(--border-width-medium) solid var(--color-brand-primary-medium);
+  outline-offset: var(--focus-outline-offset);
+}
+
+/* --------------------------------------------------------------------------
+   Search icon (left adornment) — mirrors text-field__adornment
+   -------------------------------------------------------------------------- */
+.search-input__icon {
+  width: var(--spacing-l);    /* 24px */
+  height: var(--spacing-l);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Default: neutral-medium */
+  color: var(--neutral-color-medium);
+  margin-right: var(--spacing-xs);
+}
+
+/* Icon turns brand primary when open or selected */
+.search-input.is-open .search-input__icon,
+.search-input--selected .search-input__icon {
+  color: var(--color-brand-primary-medium);
+}
+
+/* --------------------------------------------------------------------------
+   Input element — mirrors text-field__input
+   -------------------------------------------------------------------------- */
+.search-input__input {
+  /* Fill remaining space */
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+
+  /* Reset */
+  border: none;
+  background: transparent;
+  outline: none;
+
+  /* Typography */
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-xlarge);
+  letter-spacing: var(--letter-spacing-medium);
+  /* Placeholder: neutral-medium */
+  color: var(--neutral-color-medium);
+
+  transition: color var(--transition-base);
+}
+
+.search-input__input::placeholder {
+  color: var(--neutral-color-medium);
+}
+
+/* When has a typed value */
+.search-input__input:not(:placeholder-shown),
+.search-input__input--has-value {
+  color: var(--neutral-color-xhigh);
+}
+
+/* Disabled input */
+.search-input__input:disabled {
+  cursor: not-allowed;
+}
+
+/* --------------------------------------------------------------------------
+   Clear button (right adornment)
+   -------------------------------------------------------------------------- */
+
+/* The [hidden] attribute is overridden by display:flex below — restore it */
+.search-input__clear[hidden] {
+  display: none;
+}
+
+.search-input__clear {
+  /* Sizing — matches adornment */
+  width: var(--spacing-l);
+  height: var(--spacing-l);
+  flex-shrink: 0;
+  margin-left: var(--spacing-xs);
+
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Reset button */
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+
+  /* Color */
+  color: var(--neutral-color-medium);
+  border-radius: var(--border-radius-small);
+  transition: color var(--transition-base), background-color var(--transition-base);
+}
+
+.search-input__clear:hover {
+  color: var(--neutral-color-xhigh);
+  background-color: var(--neutral-color-low);
+}
+
+.search-input__clear:focus-visible {
+  outline: var(--border-width-medium) solid var(--color-brand-primary-medium);
+  outline-offset: var(--focus-outline-offset);
+}
+
+/* --------------------------------------------------------------------------
+   Dropdown menu — mirrors dropdown.css conventions
+   -------------------------------------------------------------------------- */
+.search-input__menu {
+  /* Positioning — flush below container */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: var(--z-dropdown);
+
+  /* Shape — top corners flat (connected to container), bottom rounded */
+  border-radius: 0 0 var(--border-radius-medium) var(--border-radius-medium);
+  border: var(--border-width-small) solid var(--neutral-color-high);
+  border-top: none;
+
+  /* Surface */
+  background-color: var(--neutral-color-xlow);
+
+  /* Shadow */
+  box-shadow: var(--shadow-down-large);
+
+  /* Scroll — max 264px */
+  max-height: var(--size-menu-max-height);
+  overflow-y: auto;
+
+  /* Padding: spacing-s vertical, spacing-2xs horizontal */
+  padding: var(--spacing-s) var(--spacing-2xs);
+
+  /* List reset */
+  list-style: none;
+
+  /* Hidden by default */
+  display: none;
+}
+
+/* Menu visible when open */
+.search-input.is-open .search-input__menu {
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   Option items — mirrors dropdown__option
+   -------------------------------------------------------------------------- */
+.search-input__option {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+
+  /* Sizing — interactive element height */
+  height: var(--size-input);
+  padding: var(--spacing-s) var(--spacing-m);
+
+  /* Text */
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-xlarge);
+  letter-spacing: var(--letter-spacing-medium);
+  color: var(--neutral-color-xhigh);
+
+  /* Interaction */
+  cursor: pointer;
+  border-radius: var(--border-radius-small);
+  transition: background-color var(--transition-fast);
+
+  /* Truncate long option text */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search-input__option:hover,
+.search-input__option.is-hover,
+.search-input__option.is-active {
+  /* Option hover/active: brand primary-xlow */
+  background-color: var(--color-brand-primary-xlow);
+}
+
+/* Highlighted match — the typed portion */
+.search-input__option mark {
+  background: transparent;
+  /* Match text: brand primary-high, medium weight */
+  color: var(--color-brand-primary-high);
+  font-weight: var(--font-weight-medium);
+}
+
+/* --------------------------------------------------------------------------
+   Empty state — "no results"
+   -------------------------------------------------------------------------- */
+.search-input__empty {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-s);
+  padding: var(--spacing-s) var(--spacing-m);
+  height: var(--size-input);
+
+  /* Text */
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-large);
+  letter-spacing: var(--letter-spacing-small);
+  /* Muted: neutral-medium */
+  color: var(--neutral-color-medium);
+}
+
+.search-input__empty strong {
+  font-weight: var(--font-weight-medium);
+  color: var(--neutral-color-xhigh);
+}
+
+.search-input__empty svg {
+  flex-shrink: 0;
+  color: var(--neutral-color-medium);
+}
+
+/* --------------------------------------------------------------------------
+   Helper text — mirrors text-field__helper
+   -------------------------------------------------------------------------- */
+.search-input__helper {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-medium);
+  letter-spacing: var(--letter-spacing-small);
+  /* Default: info-medium (blue) */
+  color: var(--feedback-color-info-medium);
+  margin-top: var(--spacing-xs);
+}
+
+/* Selected state — helper turns success */
+.search-input__helper--selected,
+.search-input--selected .search-input__helper {
+  color: var(--feedback-color-success-medium);
+}
+
+/* Disabled helper */
+.search-input--disabled .search-input__helper {
+  color: var(--neutral-color-medium);
+}
+
+/* --------------------------------------------------------------------------
+   State: Selected — container border becomes success
+   -------------------------------------------------------------------------- */
+.search-input--selected .search-input__container {
+  border-color: var(--feedback-color-success-medium);
+}
+
+.search-input--selected:hover .search-input__container {
+  border-color: var(--feedback-color-success-high);
+}
+
+/* --------------------------------------------------------------------------
+   State: Disabled
+   -------------------------------------------------------------------------- */
+.search-input--disabled .search-input__container {
+  border-color: transparent;
+  background-color: var(--neutral-color-low);
+  pointer-events: none;
+}
+
+.search-input--disabled .search-input__icon {
+  color: var(--neutral-color-medium);
+}

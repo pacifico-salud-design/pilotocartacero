@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design System — Badge</title>
+
+    <!-- Font + Token layer: font → global → brand → aliases → base -->
+    <link rel="stylesheet" href="../fonts/roboto.css" />
+    <link rel="stylesheet" href="../tokens/global.css" />
+    <link rel="stylesheet" href="../tokens/pacifico.css" />
+    <link rel="stylesheet" href="../tokens/aliases.css" />
+    <link rel="stylesheet" href="../tokens/base.css" />
+
+    <!-- Shared showcase + component styles -->
+    <link rel="stylesheet" href="showcase.css" />
+    <link rel="stylesheet" href="badge.css" />
+  </head>
+  <body>
+    <main class="showcase">
+
+      <header class="showcase__header">
+        <h1 class="showcase__title">Badge</h1>
+        <p class="showcase__subtitle">Pill-shaped status labels, counts, and category indicators</p>
+      </header>
+
+      <!-- ================================================================
+           Filled badges — all variants
+           ================================================================ -->
+      <section class="showcase__section showcase__section--card">
+        <h2 class="showcase__section-title">Filled — medium</h2>
+        <div class="showcase__state-row">
+          <span class="badge badge--brand">Más recomendado</span>
+          <span class="badge badge--secondary">Nuevo</span>
+          <span class="badge badge--success">Activo</span>
+          <span class="badge badge--danger">Vencido</span>
+          <span class="badge badge--warning">Pendiente</span>
+          <span class="badge badge--info">Informativo</span>
+          <span class="badge badge--neutral">Inactivo</span>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           Filled badges — small variant
+           ================================================================ -->
+      <section class="showcase__section showcase__section--card">
+        <h2 class="showcase__section-title">Filled — small (counts / compact labels)</h2>
+        <div class="showcase__state-row">
+          <span class="badge badge--brand badge--sm">3</span>
+          <span class="badge badge--danger badge--sm">12</span>
+          <span class="badge badge--success badge--sm">OK</span>
+          <span class="badge badge--neutral badge--sm">Beta</span>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           Outlined badges — all variants
+           ================================================================ -->
+      <section class="showcase__section showcase__section--card">
+        <h2 class="showcase__section-title">Outlined — medium</h2>
+        <div class="showcase__state-row">
+          <span class="badge badge--brand badge--outlined">Recomendado</span>
+          <span class="badge badge--secondary badge--outlined">Destacado</span>
+          <span class="badge badge--success badge--outlined">Verificado</span>
+          <span class="badge badge--danger badge--outlined">Cancelado</span>
+          <span class="badge badge--warning badge--outlined">En revisión</span>
+          <span class="badge badge--info badge--outlined">Información</span>
+          <span class="badge badge--neutral badge--outlined">Archivado</span>
+        </div>
+      </section>
+
+    </main>
+  </body>
+</html>

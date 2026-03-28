@@ -1,0 +1,26 @@
+/* ==========================================================================
+   pacifico.css — Pacifico brand raw tokens
+   Do not use these directly in components — reference via aliases.css
+   ========================================================================== */
+
+:root {
+
+  /* --------------------------------------------------------------------------
+     Pacifico — Primary (Teals)
+     -------------------------------------------------------------------------- */
+  --pacifico-color-primary-xhigh:  #003840;
+  --pacifico-color-primary-high:   #007499;
+  --pacifico-color-primary-medium: #0099CC;
+  --pacifico-color-primary-low:    #79C2E4;
+  --pacifico-color-primary-xlow:   #F2F9FD;
+
+  /* --------------------------------------------------------------------------
+     Pacifico — Secondary (Pinks)
+     -------------------------------------------------------------------------- */
+  --pacifico-color-secondary-xhigh:  #40001B;
+  --pacifico-color-secondary-high:   #9F0140;
+  --pacifico-color-secondary-medium: #E02667;
+  --pacifico-color-secondary-low:    #EF8DA9;
+  --pacifico-color-secondary-xlow:   #FEF4F6;
+
+}

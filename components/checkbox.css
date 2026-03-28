@@ -1,0 +1,219 @@
+/* ==========================================================================
+   checkbox.css — Checkbox component
+   Import order: global.css → pacifico.css → aliases.css → showcase.css → checkbox.css
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Checkbox showcase — state grid: label col + 2 value cols
+   -------------------------------------------------------------------------- */
+.cb-grid {
+  display: grid;
+  grid-template-columns: var(--size-showcase-col-l) repeat(2, 1fr);
+  gap: var(--spacing-m) var(--spacing-l);
+  align-items: center;
+}
+
+.cb-grid__col-header {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--neutral-color-medium);
+  letter-spacing: var(--letter-spacing-small);
+  text-align: left;
+}
+
+.cb-grid__col-header:first-child {
+  /* empty corner */
+}
+
+.cb-grid__row-label {
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-medium);
+  color: var(--neutral-color-medium);
+  letter-spacing: var(--letter-spacing-small);
+  align-self: center;
+}
+
+/* --------------------------------------------------------------------------
+   Checkbox — base structure
+   <label class="checkbox [modifiers]">
+     <input type="checkbox" class="checkbox__input">
+     <span class="checkbox__box">
+       <svg class="checkbox__check">...</svg>
+     </span>
+     <span class="checkbox__label">Label</span>   ← optional
+   </label>
+   -------------------------------------------------------------------------- */
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  /* Gap between box and label — spacing-xs (8px) */
+  gap: var(--spacing-xs);
+  cursor: pointer;
+  width: fit-content;
+}
+
+/* Visually hidden native input — accessible but invisible */
+.checkbox__input {
+  position: absolute;
+  width: var(--border-width-small);
+  height: var(--border-width-small);
+  padding: 0;
+  margin: calc(-1 * var(--border-width-small));
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Visual box
+   -------------------------------------------------------------------------- */
+.checkbox__box {
+  /* Sizing: xlarge = spacing-xl = 2rem = 32px */
+  width: var(--spacing-xl);
+  height: var(--spacing-xl);
+  flex-shrink: 0;
+
+  /* Layout — center the checkmark */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Shape — border-radius-small (8px) */
+  border-radius: var(--border-radius-small);
+
+  /* Default unchecked: transparent bg, neutral-medium border */
+  background-color: transparent;
+  border: var(--border-width-small) solid var(--neutral-color-medium);
+
+  /* Transition */
+  transition: background-color var(--transition-base),
+              border-color var(--transition-base);
+}
+
+/* Checkmark — hidden by default */
+.checkbox__check {
+  display: none;
+  color: var(--neutral-color-xlow);
+}
+
+/* --------------------------------------------------------------------------
+   Label text
+   -------------------------------------------------------------------------- */
+.checkbox__label {
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-xlarge);
+  letter-spacing: var(--letter-spacing-medium);
+  color: var(--neutral-color-xhigh);
+  /* Prevent label from shrinking */
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Label position: start (label before box)
+   -------------------------------------------------------------------------- */
+.checkbox--label-start {
+  flex-direction: row-reverse;
+}
+
+/* --------------------------------------------------------------------------
+   State: Hover
+   Applied via :hover on label or .is-hover class for showcase simulation
+   -------------------------------------------------------------------------- */
+.checkbox:hover .checkbox__box,
+.checkbox.is-hover .checkbox__box {
+  /* Hover unchecked: neutral-high border */
+  border-color: var(--neutral-color-high);
+}
+
+/* --------------------------------------------------------------------------
+   State: Checked
+   Uses native :checked selector via adjacent sibling combinator
+   -------------------------------------------------------------------------- */
+.checkbox__input:checked + .checkbox__box {
+  /* Checked: brand primary bg + border */
+  background-color: var(--color-brand-primary-medium);
+  border-color: var(--color-brand-primary-medium);
+}
+
+.checkbox__input:checked + .checkbox__box .checkbox__check {
+  display: block;
+}
+
+/* Checked + hover */
+.checkbox:hover .checkbox__input:checked + .checkbox__box,
+.checkbox.is-hover .checkbox__input:checked + .checkbox__box {
+  background-color: var(--color-brand-primary-high);
+  border-color: var(--color-brand-primary-high);
+}
+
+/* Focus ring — accessibility */
+.checkbox__input:focus-visible + .checkbox__box {
+  outline: var(--border-width-medium) solid var(--color-brand-primary-medium);
+  outline-offset: var(--focus-outline-offset);
+}
+
+/* --------------------------------------------------------------------------
+   Variant: Error
+   -------------------------------------------------------------------------- */
+.checkbox--error .checkbox__box {
+  /* Error unchecked: danger-medium border */
+  border-color: var(--feedback-color-danger-medium);
+}
+
+.checkbox--error:hover .checkbox__box,
+.checkbox--error.is-hover .checkbox__box {
+  border-color: var(--feedback-color-danger-high);
+}
+
+/* Error + checked: danger bg */
+.checkbox--error .checkbox__input:checked + .checkbox__box {
+  background-color: var(--feedback-color-danger-medium);
+  border-color: var(--feedback-color-danger-medium);
+}
+
+.checkbox--error:hover .checkbox__input:checked + .checkbox__box,
+.checkbox--error.is-hover .checkbox__input:checked + .checkbox__box {
+  background-color: var(--feedback-color-danger-high);
+  border-color: var(--feedback-color-danger-high);
+}
+
+/* Error label color */
+.checkbox--error .checkbox__label {
+  color: var(--feedback-color-danger-medium);
+}
+
+/* --------------------------------------------------------------------------
+   State: Disabled
+   -------------------------------------------------------------------------- */
+.checkbox:has(.checkbox__input:disabled),
+.checkbox.is-disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.checkbox__input:disabled + .checkbox__box,
+.checkbox.is-disabled .checkbox__box {
+  /* Disabled: neutral-low border and bg when checked */
+  border-color: var(--neutral-color-low);
+  background-color: transparent;
+}
+
+/* Disabled checked */
+.checkbox__input:disabled:checked + .checkbox__box,
+.checkbox.is-disabled .checkbox__input:checked + .checkbox__box {
+  background-color: var(--neutral-color-low);
+  border-color: var(--neutral-color-low);
+}
+
+/* Disabled label */
+.checkbox:has(.checkbox__input:disabled) .checkbox__label,
+.checkbox.is-disabled .checkbox__label {
+  /* Muted text — opacity-medium */
+  opacity: var(--opacity-medium);
+}
+
+/* --------------------------------------------------------------------------
+   Checkmark SVG — kept inline for currentColor to inherit
+   -------------------------------------------------------------------------- */

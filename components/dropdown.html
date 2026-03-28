@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design System — Dropdown</title>
+
+    <!-- Font + Token layer: font → global → brand → aliases → base -->
+    <link rel="stylesheet" href="../fonts/roboto.css" />
+    <link rel="stylesheet" href="../tokens/global.css" />
+    <link rel="stylesheet" href="../tokens/pacifico.css" />
+    <link rel="stylesheet" href="../tokens/aliases.css" />
+    <link rel="stylesheet" href="../tokens/base.css" />
+
+    <!-- Shared showcase + component styles -->
+    <link rel="stylesheet" href="showcase.css" />
+    <link rel="stylesheet" href="dropdown.css" />
+  </head>
+  <body>
+    <main class="showcase">
+
+      <header class="showcase__header">
+        <h1 class="showcase__title">Dropdown</h1>
+        <p class="showcase__subtitle">All variants × all states</p>
+      </header>
+
+      <!-- ================================================================
+           SECTION 1 — TRIGGER STATES
+           Columns: No value (placeholder) | With value
+           ================================================================ -->
+
+      <h2 class="showcase__section-title">Trigger states</h2>
+
+      <!-- Column headers -->
+      <div class="dd-grid" aria-hidden="true">
+        <span class="dd-grid__col-header"></span>
+        <span class="dd-grid__col-header">No value</span>
+        <span class="dd-grid__col-header">With value</span>
+      </div>
+
+      <!-- ── Default ── -->
+      <div class="dd-grid">
+        <span class="dd-grid__row-label">Default</span>
+
+        <!-- Default / No value -->
+        <div class="dropdown">
+          <span class="dropdown__label">Label <span class="dropdown__required">*</span></span>
+          <div class="dropdown__trigger" role="combobox" aria-expanded="false" tabindex="0" aria-label="Label">
+            <span class="dropdown__value">Placeholder</span>
+            <svg class="dropdown__chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M16.59 8.29L12 12.87L7.41 8.29L6 9.7L12 15.7L18 9.7L16.59 8.29Z" fill="currentColor"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Default / With value -->
+        <div class="dropdown">
+          <span class="dropdown__label">Label <span class="dropdown__required">*</span></span>
+          <div class="dropdown__trigger dropdown__trigger--has-value" role="combobox" aria-expanded="false" tabindex="0" aria-label="Label">
+            <span class="dropdown__value">Option 1</span>
+            <svg class="dropdown__chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M16.59 8.29L12 12.87L7.41 8.29L6 9.7L12 15.7L18 9.7L16.59 8.29Z" fill="currentColor"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Hover ── -->
+      <div class="dd-grid">
+        <span class="dd-grid__row-label">Hover</span>
+
+        <div class="dropdown is-hover">
+          <span class="dropdown__label">Label <span class="dropdown__required">*</span></span>
+          <div class="dropdown__trigger" role="combobox" aria-expanded="false" tabindex="-1">
+            <span class="dropdown__value">Placeholder</span>
+            <svg class="dropdown__chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M16.59 8.29L12 12.87L7.41 8.29L6 9.7L12 15.7L18 9.7L16.59 8.29Z" fill="currentColor"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="dropdown is-hover">
+          <span class="dropdown__label">Label <span class="dropdown__required">*</span></span>
+          <div class="dropdown__trigger dropdown__trigger--has-value" role="combobox" aria-expanded="false" tabindex="-1">
+            <span class="dropdown__value">Option 1</span>
+            <svg class="dropdown__chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M16.59 8.29L12 12.87L7.41 8.29L6 9.7L12 15.7L18 9.7L16.59 8.29Z" fill="currentColor"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Focus ── -->
+      <div class="dd-grid">
+        <span class="dd-grid__row-label">Focus</span>
+
+        <div class="dropdown is-focus">
+          <span class="dropdown__label">Label <span class="dropdown__required">*</span></span>
+          <div class="dropdown__trigger" role="combobox" aria-expanded="false" tabindex="-1">
+            <span class="dropdown__value">Placeholder</span>
+            <svg class="dropdown__chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M16.59 8.29L12 12.87L7.41 8.29L6 9.7L12 15.7L18 9.7L16.59 8.29Z" fill="currentColor"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="dropdown is-focus">
+          <span class="dropdown__label">Label <span class="dropdown__required">*</span></span>
+          <div class="dropdown__trigger dropdown__trigger--has-value" role="combobox" aria-expanded="false" tabindex="-1">
+            <span class="dropdown__value">Option 1</span>
+            <svg class="dropdown__chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M16.59 8.29L12 12.87L7.41 8.29L6 9.7L12 15.7L18 9.7L16.59 8.29Z" fill="currentColor"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Success ── -->
+      <div class="dd-grid">
+        <span class="dd-grid__row-label">Success</span>
+
+        <div class="dropdown dropdown--success">
+          <span class="dropdown__label">Label <span class="dropdown__required">*</span></span>
+          <div class="dropdown__trigger" role="combobox" aria-expanded="false" tabindex="-1">
+            <span class="dropdown__value">Placeholder</span>
+            <svg class="dropdown__chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M16.59 8.29L12 12.87L7.41 8.29L6 9.7L12 15.7L18 9.7L16.59 8.29Z" fill="currentColor"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="dropdown dropdown--success">
+          <span class="dropdown__label">Label <span class="dropdown__required">*</span></span>
+          <div class="dropdown__trigger dropdown__trigger--has-value" role="combobox" aria-expanded="false" tabindex="-1">
+            <span class="dropdown__value">Option 1</span>
+            <svg class="dropdown__chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M16.59 8.29L12 12.87L7.41 8.29L6 9.7L12 15.7L18 9.7L16.59 8.29Z" fill="currentColor"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Error ── -->
+      <div class="dd-grid">
+        <span class="dd-grid__row-label">Error</span>
+
+        <div class="dropdown dropdown--error">
+          <span class="dropdown__label">Label <span class="dropdown__required">*</span></span>
+          <div class="dropdown__trigger" role="combobox" aria-expanded="false" aria-invalid="true" tabindex="-1">
+            <span class="dropdown__value">Placeholder</span>
+            <svg class="dropdown__chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M16.59 8.29L12 12.87L7.41 8.29L6 9.7L12 15.7L18 9.7L16.59 8.29Z" fill="currentColor"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="dropdown dropdown--error">
+          <span class="dropdown__label">Label <span class="dropdown__required">*</span></span>
+          <div class="dropdown__trigger dropdown__trigger--has-value" role="combobox" aria-expanded="false" aria-invalid="true" tabindex="-1">
+            <span class="dropdown__value">Option 1</span>
+            <svg class="dropdown__chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M16.59 8.29L12 12.87L7.41 8.29L6 9.7L12 15.7L18 9.7L16.59 8.29Z" fill="currentColor"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Error + Hover ── -->
+      <div class="dd-grid">
+        <span class="dd-grid__row-label">Error + Hover</span>
+
+        <div class="dropdown dropdown--error is-hover">
+          <span class="dropdown__label">Label <span class="dropdown__required">*</span></span>
+          <div class="dropdown__trigger" role="combobox" aria-expanded="false" tabindex="-1">
+            <span class="dropdown__value">Placeholder</span>
+            <svg class="dropdown__chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M16.59 8.29L12 12.87L7.41 8.29L6 9.7L12 15.7L18 9.7L16.59 8.29Z" fill="currentColor"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="dropdown dropdown--error is-hover">
+          <span class="dropdown__label">Label <span class="dropdown__required">*</span></span>
+          <div class="dropdown__trigger dropdown__trigger--has-value" role="combobox" aria-expanded="false" tabindex="-1">
+            <span class="dropdown__value">Option 1</span>
+            <svg class="dropdown__chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M16.59 8.29L12 12.87L7.41 8.29L6 9.7L12 15.7L18 9.7L16.59 8.29Z" fill="currentColor"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Disabled ── -->
+      <div class="dd-grid">
+        <span class="dd-grid__row-label">Disabled</span>
+
+        <div class="dropdown dropdown--disabled">
+          <span class="dropdown__label">Label <span class="dropdown__required">*</span></span>
+          <div class="dropdown__trigger" role="combobox" aria-expanded="false" aria-disabled="true" tabindex="-1">
+            <span class="dropdown__value">Placeholder</span>
+            <svg class="dropdown__chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M16.59 8.29L12 12.87L7.41 8.29L6 9.7L12 15.7L18 9.7L16.59 8.29Z" fill="currentColor"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="dropdown dropdown--disabled">
+          <span class="dropdown__label">Label <span class="dropdown__required">*</span></span>
+          <div class="dropdown__trigger dropdown__trigger--has-value" role="combobox" aria-expanded="false" aria-disabled="true" tabindex="-1">
+            <span class="dropdown__value">Option 1</span>
+            <svg class="dropdown__chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M16.59 8.29L12 12.87L7.41 8.29L6 9.7L12 15.7L18 9.7L16.59 8.29Z" fill="currentColor"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================================================================
+           SECTION 2 — OPEN STATE (interactive)
+           ================================================================ -->
+
+      <h2 class="showcase__section-title">Open state — interactive</h2>
+
+      <div class="dd-grid dd-grid--wide">
+        <span class="dd-grid__row-label">Default open</span>
+
+        <!-- Live interactive dropdown -->
+        <div class="dropdown is-open" id="dd-live">
+          <span class="dropdown__label" id="dd-live-label">Country <span class="dropdown__required">*</span></span>
+          <div
+            class="dropdown__trigger dropdown__trigger--has-value"
+            role="combobox"
+            aria-expanded="true"
+            aria-controls="dd-live-menu"
+            aria-labelledby="dd-live-label"
+            tabindex="0"
+            id="dd-live-trigger"
+          >
+            <span class="dropdown__value" id="dd-live-value">Peru</span>
+            <svg class="dropdown__chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M16.59 8.29L12 12.87L7.41 8.29L6 9.7L12 15.7L18 9.7L16.59 8.29Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="dropdown__menu" role="listbox" id="dd-live-menu" aria-labelledby="dd-live-label">
+            <div class="dropdown__option" role="option" aria-selected="false" data-value="argentina">
+              <span>Argentina</span>
+              <svg class="dropdown__option-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M2.5 8L6.5 12L13.5 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="dropdown__option" role="option" aria-selected="false" data-value="bolivia">
+              <span>Bolivia</span>
+              <svg class="dropdown__option-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M2.5 8L6.5 12L13.5 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="dropdown__option" role="option" aria-selected="false" data-value="chile">
+              <span>Chile</span>
+              <svg class="dropdown__option-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M2.5 8L6.5 12L13.5 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="dropdown__option dropdown__option--selected" role="option" aria-selected="true" data-value="peru">
+              <span>Peru</span>
+              <svg class="dropdown__option-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M2.5 8L6.5 12L13.5 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="dropdown__option" role="option" aria-selected="false" data-value="colombia">
+              <span>Colombia</span>
+              <svg class="dropdown__option-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M2.5 8L6.5 12L13.5 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="dropdown__option" role="option" aria-selected="false" data-value="ecuador">
+              <span>Ecuador</span>
+              <svg class="dropdown__option-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M2.5 8L6.5 12L13.5 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Second interactive dropdown (error state, open) ── -->
+      <div class="dd-grid dd-grid--wide">
+        <span class="dd-grid__row-label">Error open</span>
+
+        <div class="dropdown dropdown--error is-open" id="dd-error">
+          <span class="dropdown__label" id="dd-error-label">Plan <span class="dropdown__required">*</span></span>
+          <div
+            class="dropdown__trigger"
+            role="combobox"
+            aria-expanded="true"
+            aria-controls="dd-error-menu"
+            aria-labelledby="dd-error-label"
+            aria-invalid="true"
+            tabindex="-1"
+          >
+            <span class="dropdown__value">Select a plan</span>
+            <svg class="dropdown__chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M16.59 8.29L12 12.87L7.41 8.29L6 9.7L12 15.7L18 9.7L16.59 8.29Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="dropdown__menu" role="listbox" id="dd-error-menu">
+            <div class="dropdown__option is-hover" role="option" aria-selected="false">
+              <span>Plan Básico</span>
+              <svg class="dropdown__option-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M2.5 8L6.5 12L13.5 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="dropdown__option" role="option" aria-selected="false">
+              <span>Plan Plus</span>
+              <svg class="dropdown__option-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M2.5 8L6.5 12L13.5 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="dropdown__option" role="option" aria-selected="false">
+              <span>Plan Completo</span>
+              <svg class="dropdown__option-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M2.5 8L6.5 12L13.5 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- ================================================================
+         Interaction script — open/close + option selection for #dd-live
+         ================================================================ -->
+    <script>
+      (function () {
+        'use strict';
+
+        function initDropdown(wrapper) {
+          var trigger = wrapper.querySelector('.dropdown__trigger');
+          var menu    = wrapper.querySelector('.dropdown__menu');
+          var value   = wrapper.querySelector('.dropdown__value');
+          var options = wrapper.querySelectorAll('.dropdown__option');
+
+          if (!trigger || !menu) return;
+
+          function open() {
+            wrapper.classList.add('is-open');
+            trigger.setAttribute('aria-expanded', 'true');
+          }
+
+          function close() {
+            wrapper.classList.remove('is-open');
+            trigger.setAttribute('aria-expanded', 'false');
+          }
+
+          function toggle() {
+            wrapper.classList.contains('is-open') ? close() : open();
+          }
+
+          trigger.addEventListener('click', function (e) {
+            e.stopPropagation();
+            toggle();
+          });
+
+          trigger.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+            if (e.key === 'Escape') close();
+          });
+
+          options.forEach(function (opt) {
+            opt.addEventListener('click', function (e) {
+              e.stopPropagation();
+              /* Deselect all */
+              options.forEach(function (o) {
+                o.classList.remove('dropdown__option--selected');
+                o.setAttribute('aria-selected', 'false');
+              });
+              /* Select this one */
+              opt.classList.add('dropdown__option--selected');
+              opt.setAttribute('aria-selected', 'true');
+              /* Update displayed value */
+              var label = opt.querySelector('span');
+              if (label && value) {
+                value.textContent = label.textContent;
+                trigger.classList.add('dropdown__trigger--has-value');
+              }
+              close();
+              trigger.focus();
+            });
+          });
+
+          document.addEventListener('click', function () { close(); });
+          wrapper.addEventListener('click', function (e) { e.stopPropagation(); });
+        }
+
+        /* Only init the live interactive dropdowns (not static showcase ones) */
+        ['dd-live', 'dd-error'].forEach(function (id) {
+          var el = document.getElementById(id);
+          if (el) initDropdown(el);
+        });
+      })();
+    </script>
+
+  </body>
+</html>

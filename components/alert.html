@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design System — Alert</title>
+
+    <!-- Font + Token layer: font → global → brand → aliases → base -->
+    <link rel="stylesheet" href="../fonts/roboto.css" />
+    <link rel="stylesheet" href="../tokens/global.css" />
+    <link rel="stylesheet" href="../tokens/pacifico.css" />
+    <link rel="stylesheet" href="../tokens/aliases.css" />
+    <link rel="stylesheet" href="../tokens/base.css" />
+
+    <!-- Shared showcase + component styles -->
+    <link rel="stylesheet" href="showcase.css" />
+    <link rel="stylesheet" href="alert.css" />
+  </head>
+  <body>
+    <main class="showcase showcase--narrow">
+
+      <header class="showcase__header">
+        <h1 class="showcase__title">Alert</h1>
+        <p class="showcase__subtitle">Full-width notification banners — success, danger, warning, info</p>
+      </header>
+
+      <!-- ================================================================
+           Success alert
+           ================================================================ -->
+      <section class="showcase__section">
+        <h2 class="showcase__section-title">Success</h2>
+        <div class="alert alert--success" role="alert">
+          <svg class="alert__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <path d="M6 10l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="alert__content">
+            <p class="alert__title">¡Seguro contratado exitosamente!</p>
+            <p class="alert__body">Tu plan Plus ya está activo. Recibirás un correo con todos los detalles.</p>
+          </div>
+          <button class="alert__dismiss" aria-label="Cerrar notificación">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           Danger alert
+           ================================================================ -->
+      <section class="showcase__section">
+        <h2 class="showcase__section-title">Danger</h2>
+        <div class="alert alert--danger" role="alert">
+          <svg class="alert__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <path d="M10 6v5M10 14h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <div class="alert__content">
+            <p class="alert__title">Error al procesar el pago</p>
+            <p class="alert__body">No pudimos cobrar con la tarjeta ingresada. Verifica los datos e intenta nuevamente.</p>
+          </div>
+          <button class="alert__dismiss" aria-label="Cerrar notificación">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           Warning alert
+           ================================================================ -->
+      <section class="showcase__section">
+        <h2 class="showcase__section-title">Warning</h2>
+        <div class="alert alert--warning" role="alert">
+          <svg class="alert__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M10 3L2 17h16L10 3z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+            <path d="M10 9v4M10 15h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <div class="alert__content">
+            <p class="alert__title">Tu sesión expirará pronto</p>
+            <p class="alert__body">Por seguridad, la sesión se cerrará en 5 minutos. Guarda tus cambios.</p>
+          </div>
+          <button class="alert__dismiss" aria-label="Cerrar notificación">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           Info alert
+           ================================================================ -->
+      <section class="showcase__section">
+        <h2 class="showcase__section-title">Info</h2>
+        <div class="alert alert--info" role="alert">
+          <svg class="alert__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <path d="M10 9v6M10 6h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <div class="alert__content">
+            <p class="alert__title">Período de espera</p>
+            <p class="alert__body">Recuerda que el seguro tiene un período de espera de 30 días desde la contratación.</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </body>
+</html>

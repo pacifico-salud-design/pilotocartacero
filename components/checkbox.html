@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design System — Checkbox</title>
+
+    <!-- Font + Token layer: font → global → brand → aliases → base -->
+    <link rel="stylesheet" href="../fonts/roboto.css" />
+    <link rel="stylesheet" href="../tokens/global.css" />
+    <link rel="stylesheet" href="../tokens/pacifico.css" />
+    <link rel="stylesheet" href="../tokens/aliases.css" />
+    <link rel="stylesheet" href="../tokens/base.css" />
+
+    <!-- Shared showcase + component styles -->
+    <link rel="stylesheet" href="showcase.css" />
+    <link rel="stylesheet" href="checkbox.css" />
+  </head>
+  <body>
+    <main class="showcase">
+
+      <header class="showcase__header">
+        <h1 class="showcase__title">Checkbox</h1>
+        <p class="showcase__subtitle">All states × with &amp; without label</p>
+      </header>
+
+      <!-- ================================================================
+           SECTION 1 — WITH LABEL
+           Columns: Unchecked | Checked
+           Rows: Default · Hover · Error · Error+Checked · Disabled · Disabled+Checked
+           ================================================================ -->
+
+      <h2 class="showcase__section-title">With label</h2>
+
+      <!-- Column headers -->
+      <div class="cb-grid" aria-hidden="true">
+        <span class="cb-grid__col-header"></span>
+        <span class="cb-grid__col-header">Unchecked</span>
+        <span class="cb-grid__col-header">Checked</span>
+      </div>
+
+      <!-- ── Default ── -->
+      <div class="cb-grid">
+        <span class="cb-grid__row-label">Default</span>
+
+        <!-- Default / Unchecked -->
+        <label class="checkbox" for="cb-default-unchecked">
+          <input
+            class="checkbox__input"
+            type="checkbox"
+            id="cb-default-unchecked"
+            name="cb-default-unchecked"
+          />
+          <span class="checkbox__box">
+            <svg class="checkbox__check" width="18" height="14" viewBox="0 0 18 14" fill="none" aria-hidden="true">
+              <path d="M1.5 7L6.5 12L16.5 2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="checkbox__label">Accept terms</span>
+        </label>
+
+        <!-- Default / Checked -->
+        <label class="checkbox" for="cb-default-checked">
+          <input
+            class="checkbox__input"
+            type="checkbox"
+            id="cb-default-checked"
+            name="cb-default-checked"
+            checked
+          />
+          <span class="checkbox__box">
+            <svg class="checkbox__check" width="18" height="14" viewBox="0 0 18 14" fill="none" aria-hidden="true">
+              <path d="M1.5 7L6.5 12L16.5 2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="checkbox__label">Accept terms</span>
+        </label>
+      </div>
+
+      <!-- ── Hover ── -->
+      <div class="cb-grid">
+        <span class="cb-grid__row-label">Hover</span>
+
+        <!-- Hover / Unchecked -->
+        <label class="checkbox is-hover" for="cb-hover-unchecked">
+          <input
+            class="checkbox__input"
+            type="checkbox"
+            id="cb-hover-unchecked"
+            name="cb-hover-unchecked"
+            tabindex="-1"
+          />
+          <span class="checkbox__box">
+            <svg class="checkbox__check" width="18" height="14" viewBox="0 0 18 14" fill="none" aria-hidden="true">
+              <path d="M1.5 7L6.5 12L16.5 2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="checkbox__label">Accept terms</span>
+        </label>
+
+        <!-- Hover / Checked -->
+        <label class="checkbox is-hover" for="cb-hover-checked">
+          <input
+            class="checkbox__input"
+            type="checkbox"
+            id="cb-hover-checked"
+            name="cb-hover-checked"
+            checked
+            tabindex="-1"
+          />
+          <span class="checkbox__box">
+            <svg class="checkbox__check" width="18" height="14" viewBox="0 0 18 14" fill="none" aria-hidden="true">
+              <path d="M1.5 7L6.5 12L16.5 2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="checkbox__label">Accept terms</span>
+        </label>
+      </div>
+
+      <!-- ── Error ── -->
+      <div class="cb-grid">
+        <span class="cb-grid__row-label">Error</span>
+
+        <!-- Error / Unchecked -->
+        <label class="checkbox checkbox--error" for="cb-error-unchecked">
+          <input
+            class="checkbox__input"
+            type="checkbox"
+            id="cb-error-unchecked"
+            name="cb-error-unchecked"
+            aria-invalid="true"
+          />
+          <span class="checkbox__box">
+            <svg class="checkbox__check" width="18" height="14" viewBox="0 0 18 14" fill="none" aria-hidden="true">
+              <path d="M1.5 7L6.5 12L16.5 2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="checkbox__label">Accept terms</span>
+        </label>
+
+        <!-- Error / Checked -->
+        <label class="checkbox checkbox--error" for="cb-error-checked">
+          <input
+            class="checkbox__input"
+            type="checkbox"
+            id="cb-error-checked"
+            name="cb-error-checked"
+            checked
+            aria-invalid="true"
+          />
+          <span class="checkbox__box">
+            <svg class="checkbox__check" width="18" height="14" viewBox="0 0 18 14" fill="none" aria-hidden="true">
+              <path d="M1.5 7L6.5 12L16.5 2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="checkbox__label">Accept terms</span>
+        </label>
+      </div>
+
+      <!-- ── Error + Hover ── -->
+      <div class="cb-grid">
+        <span class="cb-grid__row-label">Error + Hover</span>
+
+        <!-- Error Hover / Unchecked -->
+        <label class="checkbox checkbox--error is-hover" for="cb-error-hover-unchecked">
+          <input
+            class="checkbox__input"
+            type="checkbox"
+            id="cb-error-hover-unchecked"
+            name="cb-error-hover-unchecked"
+            aria-invalid="true"
+            tabindex="-1"
+          />
+          <span class="checkbox__box">
+            <svg class="checkbox__check" width="18" height="14" viewBox="0 0 18 14" fill="none" aria-hidden="true">
+              <path d="M1.5 7L6.5 12L16.5 2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="checkbox__label">Accept terms</span>
+        </label>
+
+        <!-- Error Hover / Checked -->
+        <label class="checkbox checkbox--error is-hover" for="cb-error-hover-checked">
+          <input
+            class="checkbox__input"
+            type="checkbox"
+            id="cb-error-hover-checked"
+            name="cb-error-hover-checked"
+            checked
+            aria-invalid="true"
+            tabindex="-1"
+          />
+          <span class="checkbox__box">
+            <svg class="checkbox__check" width="18" height="14" viewBox="0 0 18 14" fill="none" aria-hidden="true">
+              <path d="M1.5 7L6.5 12L16.5 2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="checkbox__label">Accept terms</span>
+        </label>
+      </div>
+
+      <!-- ── Disabled ── -->
+      <div class="cb-grid">
+        <span class="cb-grid__row-label">Disabled</span>
+
+        <!-- Disabled / Unchecked -->
+        <label class="checkbox" for="cb-disabled-unchecked">
+          <input
+            class="checkbox__input"
+            type="checkbox"
+            id="cb-disabled-unchecked"
+            name="cb-disabled-unchecked"
+            disabled
+          />
+          <span class="checkbox__box">
+            <svg class="checkbox__check" width="18" height="14" viewBox="0 0 18 14" fill="none" aria-hidden="true">
+              <path d="M1.5 7L6.5 12L16.5 2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="checkbox__label">Accept terms</span>
+        </label>
+
+        <!-- Disabled / Checked -->
+        <label class="checkbox" for="cb-disabled-checked">
+          <input
+            class="checkbox__input"
+            type="checkbox"
+            id="cb-disabled-checked"
+            name="cb-disabled-checked"
+            checked
+            disabled
+          />
+          <span class="checkbox__box">
+            <svg class="checkbox__check" width="18" height="14" viewBox="0 0 18 14" fill="none" aria-hidden="true">
+              <path d="M1.5 7L6.5 12L16.5 2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="checkbox__label">Accept terms</span>
+        </label>
+      </div>
+
+      <!-- ================================================================
+           SECTION 2 — WITHOUT LABEL
+           ================================================================ -->
+
+      <h2 class="showcase__section-title">Without label</h2>
+
+      <div class="cb-grid" aria-hidden="true">
+        <span class="cb-grid__col-header"></span>
+        <span class="cb-grid__col-header">Unchecked</span>
+        <span class="cb-grid__col-header">Checked</span>
+      </div>
+
+      <!-- Default -->
+      <div class="cb-grid">
+        <span class="cb-grid__row-label">Default</span>
+
+        <label class="checkbox" for="cb-nl-default-unchecked">
+          <input class="checkbox__input" type="checkbox" id="cb-nl-default-unchecked" name="cb-nl-default-unchecked" aria-label="Unchecked"/>
+          <span class="checkbox__box">
+            <svg class="checkbox__check" width="18" height="14" viewBox="0 0 18 14" fill="none" aria-hidden="true">
+              <path d="M1.5 7L6.5 12L16.5 2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </label>
+
+        <label class="checkbox" for="cb-nl-default-checked">
+          <input class="checkbox__input" type="checkbox" id="cb-nl-default-checked" name="cb-nl-default-checked" checked aria-label="Checked"/>
+          <span class="checkbox__box">
+            <svg class="checkbox__check" width="18" height="14" viewBox="0 0 18 14" fill="none" aria-hidden="true">
+              <path d="M1.5 7L6.5 12L16.5 2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </label>
+      </div>
+
+      <!-- Hover -->
+      <div class="cb-grid">
+        <span class="cb-grid__row-label">Hover</span>
+
+        <label class="checkbox is-hover" for="cb-nl-hover-unchecked">
+          <input class="checkbox__input" type="checkbox" id="cb-nl-hover-unchecked" name="cb-nl-hover-unchecked" tabindex="-1" aria-label="Hover unchecked"/>
+          <span class="checkbox__box">
+            <svg class="checkbox__check" width="18" height="14" viewBox="0 0 18 14" fill="none" aria-hidden="true">
+              <path d="M1.5 7L6.5 12L16.5 2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </label>
+
+        <label class="checkbox is-hover" for="cb-nl-hover-checked">
+          <input class="checkbox__input" type="checkbox" id="cb-nl-hover-checked" name="cb-nl-hover-checked" checked tabindex="-1" aria-label="Hover checked"/>
+          <span class="checkbox__box">
+            <svg class="checkbox__check" width="18" height="14" viewBox="0 0 18 14" fill="none" aria-hidden="true">
+              <path d="M1.5 7L6.5 12L16.5 2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </label>
+      </div>
+
+      <!-- Error -->
+      <div class="cb-grid">
+        <span class="cb-grid__row-label">Error</span>
+
+        <label class="checkbox checkbox--error" for="cb-nl-error-unchecked">
+          <input class="checkbox__input" type="checkbox" id="cb-nl-error-unchecked" name="cb-nl-error-unchecked" aria-invalid="true" aria-label="Error unchecked"/>
+          <span class="checkbox__box">
+            <svg class="checkbox__check" width="18" height="14" viewBox="0 0 18 14" fill="none" aria-hidden="true">
+              <path d="M1.5 7L6.5 12L16.5 2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </label>
+
+        <label class="checkbox checkbox--error" for="cb-nl-error-checked">
+          <input class="checkbox__input" type="checkbox" id="cb-nl-error-checked" name="cb-nl-error-checked" checked aria-invalid="true" aria-label="Error checked"/>
+          <span class="checkbox__box">
+            <svg class="checkbox__check" width="18" height="14" viewBox="0 0 18 14" fill="none" aria-hidden="true">
+              <path d="M1.5 7L6.5 12L16.5 2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </label>
+      </div>
+
+      <!-- Disabled -->
+      <div class="cb-grid">
+        <span class="cb-grid__row-label">Disabled</span>
+
+        <label class="checkbox" for="cb-nl-disabled-unchecked">
+          <input class="checkbox__input" type="checkbox" id="cb-nl-disabled-unchecked" name="cb-nl-disabled-unchecked" disabled aria-label="Disabled unchecked"/>
+          <span class="checkbox__box">
+            <svg class="checkbox__check" width="18" height="14" viewBox="0 0 18 14" fill="none" aria-hidden="true">
+              <path d="M1.5 7L6.5 12L16.5 2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </label>
+
+        <label class="checkbox" for="cb-nl-disabled-checked">
+          <input class="checkbox__input" type="checkbox" id="cb-nl-disabled-checked" name="cb-nl-disabled-checked" checked disabled aria-label="Disabled checked"/>
+          <span class="checkbox__box">
+            <svg class="checkbox__check" width="18" height="14" viewBox="0 0 18 14" fill="none" aria-hidden="true">
+              <path d="M1.5 7L6.5 12L16.5 2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </label>
+      </div>
+
+      <!-- ================================================================
+           SECTION 3 — LABEL POSITION: START
+           ================================================================ -->
+
+      <h2 class="showcase__section-title">Label position: start</h2>
+
+      <div class="cb-grid">
+        <span class="cb-grid__row-label">Default</span>
+
+        <label class="checkbox checkbox--label-start" for="cb-ls-unchecked">
+          <input class="checkbox__input" type="checkbox" id="cb-ls-unchecked" name="cb-ls-unchecked"/>
+          <span class="checkbox__box">
+            <svg class="checkbox__check" width="18" height="14" viewBox="0 0 18 14" fill="none" aria-hidden="true">
+              <path d="M1.5 7L6.5 12L16.5 2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="checkbox__label">Accept terms</span>
+        </label>
+
+        <label class="checkbox checkbox--label-start" for="cb-ls-checked">
+          <input class="checkbox__input" type="checkbox" id="cb-ls-checked" name="cb-ls-checked" checked/>
+          <span class="checkbox__box">
+            <svg class="checkbox__check" width="18" height="14" viewBox="0 0 18 14" fill="none" aria-hidden="true">
+              <path d="M1.5 7L6.5 12L16.5 2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="checkbox__label">Accept terms</span>
+        </label>
+      </div>
+
+    </main>
+  </body>
+</html>

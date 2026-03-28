@@ -1,0 +1,119 @@
+/* ==========================================================================
+   badge.css — Badge primitive
+   Import order: global.css → pacifico.css → aliases.css → showcase.css → badge.css
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Badge — base
+   Pill-shaped label for status, counts, and categories
+   -------------------------------------------------------------------------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius-circular);
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-bold);
+  white-space: nowrap;
+  letter-spacing: var(--letter-spacing-small);
+  /* Default size: medium */
+  font-size: var(--font-size-xs);
+  padding: var(--spacing-2xs) var(--spacing-s);
+}
+
+/* --------------------------------------------------------------------------
+   Badge — sizes
+   -------------------------------------------------------------------------- */
+.badge--sm {
+  font-size: var(--size-badge-font-xs); /* 10px — very compact for counts */
+  padding: var(--focus-outline-offset) var(--spacing-xs);
+}
+
+/* --------------------------------------------------------------------------
+   Badge — filled variants (solid background)
+   -------------------------------------------------------------------------- */
+
+/* Brand primary — teal */
+.badge--brand {
+  background-color: var(--color-brand-primary-medium);
+  color: var(--neutral-color-xlow);
+}
+
+/* Secondary — pink */
+.badge--secondary {
+  background-color: var(--color-brand-secondary-medium);
+  color: var(--neutral-color-xlow);
+}
+
+/* Success — green */
+.badge--success {
+  background-color: var(--feedback-color-success-medium);
+  color: var(--neutral-color-xlow);
+}
+
+/* Danger — red */
+.badge--danger {
+  background-color: var(--feedback-color-danger-medium);
+  color: var(--neutral-color-xlow);
+}
+
+/* Warning — orange */
+.badge--warning {
+  background-color: var(--feedback-color-warning-medium);
+  color: var(--neutral-color-xlow);
+}
+
+/* Info — blue */
+.badge--info {
+  background-color: var(--feedback-color-info-medium);
+  color: var(--neutral-color-xlow);
+}
+
+/* Neutral — gray */
+.badge--neutral {
+  background-color: var(--neutral-color-medium);
+  color: var(--neutral-color-xlow);
+}
+
+/* --------------------------------------------------------------------------
+   Badge — outlined variants (no fill, colored border + text)
+   -------------------------------------------------------------------------- */
+.badge--outlined {
+  background-color: transparent;
+  border: var(--border-width-small) solid currentColor;
+}
+
+.badge--brand.badge--outlined {
+  color: var(--color-brand-primary-medium);
+  background-color: var(--color-brand-primary-xlow);
+}
+
+.badge--secondary.badge--outlined {
+  color: var(--color-brand-secondary-medium);
+  background-color: var(--color-brand-secondary-xlow);
+}
+
+.badge--success.badge--outlined {
+  color: var(--feedback-color-success-high);
+  background-color: var(--feedback-color-success-xlow);
+}
+
+.badge--danger.badge--outlined {
+  color: var(--feedback-color-danger-high);
+  background-color: var(--feedback-color-danger-xlow);
+}
+
+.badge--warning.badge--outlined {
+  color: var(--feedback-color-warning-high);
+  background-color: var(--feedback-color-warning-xlow);
+}
+
+.badge--info.badge--outlined {
+  color: var(--feedback-color-info-high);
+  background-color: var(--feedback-color-info-xlow);
+}
+
+.badge--neutral.badge--outlined {
+  color: var(--neutral-color-high);
+  background-color: var(--neutral-color-low);
+}

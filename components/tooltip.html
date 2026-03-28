@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design System — Tooltip</title>
+
+    <!-- Font + Token layer: font → global → brand → aliases → base -->
+    <link rel="stylesheet" href="../fonts/roboto.css" />
+    <link rel="stylesheet" href="../tokens/global.css" />
+    <link rel="stylesheet" href="../tokens/pacifico.css" />
+    <link rel="stylesheet" href="../tokens/aliases.css" />
+    <link rel="stylesheet" href="../tokens/base.css" />
+
+    <!-- Shared showcase + component styles -->
+    <link rel="stylesheet" href="showcase.css" />
+    <link rel="stylesheet" href="tooltip.css" />
+  </head>
+  <body>
+    <main class="showcase showcase--narrow">
+
+      <header class="showcase__header">
+        <h1 class="showcase__title">Tooltip</h1>
+        <p class="showcase__subtitle">CSS-only hover/focus tooltip — 4 positions, no JavaScript required</p>
+      </header>
+
+      <!-- ================================================================
+           Tooltip positions
+           ================================================================ -->
+      <section class="showcase__section showcase__section--card">
+        <h2 class="showcase__section-title">All positions — hover or tab to reveal</h2>
+        <div class="tooltip-demo-row">
+
+          <span class="tooltip-demo-label">
+            <span class="tooltip-wrap">
+              <button class="tooltip-trigger" aria-describedby="tt-top">?</button>
+              <span class="tooltip" id="tt-top" role="tooltip">Cubre hasta S/.4,500 al año</span>
+            </span>
+            Top (default)
+          </span>
+
+          <span class="tooltip-demo-label">
+            <span class="tooltip-wrap">
+              <button class="tooltip-trigger" aria-describedby="tt-bottom">?</button>
+              <span class="tooltip tooltip--bottom" id="tt-bottom" role="tooltip">Renovación automática anual</span>
+            </span>
+            Bottom
+          </span>
+
+          <span class="tooltip-demo-label">
+            <span class="tooltip-wrap">
+              <button class="tooltip-trigger" aria-describedby="tt-right">?</button>
+              <span class="tooltip tooltip--right" id="tt-right" role="tooltip">Sin período de espera para accidentes</span>
+            </span>
+            Right
+          </span>
+
+          <span class="tooltip-demo-label">
+            <span class="tooltip-wrap">
+              <button class="tooltip-trigger" aria-describedby="tt-left">?</button>
+              <span class="tooltip tooltip--left" id="tt-left" role="tooltip">Solo para mascotas de 2 meses a 10 años</span>
+            </span>
+            Left
+          </span>
+
+        </div>
+      </section>
+
+      <!-- ================================================================
+           Tooltip in context — plan card info button
+           ================================================================ -->
+      <section class="showcase__section showcase__section--card">
+        <h2 class="showcase__section-title">In context — plan card info button</h2>
+        <div style="display: flex; align-items: center; gap: var(--spacing-s);">
+          <span style="font-size: var(--font-size-s); color: var(--neutral-color-high);">Gastos veterinarios en accidente</span>
+          <span class="tooltip-wrap">
+            <button class="tooltip-trigger" aria-describedby="tt-ctx">?</button>
+            <span class="tooltip" id="tt-ctx" role="tooltip">
+              Cubre atención de urgencia por lesión física accidental ocurrida durante la vigencia del seguro.
+            </span>
+          </span>
+        </div>
+      </section>
+
+    </main>
+  </body>
+</html>

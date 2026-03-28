@@ -1,0 +1,63 @@
+/* ==========================================================================
+   base.css — Shared reset, body defaults, and utility classes
+   Import after aliases.css, before any component or page CSS:
+     <link rel="stylesheet" href="…/tokens/base.css" />
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Reset
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Body defaults
+   -------------------------------------------------------------------------- */
+body {
+  /* Page background — neutral-low (grey canvas) */
+  background-color: var(--neutral-color-low);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-m);
+  color: var(--neutral-color-xhigh);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --------------------------------------------------------------------------
+   Image defaults
+   -------------------------------------------------------------------------- */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   Skip link — visually hidden, visible on focus
+   Required as first element on every page:
+   <a href="#main" class="skip-link">Ir al contenido</a>
+   -------------------------------------------------------------------------- */
+.skip-link {
+  position: absolute;
+  top: var(--spacing-xs);
+  left: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-m);
+  background-color: var(--color-brand-primary-medium);
+  color: var(--neutral-color-xlow);
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--border-radius-small);
+  text-decoration: none;
+  z-index: var(--z-modal);
+  transform: translateY(-200%);
+  transition: transform var(--transition-base);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+  outline: var(--border-width-medium) solid var(--color-brand-primary-medium);
+  outline-offset: 2px;
+}

@@ -1,0 +1,271 @@
+/* ==========================================================================
+   text-field.css — TextField component
+   Import order: global.css → pacifico.css → aliases.css → showcase.css → text-field.css
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   TextField showcase — state grid
+   -------------------------------------------------------------------------- */
+.tf-grid {
+  display: grid;
+  grid-template-columns: var(--size-showcase-col-s) repeat(2, 1fr);
+  gap: var(--spacing-m) var(--spacing-l);
+  align-items: start;
+}
+
+.tf-grid--wide {
+  grid-template-columns: var(--size-showcase-col-s) 1fr;
+}
+
+.tf-grid__col-header {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--neutral-color-medium);
+  letter-spacing: var(--letter-spacing-small);
+  /* align with input top, accounting for label + margin */
+  padding-top: var(--spacing-l);
+}
+
+.tf-grid__row-label {
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-medium);
+  color: var(--neutral-color-medium);
+  letter-spacing: var(--letter-spacing-small);
+  /* align with the input box vertically */
+  padding-top: var(--spacing-l);
+}
+
+/* --------------------------------------------------------------------------
+   TextField — wrapper
+   -------------------------------------------------------------------------- */
+.text-field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   Label
+   -------------------------------------------------------------------------- */
+.text-field__label {
+  /* Labels: font-size-xs (12px), regular, neutral-high */
+  display: block;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-medium);
+  letter-spacing: var(--letter-spacing-small);
+  color: var(--neutral-color-high);
+  /* Margin bottom — spacing-2xs (4px) */
+  margin-bottom: var(--spacing-2xs);
+}
+
+/* Label — disabled */
+.text-field--disabled .text-field__label {
+  color: var(--neutral-color-medium);
+}
+
+/* --------------------------------------------------------------------------
+   Input container — the styled border box
+   -------------------------------------------------------------------------- */
+.text-field__container {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  /* Sizing — interactive element height */
+  height: var(--size-input);
+  /* Padding: spacing-xs (8px) on each side */
+  padding: 0 var(--spacing-xs);
+
+  /* Shape — border-radius-small (8px) */
+  border-radius: var(--border-radius-small);
+  border: var(--border-width-small) solid var(--neutral-color-medium);
+
+  /* Surface */
+  background-color: var(--neutral-color-xlow);
+
+  /* Transition */
+  transition: border-color var(--transition-base),
+              background-color var(--transition-base);
+}
+
+/* Extra left padding when start adornment present */
+.text-field__container--has-start {
+  padding-left: var(--spacing-m);
+}
+
+/* Extra right padding when end adornment present */
+.text-field__container--has-end {
+  padding-right: var(--spacing-m);
+}
+
+/* --------------------------------------------------------------------------
+   Input element
+   -------------------------------------------------------------------------- */
+.text-field__input {
+  /* Fill remaining space */
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+
+  /* Reset */
+  border: none;
+  background: transparent;
+  outline: none;
+
+  /* Internal padding — spacing-xs (8px) each side */
+  padding: 0 var(--spacing-xs);
+
+  /* Typography */
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-xlarge);
+  letter-spacing: var(--letter-spacing-medium);
+  color: var(--neutral-color-xhigh);
+
+  /* Transition */
+  transition: color var(--transition-base);
+}
+
+.text-field__input::placeholder {
+  color: var(--neutral-color-medium);
+}
+
+/* Placeholder becomes xhigh on focus */
+.text-field__input:focus::placeholder {
+  color: var(--neutral-color-xhigh);
+}
+
+/* Disabled input */
+.text-field__input:disabled {
+  cursor: not-allowed;
+}
+
+/* --------------------------------------------------------------------------
+   Adornment (icon) — left or right of input
+   -------------------------------------------------------------------------- */
+.text-field__adornment {
+  /* Sizing: spacing-l = 1.5rem = 24px */
+  width: var(--spacing-l);
+  height: var(--spacing-l);
+  flex-shrink: 0;
+
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Color — neutral-medium by default */
+  color: var(--neutral-color-medium);
+}
+
+/* Interactive adornment (button) — password toggle etc. */
+.text-field__toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  transition: color var(--transition-base);
+}
+
+.text-field__toggle:focus-visible {
+  outline: var(--border-width-medium) solid var(--color-brand-primary-medium);
+  border-radius: var(--border-radius-small);
+}
+
+/* --------------------------------------------------------------------------
+   Helper text
+   -------------------------------------------------------------------------- */
+.text-field__helper {
+  /* Typography: font-size-xs (12px) */
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-medium);
+  letter-spacing: var(--letter-spacing-small);
+
+  /* Default: info-medium (blue) */
+  color: var(--feedback-color-info-medium);
+
+  /* Margin top — spacing-xs (8px) */
+  margin-top: var(--spacing-xs);
+  text-align: left;
+}
+
+/* --------------------------------------------------------------------------
+   Container states: hover / focus-within
+   -------------------------------------------------------------------------- */
+.text-field:hover .text-field__container,
+.text-field.is-hover .text-field__container {
+  border-color: var(--neutral-color-high);
+}
+
+.text-field__container:focus-within,
+.text-field.is-focus .text-field__container {
+  border-color: var(--neutral-color-high);
+}
+
+/* --------------------------------------------------------------------------
+   Variant: Success
+   -------------------------------------------------------------------------- */
+.text-field--success .text-field__container {
+  border-color: var(--feedback-color-success-medium);
+}
+
+.text-field--success:hover .text-field__container,
+.text-field--success.is-hover .text-field__container,
+.text-field--success .text-field__container:focus-within,
+.text-field--success.is-focus .text-field__container {
+  border-color: var(--feedback-color-success-high);
+}
+
+/* Success helper text */
+.text-field--success .text-field__helper {
+  color: var(--feedback-color-success-medium);
+}
+
+/* --------------------------------------------------------------------------
+   Variant: Error
+   -------------------------------------------------------------------------- */
+.text-field--error .text-field__container {
+  border-color: var(--feedback-color-danger-medium);
+  background-color: var(--feedback-color-danger-xlow);
+}
+
+.text-field--error:hover .text-field__container,
+.text-field--error.is-hover .text-field__container {
+  border-color: var(--feedback-color-danger-high);
+}
+
+/* On focus: border stronger, background resets to transparent */
+.text-field--error .text-field__container:focus-within,
+.text-field--error.is-focus .text-field__container {
+  border-color: var(--feedback-color-danger-high);
+  background-color: transparent;
+}
+
+/* Error helper text */
+.text-field--error .text-field__helper {
+  color: var(--feedback-color-danger-medium);
+}
+
+/* Error adornment icon — danger-medium */
+.text-field--error .text-field__adornment {
+  color: var(--feedback-color-danger-medium);
+}
+
+/* --------------------------------------------------------------------------
+   State: Disabled
+   -------------------------------------------------------------------------- */
+.text-field--disabled .text-field__container {
+  border-color: transparent;
+  background-color: var(--neutral-color-low);
+  cursor: not-allowed;
+  /* Prevent hover from overriding disabled */
+  pointer-events: none;
+}
+
+/* Disabled helper text muted */
+.text-field--disabled .text-field__helper {
+  color: var(--neutral-color-medium);
+}

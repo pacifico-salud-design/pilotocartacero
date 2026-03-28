@@ -1,0 +1,146 @@
+/* ==========================================================================
+   alert.css — Alert primitive
+   Import order: global.css → pacifico.css → aliases.css → showcase.css → alert.css
+   Full-width notification banner — distinct from info-card (inline form context)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Alert — base
+   -------------------------------------------------------------------------- */
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-m);
+  padding: var(--spacing-m) var(--spacing-l);
+  border-radius: var(--border-radius-small);
+  border-left: var(--spacing-2xs) solid transparent;
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   Alert — icon slot
+   -------------------------------------------------------------------------- */
+.alert__icon {
+  flex-shrink: 0;
+  /* Align icon to first text line */
+  margin-top: var(--border-width-small);
+}
+
+/* --------------------------------------------------------------------------
+   Alert — content
+   -------------------------------------------------------------------------- */
+.alert__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2xs);
+}
+
+.alert__title {
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-medium);
+}
+
+.alert__body {
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-large);
+}
+
+/* --------------------------------------------------------------------------
+   Alert — dismiss button
+   -------------------------------------------------------------------------- */
+.alert__dismiss {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--size-icon-ui);
+  height: var(--size-icon-ui);
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: var(--border-radius-circular);
+  color: currentColor;
+  opacity: var(--opacity-soft);
+  transition: opacity var(--transition-base), background-color var(--transition-base);
+}
+
+.alert__dismiss:hover {
+  opacity: 1;
+  background-color: var(--overlay-color-dark-soft);
+}
+
+.alert__dismiss:focus-visible {
+  outline: var(--border-width-medium) solid currentColor;
+  outline-offset: var(--focus-outline-offset);
+  opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Alert — success variant
+   -------------------------------------------------------------------------- */
+.alert--success {
+  background-color: var(--feedback-color-success-xlow);
+  border-left-color: var(--feedback-color-success-medium);
+  color: var(--feedback-color-success-xhigh);
+}
+
+.alert--success .alert__title {
+  color: var(--feedback-color-success-xhigh);
+}
+
+.alert--success .alert__body {
+  color: var(--feedback-color-success-high);
+}
+
+/* --------------------------------------------------------------------------
+   Alert — danger variant
+   -------------------------------------------------------------------------- */
+.alert--danger {
+  background-color: var(--feedback-color-danger-xlow);
+  border-left-color: var(--feedback-color-danger-medium);
+  color: var(--feedback-color-danger-xhigh);
+}
+
+.alert--danger .alert__title {
+  color: var(--feedback-color-danger-xhigh);
+}
+
+.alert--danger .alert__body {
+  color: var(--feedback-color-danger-high);
+}
+
+/* --------------------------------------------------------------------------
+   Alert — warning variant
+   -------------------------------------------------------------------------- */
+.alert--warning {
+  background-color: var(--feedback-color-warning-xlow);
+  border-left-color: var(--feedback-color-warning-medium);
+  color: var(--feedback-color-warning-xhigh);
+}
+
+.alert--warning .alert__title {
+  color: var(--feedback-color-warning-xhigh);
+}
+
+.alert--warning .alert__body {
+  color: var(--feedback-color-warning-high);
+}
+
+/* --------------------------------------------------------------------------
+   Alert — info variant
+   -------------------------------------------------------------------------- */
+.alert--info {
+  background-color: var(--feedback-color-info-xlow);
+  border-left-color: var(--feedback-color-info-medium);
+  color: var(--feedback-color-info-xhigh);
+}
+
+.alert--info .alert__title {
+  color: var(--feedback-color-info-xhigh);
+}
+
+.alert--info .alert__body {
+  color: var(--feedback-color-info-high);
+}

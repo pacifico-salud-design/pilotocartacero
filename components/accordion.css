@@ -1,0 +1,192 @@
+/* ==========================================================================
+   accordion.css — Accordion component
+   Import order: global.css → pacifico.css → aliases.css → showcase.css → accordion.css
+   Zero JavaScript — uses native <details>/<summary> elements
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Accordion — base
+   -------------------------------------------------------------------------- */
+.accordion {
+  /* Card/surface background */
+  background-color: var(--neutral-color-xlow);
+  border: var(--border-width-small) solid var(--neutral-color-low);
+  border-radius: var(--border-radius-medium);
+  overflow: hidden;
+  /* Remove default browser marker */
+  list-style: none;
+}
+
+/* Remove default disclosure triangle in all browsers */
+.accordion summary {
+  list-style: none;
+}
+
+.accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   Accordion — header (summary)
+   -------------------------------------------------------------------------- */
+.accordion__header {
+  /* Clickable header row */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-m);
+  padding: var(--spacing-m) var(--spacing-l);
+  cursor: pointer;
+  user-select: none;
+  transition: background-color var(--transition-base);
+}
+
+.accordion__header:hover {
+  /* Hover — neutral low tint */
+  background-color: var(--neutral-color-low);
+}
+
+.accordion__header:focus-visible {
+  outline: var(--border-width-medium) solid var(--color-brand-primary-medium);
+  outline-offset: calc(-1 * var(--focus-outline-offset));
+}
+
+/* Chevron rotation when open */
+.accordion__chevron {
+  flex-shrink: 0;
+  color: var(--neutral-color-medium);
+  transition:
+    transform var(--transition-base),
+    color var(--transition-base);
+}
+
+.accordion[open] .accordion__chevron {
+  transform: rotate(180deg);
+  color: var(--color-brand-primary-medium);
+}
+
+/* --------------------------------------------------------------------------
+   Accordion — title
+   -------------------------------------------------------------------------- */
+.accordion__title {
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-medium);
+  color: var(--neutral-color-xhigh);
+  line-height: var(--line-height-medium);
+}
+
+/* --------------------------------------------------------------------------
+   Accordion — body (content panel)
+   -------------------------------------------------------------------------- */
+.accordion__body {
+  padding: 0 var(--spacing-l) var(--spacing-l);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-m);
+  border-top: var(--border-width-small) solid var(--neutral-color-low);
+}
+
+/* --------------------------------------------------------------------------
+   Accordion — data grid (confirmation screen style)
+   2-col key/value pairs
+   -------------------------------------------------------------------------- */
+.accordion__data-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-m) var(--spacing-xl);
+  padding-top: var(--spacing-m);
+}
+
+.accordion__data-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2xs);
+}
+
+.accordion__data-item--full {
+  /* Full-width row */
+  grid-column: 1 / -1;
+}
+
+.accordion__data-label {
+  /* Teal label — matches confirmation screen reference */
+  font-size: var(--font-size-xs);
+  color: var(--color-brand-primary-medium);
+  font-weight: var(--font-weight-regular);
+}
+
+.accordion__data-value {
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-medium);
+  color: var(--neutral-color-xhigh);
+}
+
+.accordion__footnote {
+  font-size: var(--font-size-xs);
+  color: var(--neutral-color-medium);
+  line-height: var(--line-height-large);
+  font-style: italic;
+}
+
+/* --------------------------------------------------------------------------
+   Accordion group — dividers between items (no gap)
+   -------------------------------------------------------------------------- */
+.accordion-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.accordion-group .accordion {
+  border-radius: 0;
+  border-bottom-width: 0;
+}
+
+.accordion-group .accordion:first-child {
+  border-radius: var(--border-radius-medium) var(--border-radius-medium) 0 0;
+}
+
+.accordion-group .accordion:last-child {
+  border-radius: 0 0 var(--border-radius-medium) var(--border-radius-medium);
+  border-bottom-width: var(--border-width-small);
+}
+
+/* --------------------------------------------------------------------------
+   Accordion — FAQ variant (lighter, question-answer style)
+   -------------------------------------------------------------------------- */
+.accordion--faq {
+  background-color: var(--neutral-color-xlow);
+}
+
+.accordion--faq .accordion__header {
+  padding: var(--spacing-m);
+}
+
+.accordion--faq .accordion__title {
+  font-size: var(--font-size-s);
+  color: var(--color-brand-primary-high);
+  transition: color var(--transition-base);
+}
+
+.accordion--faq.accordion[open] .accordion__title {
+  color: var(--neutral-color-xhigh);
+}
+
+.accordion--faq .accordion__body {
+  font-size: var(--font-size-s);
+  color: var(--neutral-color-high);
+  line-height: var(--line-height-xlarge);
+  padding: var(--spacing-s) var(--spacing-m) var(--spacing-m);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+@media (max-width: 479px) {
+  .accordion__data-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .accordion__data-item--full {
+    grid-column: 1;
+  }
+}

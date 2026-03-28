@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design System — Tag</title>
+
+    <!-- Font + Token layer: font → global → brand → aliases → base -->
+    <link rel="stylesheet" href="../fonts/roboto.css" />
+    <link rel="stylesheet" href="../tokens/global.css" />
+    <link rel="stylesheet" href="../tokens/pacifico.css" />
+    <link rel="stylesheet" href="../tokens/aliases.css" />
+    <link rel="stylesheet" href="../tokens/base.css" />
+
+    <!-- Shared showcase + component styles -->
+    <link rel="stylesheet" href="showcase.css" />
+    <link rel="stylesheet" href="tag.css" />
+  </head>
+  <body>
+    <main class="showcase">
+
+      <header class="showcase__header">
+        <h1 class="showcase__title">Tag</h1>
+        <p class="showcase__subtitle">Selectable and removable content labels — filter chips, specialty categories</p>
+      </header>
+
+      <!-- ================================================================
+           Default tags — selection states
+           ================================================================ -->
+      <section class="showcase__section showcase__section--card">
+        <h2 class="showcase__section-title">Default — selectable (filter chips)</h2>
+        <div class="tag-group">
+          <button class="tag tag--selected">Medicina general</button>
+          <button class="tag">Pediatría</button>
+          <button class="tag">Cardiología</button>
+          <button class="tag">Neurología</button>
+          <button class="tag">Dermatología</button>
+          <button class="tag">Traumatología</button>
+          <button class="tag">Odontología</button>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           Small tags
+           ================================================================ -->
+      <section class="showcase__section showcase__section--card">
+        <h2 class="showcase__section-title">Small — compact labels</h2>
+        <div class="tag-group">
+          <span class="tag tag--sm tag--selected">Perros</span>
+          <span class="tag tag--sm">Gatos</span>
+          <span class="tag tag--sm">Lima</span>
+          <span class="tag tag--sm">Online</span>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           Removable tags
+           ================================================================ -->
+      <section class="showcase__section showcase__section--card">
+        <h2 class="showcase__section-title">Removable — active filters</h2>
+        <div class="tag-group">
+          <span class="tag tag--selected tag--removable">
+            Cardiología
+            <button class="tag__remove" aria-label="Quitar Cardiología">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                <path d="M2 2l6 6M8 2L2 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </span>
+          <span class="tag tag--selected tag--removable">
+            Lima
+            <button class="tag__remove" aria-label="Quitar Lima">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                <path d="M2 2l6 6M8 2L2 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </span>
+          <span class="tag tag--removable">
+            Online
+            <button class="tag__remove" aria-label="Quitar Online">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                <path d="M2 2l6 6M8 2L2 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </span>
+        </div>
+      </section>
+
+    </main>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+/* ==========================================================================
+   aliases.css — Semantic bridge
+   Maps semantic color names to the active brand's raw tokens.
+   Components and pages use ONLY these aliases — never brand-prefixed tokens.
+
+   ┌─────────────────────────────────────────────────────────────────────────┐
+   │  ACTIVE BRAND: Pacifico                                                │
+   │                                                                        │
+   │  HOW TO SWITCH BRANDS (2 steps):                                       │
+   │                                                                        │
+   │  1. In THIS file: find-and-replace the brand prefix in all var()       │
+   │     values below. Available brands:                                    │
+   │       • pacifico  (teals + pinks)                                      │
+   │       • sanna     (greens + blues)                                     │
+   │       • tsana     (purples + greens)                                   │
+   │                                                                        │
+   │     Example: var(--pacifico-color-primary-xhigh)                       │
+   │           →  var(--sanna-color-primary-xhigh)                          │
+   │                                                                        │
+   │  2. In every HTML file: swap the brand <link> tag.                     │
+   │       <link rel="stylesheet" href="…/tokens/pacifico.css" />           │
+   │     →  <link rel="stylesheet" href="…/tokens/sanna.css" />             │
+   │                                                                        │
+   │  That's it. All components and pages will pick up the new brand.       │
+   └─────────────────────────────────────────────────────────────────────────┘
+   ========================================================================== */
+
+:root {
+
+  /* --------------------------------------------------------------------------
+     Brand primary scale
+     -------------------------------------------------------------------------- */
+  --color-brand-primary-xhigh:  var(--pacifico-color-primary-xhigh);
+  --color-brand-primary-high:   var(--pacifico-color-primary-high);
+  --color-brand-primary-medium: var(--pacifico-color-primary-medium);
+  --color-brand-primary-low:    var(--pacifico-color-primary-low);
+  --color-brand-primary-xlow:   var(--pacifico-color-primary-xlow);
+
+  /* --------------------------------------------------------------------------
+     Brand secondary scale
+     -------------------------------------------------------------------------- */
+  --color-brand-secondary-xhigh:  var(--pacifico-color-secondary-xhigh);
+  --color-brand-secondary-high:   var(--pacifico-color-secondary-high);
+  --color-brand-secondary-medium: var(--pacifico-color-secondary-medium);
+  --color-brand-secondary-low:    var(--pacifico-color-secondary-low);
+  --color-brand-secondary-xlow:   var(--pacifico-color-secondary-xlow);
+
+}

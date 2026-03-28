@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design System — Accordion</title>
+
+    <!-- Font + Token layer: font → global → brand → aliases → base -->
+    <link rel="stylesheet" href="../fonts/roboto.css" />
+    <link rel="stylesheet" href="../tokens/global.css" />
+    <link rel="stylesheet" href="../tokens/pacifico.css" />
+    <link rel="stylesheet" href="../tokens/aliases.css" />
+    <link rel="stylesheet" href="../tokens/base.css" />
+
+    <!-- Shared showcase + component styles -->
+    <link rel="stylesheet" href="showcase.css" />
+    <link rel="stylesheet" href="accordion.css" />
+  </head>
+  <body>
+    <main class="showcase showcase--narrow">
+
+      <header class="showcase__header">
+        <h1 class="showcase__title">Accordion</h1>
+        <p class="showcase__subtitle">Collapsible sections — data summary, FAQ, content panels</p>
+      </header>
+
+      <!-- ================================================================
+           Data summary accordions (as seen in screen-confirmation.png)
+           Open/closed states via <details>/<summary> — zero JS
+           ================================================================ -->
+      <section class="showcase__section">
+        <h2 class="showcase__section-title">Default — data summary (open)</h2>
+
+        <details class="accordion" open>
+          <summary class="accordion__header">
+            <span class="accordion__title">Datos de Nachito</span>
+            <svg class="accordion__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="accordion__body">
+            <dl class="accordion__data-grid">
+              <div class="accordion__data-item">
+                <dt class="accordion__data-label">Nombre de tu mascota</dt>
+                <dd class="accordion__data-value">Nachito</dd>
+              </div>
+              <div class="accordion__data-item">
+                <dt class="accordion__data-label">Edad*</dt>
+                <dd class="accordion__data-value">6 Años</dd>
+              </div>
+              <div class="accordion__data-item">
+                <dt class="accordion__data-label">Tipo de mascota</dt>
+                <dd class="accordion__data-value">Perro</dd>
+              </div>
+              <div class="accordion__data-item">
+                <dt class="accordion__data-label">Raza</dt>
+                <dd class="accordion__data-value">Mestizo</dd>
+              </div>
+            </dl>
+            <p class="accordion__footnote">*Consideraríamos la fecha aproximada de nacimiento de Nachito, el 07/03/2020</p>
+          </div>
+        </details>
+
+        <details class="accordion">
+          <summary class="accordion__header">
+            <span class="accordion__title">Tus Datos</span>
+            <svg class="accordion__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="accordion__body">
+            <dl class="accordion__data-grid">
+              <div class="accordion__data-item">
+                <dt class="accordion__data-label">Nombres</dt>
+                <dd class="accordion__data-value">Luis</dd>
+              </div>
+              <div class="accordion__data-item">
+                <dt class="accordion__data-label">Apellido Paterno</dt>
+                <dd class="accordion__data-value">Chuman</dd>
+              </div>
+              <div class="accordion__data-item">
+                <dt class="accordion__data-label">Apellido Materno</dt>
+                <dd class="accordion__data-value">Bobadilla</dd>
+              </div>
+              <div class="accordion__data-item">
+                <dt class="accordion__data-label">Tipo de documento</dt>
+                <dd class="accordion__data-value">Dni</dd>
+              </div>
+              <div class="accordion__data-item">
+                <dt class="accordion__data-label">Número de documento</dt>
+                <dd class="accordion__data-value">73747000</dd>
+              </div>
+              <div class="accordion__data-item">
+                <dt class="accordion__data-label">Departamento</dt>
+                <dd class="accordion__data-value">Lima</dd>
+              </div>
+              <div class="accordion__data-item">
+                <dt class="accordion__data-label">Provincia</dt>
+                <dd class="accordion__data-value">Lima</dd>
+              </div>
+              <div class="accordion__data-item">
+                <dt class="accordion__data-label">Distrito</dt>
+                <dd class="accordion__data-value">Ate</dd>
+              </div>
+              <div class="accordion__data-item accordion__data-item--full">
+                <dt class="accordion__data-label">Dirección</dt>
+                <dd class="accordion__data-value">790 Garcilazo De La Vega</dd>
+              </div>
+            </dl>
+          </div>
+        </details>
+      </section>
+
+      <!-- ================================================================
+           FAQ accordion style — borderless on surface
+           ================================================================ -->
+      <section class="showcase__section">
+        <h2 class="showcase__section-title">FAQ variant</h2>
+
+        <div class="accordion-group">
+          <details class="accordion accordion--faq">
+            <summary class="accordion__header">
+              <span class="accordion__title">¿Qué cubre el plan Esencial?</span>
+              <svg class="accordion__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </summary>
+            <div class="accordion__body">
+              <p>El plan Esencial cubre gastos veterinarios en accidentes hasta S/.1,500 y por enfermedad hasta S/.1,200 al año.</p>
+            </div>
+          </details>
+
+          <details class="accordion accordion--faq">
+            <summary class="accordion__header">
+              <span class="accordion__title">¿Cuánto tiempo dura el período de espera?</span>
+              <svg class="accordion__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </summary>
+            <div class="accordion__body">
+              <p>El período de espera es de 30 días calendario a partir de la fecha de inicio de vigencia del seguro.</p>
+            </div>
+          </details>
+
+          <details class="accordion accordion--faq" open>
+            <summary class="accordion__header">
+              <span class="accordion__title">¿Puedo asegurar a cualquier mascota?</span>
+              <svg class="accordion__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </summary>
+            <div class="accordion__body">
+              <p>Sí, aseguramos perros y gatos sin importar su historial médico. La mascota debe tener entre 2 meses y 10 años de edad.</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+    </main>
+  </body>
+</html>

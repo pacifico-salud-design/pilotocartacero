@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design System — TextField</title>
+
+    <!-- Font + Token layer: font → global → brand → aliases → base -->
+    <link rel="stylesheet" href="../fonts/roboto.css" />
+    <link rel="stylesheet" href="../tokens/global.css" />
+    <link rel="stylesheet" href="../tokens/pacifico.css" />
+    <link rel="stylesheet" href="../tokens/aliases.css" />
+    <link rel="stylesheet" href="../tokens/base.css" />
+
+    <!-- Shared showcase + component styles -->
+    <link rel="stylesheet" href="showcase.css" />
+    <link rel="stylesheet" href="text-field.css" />
+  </head>
+  <body>
+    <main class="showcase">
+
+      <header class="showcase__header">
+        <h1 class="showcase__title">TextField</h1>
+        <p class="showcase__subtitle">All variants × all states</p>
+      </header>
+
+      <!-- ================================================================
+           STATE GRID — columns: label | Empty/placeholder | With value
+           ================================================================ -->
+
+      <!-- Column headers -->
+      <div class="tf-grid" role="presentation" aria-hidden="true">
+        <span class="tf-grid__col-header"></span>
+        <span class="tf-grid__col-header">Empty</span>
+        <span class="tf-grid__col-header">With value</span>
+      </div>
+
+      <!-- ── Default ── -->
+      <div class="tf-grid">
+        <span class="tf-grid__row-label">Default</span>
+
+        <div class="text-field">
+          <label class="text-field__label" for="tf-default-empty">Nombre completo</label>
+          <div class="text-field__container">
+            <input class="text-field__input" id="tf-default-empty" type="text" placeholder="Placeholder" autocomplete="off">
+          </div>
+          <p class="text-field__helper">Helper text</p>
+        </div>
+
+        <div class="text-field">
+          <label class="text-field__label" for="tf-default-value">Nombre completo</label>
+          <div class="text-field__container">
+            <input class="text-field__input" id="tf-default-value" type="text" placeholder="Placeholder" value="Juan Pérez" autocomplete="off">
+          </div>
+          <p class="text-field__helper">Helper text</p>
+        </div>
+      </div>
+
+      <!-- ── Hover ── -->
+      <div class="tf-grid">
+        <span class="tf-grid__row-label">Hover</span>
+
+        <div class="text-field is-hover">
+          <label class="text-field__label" for="tf-hover-empty">Nombre completo</label>
+          <div class="text-field__container">
+            <input class="text-field__input" id="tf-hover-empty" type="text" placeholder="Placeholder" tabindex="-1" autocomplete="off">
+          </div>
+          <p class="text-field__helper">Helper text</p>
+        </div>
+
+        <div class="text-field is-hover">
+          <label class="text-field__label" for="tf-hover-value">Nombre completo</label>
+          <div class="text-field__container">
+            <input class="text-field__input" id="tf-hover-value" type="text" placeholder="Placeholder" value="Juan Pérez" tabindex="-1" autocomplete="off">
+          </div>
+          <p class="text-field__helper">Helper text</p>
+        </div>
+      </div>
+
+      <!-- ── Focus ── -->
+      <div class="tf-grid">
+        <span class="tf-grid__row-label">Focus</span>
+
+        <div class="text-field is-focus">
+          <label class="text-field__label" for="tf-focus-empty">Nombre completo</label>
+          <div class="text-field__container">
+            <input class="text-field__input" id="tf-focus-empty" type="text" placeholder="Placeholder" tabindex="-1" autocomplete="off">
+          </div>
+          <p class="text-field__helper">Helper text</p>
+        </div>
+
+        <div class="text-field is-focus">
+          <label class="text-field__label" for="tf-focus-value">Nombre completo</label>
+          <div class="text-field__container">
+            <input class="text-field__input" id="tf-focus-value" type="text" placeholder="Placeholder" value="Juan Pérez" tabindex="-1" autocomplete="off">
+          </div>
+          <p class="text-field__helper">Helper text</p>
+        </div>
+      </div>
+
+      <!-- ── Success ── -->
+      <div class="tf-grid">
+        <span class="tf-grid__row-label">Success</span>
+
+        <div class="text-field text-field--success">
+          <label class="text-field__label" for="tf-success-empty">Nombre completo</label>
+          <div class="text-field__container">
+            <input class="text-field__input" id="tf-success-empty" type="text" placeholder="Placeholder" tabindex="-1" autocomplete="off">
+          </div>
+          <p class="text-field__helper">Validated successfully</p>
+        </div>
+
+        <div class="text-field text-field--success">
+          <label class="text-field__label" for="tf-success-value">Nombre completo</label>
+          <div class="text-field__container">
+            <input class="text-field__input" id="tf-success-value" type="text" placeholder="Placeholder" value="Juan Pérez" tabindex="-1" autocomplete="off">
+          </div>
+          <p class="text-field__helper">Validated successfully</p>
+        </div>
+      </div>
+
+      <!-- ── Error ── -->
+      <div class="tf-grid">
+        <span class="tf-grid__row-label">Error</span>
+
+        <div class="text-field text-field--error">
+          <label class="text-field__label" for="tf-error-empty">Nombre completo</label>
+          <div class="text-field__container">
+            <input class="text-field__input" id="tf-error-empty" type="text" placeholder="Placeholder" tabindex="-1" aria-invalid="true" autocomplete="off">
+          </div>
+          <p class="text-field__helper">This field is required</p>
+        </div>
+
+        <div class="text-field text-field--error">
+          <label class="text-field__label" for="tf-error-value">Nombre completo</label>
+          <div class="text-field__container">
+            <input class="text-field__input" id="tf-error-value" type="text" placeholder="Placeholder" value="Juan Pérez" tabindex="-1" aria-invalid="true" autocomplete="off">
+          </div>
+          <p class="text-field__helper">This field is required</p>
+        </div>
+      </div>
+
+      <!-- ── Error + Hover ── -->
+      <div class="tf-grid">
+        <span class="tf-grid__row-label">Error + Hover</span>
+
+        <div class="text-field text-field--error is-hover">
+          <label class="text-field__label" for="tf-error-hover-empty">Nombre completo</label>
+          <div class="text-field__container">
+            <input class="text-field__input" id="tf-error-hover-empty" type="text" placeholder="Placeholder" tabindex="-1" autocomplete="off">
+          </div>
+          <p class="text-field__helper">This field is required</p>
+        </div>
+
+        <div class="text-field text-field--error is-hover">
+          <label class="text-field__label" for="tf-error-hover-value">Nombre completo</label>
+          <div class="text-field__container">
+            <input class="text-field__input" id="tf-error-hover-value" type="text" placeholder="Placeholder" value="Juan Pérez" tabindex="-1" autocomplete="off">
+          </div>
+          <p class="text-field__helper">This field is required</p>
+        </div>
+      </div>
+
+      <!-- ── Disabled ── -->
+      <div class="tf-grid">
+        <span class="tf-grid__row-label">Disabled</span>
+
+        <div class="text-field text-field--disabled">
+          <label class="text-field__label" for="tf-disabled-empty">Nombre completo</label>
+          <div class="text-field__container">
+            <input class="text-field__input" id="tf-disabled-empty" type="text" placeholder="Placeholder" disabled autocomplete="off">
+          </div>
+          <p class="text-field__helper">Helper text</p>
+        </div>
+
+        <div class="text-field text-field--disabled">
+          <label class="text-field__label" for="tf-disabled-value">Nombre completo</label>
+          <div class="text-field__container">
+            <input class="text-field__input" id="tf-disabled-value" type="text" placeholder="Placeholder" value="Juan Pérez" disabled autocomplete="off">
+          </div>
+          <p class="text-field__helper">Helper text</p>
+        </div>
+      </div>
+
+      <!-- ================================================================
+           WITH ICONS
+           ================================================================ -->
+
+      <h2 class="showcase__section-title">With icons</h2>
+
+      <!-- Column headers -->
+      <div class="tf-grid" role="presentation" aria-hidden="true">
+        <span class="tf-grid__col-header"></span>
+        <span class="tf-grid__col-header">Start icon</span>
+        <span class="tf-grid__col-header">End icon</span>
+      </div>
+
+      <!-- Default with icons -->
+      <div class="tf-grid">
+        <span class="tf-grid__row-label">Default</span>
+
+        <!-- Start icon -->
+        <div class="text-field">
+          <label class="text-field__label" for="tf-icon-start">TextField label</label>
+          <div class="text-field__container text-field__container--has-start">
+            <span class="text-field__adornment text-field__adornment--start" aria-hidden="true">
+              <!-- Globe icon -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="currentColor"/>
+              </svg>
+            </span>
+            <input class="text-field__input" id="tf-icon-start" type="text" placeholder="Placeholder" autocomplete="off">
+          </div>
+          <p class="text-field__helper">Helper text</p>
+        </div>
+
+        <!-- End icon -->
+        <div class="text-field">
+          <label class="text-field__label" for="tf-icon-end">TextField label</label>
+          <div class="text-field__container text-field__container--has-end">
+            <input class="text-field__input" id="tf-icon-end" type="text" placeholder="Placeholder" autocomplete="off">
+            <span class="text-field__adornment text-field__adornment--end" aria-hidden="true">
+              <!-- Globe icon -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="currentColor"/>
+              </svg>
+            </span>
+          </div>
+          <p class="text-field__helper">Helper text</p>
+        </div>
+      </div>
+
+      <!-- Error with icons -->
+      <div class="tf-grid">
+        <span class="tf-grid__row-label">Error</span>
+
+        <!-- Error + start icon -->
+        <div class="text-field text-field--error">
+          <label class="text-field__label" for="tf-icon-error-start">TextField label</label>
+          <div class="text-field__container text-field__container--has-start">
+            <span class="text-field__adornment text-field__adornment--start" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="currentColor"/>
+              </svg>
+            </span>
+            <input class="text-field__input" id="tf-icon-error-start" type="text" placeholder="Placeholder" tabindex="-1" aria-invalid="true" autocomplete="off">
+          </div>
+          <p class="text-field__helper">Invalid value</p>
+        </div>
+
+        <!-- Error + end icon -->
+        <div class="text-field text-field--error">
+          <label class="text-field__label" for="tf-icon-error-end">TextField label</label>
+          <div class="text-field__container text-field__container--has-end">
+            <input class="text-field__input" id="tf-icon-error-end" type="text" placeholder="Placeholder" tabindex="-1" aria-invalid="true" autocomplete="off">
+            <span class="text-field__adornment text-field__adornment--end" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="currentColor"/>
+              </svg>
+            </span>
+          </div>
+          <p class="text-field__helper">Invalid value</p>
+        </div>
+      </div>
+
+      <!-- ================================================================
+           PASSWORD
+           ================================================================ -->
+
+      <h2 class="showcase__section-title">Password</h2>
+
+      <div class="tf-grid tf-grid--wide">
+        <span class="tf-grid__row-label">Default</span>
+        <div class="text-field">
+          <label class="text-field__label" for="tf-password">TextField label</label>
+          <div class="text-field__container text-field__container--has-end">
+            <input class="text-field__input" id="tf-password" type="password" value="mysecretpass" autocomplete="new-password">
+            <button
+              class="text-field__adornment text-field__adornment--end text-field__toggle"
+              type="button"
+              aria-label="Show password"
+              data-target="tf-password"
+            >
+              <!-- Eye-off icon (password hidden) -->
+              <svg class="icon-eye-off" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78l3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z" fill="currentColor"/>
+              </svg>
+              <!-- Eye icon (password visible) — shown on toggle -->
+              <svg class="icon-eye" width="20" height="20" viewBox="0 0 24 24" fill="none" style="display:none">
+                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/>
+              </svg>
+            </button>
+          </div>
+          <p class="text-field__helper">Helper text</p>
+        </div>
+      </div>
+
+      <div class="tf-grid tf-grid--wide">
+        <span class="tf-grid__row-label">Error</span>
+        <div class="text-field text-field--error">
+          <label class="text-field__label" for="tf-password-error">TextField label</label>
+          <div class="text-field__container text-field__container--has-end">
+            <input class="text-field__input" id="tf-password-error" type="password" value="badpass" aria-invalid="true" autocomplete="new-password">
+            <button
+              class="text-field__adornment text-field__adornment--end text-field__toggle"
+              type="button"
+              aria-label="Show password"
+              data-target="tf-password-error"
+            >
+              <svg class="icon-eye-off" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78l3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z" fill="currentColor"/>
+              </svg>
+              <svg class="icon-eye" width="20" height="20" viewBox="0 0 24 24" fill="none" style="display:none">
+                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/>
+              </svg>
+            </button>
+          </div>
+          <p class="text-field__helper">Password is incorrect</p>
+        </div>
+      </div>
+
+    </main>
+
+    <script>
+      // Password toggle
+      document.querySelectorAll('.text-field__toggle').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var targetId = this.dataset.target;
+          var input = document.getElementById(targetId);
+          var eyeOff = this.querySelector('.icon-eye-off');
+          var eye = this.querySelector('.icon-eye');
+          if (input.type === 'password') {
+            input.type = 'text';
+            eyeOff.style.display = 'none';
+            eye.style.display = '';
+            this.setAttribute('aria-label', 'Hide password');
+          } else {
+            input.type = 'password';
+            eyeOff.style.display = '';
+            eye.style.display = 'none';
+            this.setAttribute('aria-label', 'Show password');
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

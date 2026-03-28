@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design System — Radio Button</title>
+
+    <!-- Font + Token layer: font → global → brand → aliases → base -->
+    <link rel="stylesheet" href="../fonts/roboto.css" />
+    <link rel="stylesheet" href="../tokens/global.css" />
+    <link rel="stylesheet" href="../tokens/pacifico.css" />
+    <link rel="stylesheet" href="../tokens/aliases.css" />
+    <link rel="stylesheet" href="../tokens/base.css" />
+
+    <!-- Shared showcase + component styles -->
+    <link rel="stylesheet" href="showcase.css" />
+    <link rel="stylesheet" href="radio-button.css" />
+  </head>
+  <body>
+    <main class="showcase">
+
+      <header class="showcase__header">
+        <h1 class="showcase__title">Radio Button</h1>
+        <p class="showcase__subtitle">All variants × all states</p>
+      </header>
+
+      <!-- ================================================================
+           STATE GRID — columns: label | Unchecked | Checked
+           ================================================================ -->
+
+      <h2 class="showcase__section-title">With label</h2>
+
+      <!-- Column headers -->
+      <div class="rb-grid" role="presentation" aria-hidden="true">
+        <span class="rb-grid__col-header"></span>
+        <span class="rb-grid__col-header">Unchecked</span>
+        <span class="rb-grid__col-header">Checked</span>
+      </div>
+
+      <!-- ── Default ── -->
+      <div class="rb-grid">
+        <span class="rb-grid__row-label">Default</span>
+
+        <!-- Unchecked -->
+        <label class="radio">
+          <input class="radio__input" type="radio" name="rb-default-u" value="a">
+          <span class="radio__circle">
+            <span class="radio__dot"></span>
+          </span>
+          <span class="radio__label">Legales</span>
+        </label>
+
+        <!-- Checked -->
+        <label class="radio">
+          <input class="radio__input" type="radio" name="rb-default-c" value="a" checked>
+          <span class="radio__circle">
+            <span class="radio__dot"></span>
+          </span>
+          <span class="radio__label">Legales</span>
+        </label>
+      </div>
+
+      <!-- ── Hover ── -->
+      <div class="rb-grid">
+        <span class="rb-grid__row-label">Hover</span>
+
+        <!-- Unchecked + hover -->
+        <label class="radio is-hover">
+          <input class="radio__input" type="radio" name="rb-hover-u" value="a" tabindex="-1">
+          <span class="radio__circle">
+            <span class="radio__dot"></span>
+          </span>
+          <span class="radio__label">Legales</span>
+        </label>
+
+        <!-- Checked + hover -->
+        <label class="radio is-hover">
+          <input class="radio__input" type="radio" name="rb-hover-c" value="a" checked tabindex="-1">
+          <span class="radio__circle">
+            <span class="radio__dot"></span>
+          </span>
+          <span class="radio__label">Legales</span>
+        </label>
+      </div>
+
+      <!-- ── Error ── -->
+      <div class="rb-grid">
+        <span class="rb-grid__row-label">Error</span>
+
+        <!-- Unchecked + error -->
+        <label class="radio radio--error">
+          <input class="radio__input" type="radio" name="rb-error-u" value="a" tabindex="-1">
+          <span class="radio__circle">
+            <span class="radio__dot"></span>
+          </span>
+          <span class="radio__label">Legales</span>
+        </label>
+
+        <!-- Checked + error -->
+        <label class="radio radio--error">
+          <input class="radio__input" type="radio" name="rb-error-c" value="a" checked tabindex="-1">
+          <span class="radio__circle">
+            <span class="radio__dot"></span>
+          </span>
+          <span class="radio__label">Legales</span>
+        </label>
+      </div>
+
+      <!-- ── Error + Hover ── -->
+      <div class="rb-grid">
+        <span class="rb-grid__row-label">Error + Hover</span>
+
+        <!-- Unchecked + error + hover -->
+        <label class="radio radio--error is-hover">
+          <input class="radio__input" type="radio" name="rb-error-hover-u" value="a" tabindex="-1">
+          <span class="radio__circle">
+            <span class="radio__dot"></span>
+          </span>
+          <span class="radio__label">Legales</span>
+        </label>
+
+        <!-- Checked + error + hover -->
+        <label class="radio radio--error is-hover">
+          <input class="radio__input" type="radio" name="rb-error-hover-c" value="a" checked tabindex="-1">
+          <span class="radio__circle">
+            <span class="radio__dot"></span>
+          </span>
+          <span class="radio__label">Legales</span>
+        </label>
+      </div>
+
+      <!-- ── Disabled ── -->
+      <div class="rb-grid">
+        <span class="rb-grid__row-label">Disabled</span>
+
+        <!-- Unchecked + disabled -->
+        <label class="radio">
+          <input class="radio__input" type="radio" name="rb-disabled-u" value="a" disabled>
+          <span class="radio__circle">
+            <span class="radio__dot"></span>
+          </span>
+          <span class="radio__label">Legales</span>
+        </label>
+
+        <!-- Checked + disabled -->
+        <label class="radio">
+          <input class="radio__input" type="radio" name="rb-disabled-c" value="a" checked disabled>
+          <span class="radio__circle">
+            <span class="radio__dot"></span>
+          </span>
+          <span class="radio__label">Legales</span>
+        </label>
+      </div>
+
+      <!-- ================================================================
+           WITHOUT LABEL
+           ================================================================ -->
+
+      <h2 class="showcase__section-title">Without label</h2>
+
+      <div class="rb-grid" role="presentation" aria-hidden="true">
+        <span class="rb-grid__col-header"></span>
+        <span class="rb-grid__col-header">Unchecked</span>
+        <span class="rb-grid__col-header">Checked</span>
+      </div>
+
+      <div class="rb-grid">
+        <span class="rb-grid__row-label">Default</span>
+
+        <label class="radio" aria-label="Option A">
+          <input class="radio__input" type="radio" name="rb-nolabel-u" value="a">
+          <span class="radio__circle">
+            <span class="radio__dot"></span>
+          </span>
+        </label>
+
+        <label class="radio" aria-label="Option B">
+          <input class="radio__input" type="radio" name="rb-nolabel-c" value="a" checked>
+          <span class="radio__circle">
+            <span class="radio__dot"></span>
+          </span>
+        </label>
+      </div>
+
+      <div class="rb-grid">
+        <span class="rb-grid__row-label">Disabled</span>
+
+        <label class="radio" aria-label="Option A">
+          <input class="radio__input" type="radio" name="rb-nolabel-dis-u" value="a" disabled>
+          <span class="radio__circle">
+            <span class="radio__dot"></span>
+          </span>
+        </label>
+
+        <label class="radio" aria-label="Option B">
+          <input class="radio__input" type="radio" name="rb-nolabel-dis-c" value="a" checked disabled>
+          <span class="radio__circle">
+            <span class="radio__dot"></span>
+          </span>
+        </label>
+      </div>
+
+      <!-- ================================================================
+           LABEL POSITION
+           ================================================================ -->
+
+      <h2 class="showcase__section-title">Label position</h2>
+
+      <div class="rb-grid rb-grid--3col" role="presentation" aria-hidden="true">
+        <span class="rb-grid__col-header"></span>
+        <span class="rb-grid__col-header">End (default)</span>
+        <span class="rb-grid__col-header">Start</span>
+      </div>
+
+      <div class="rb-grid rb-grid--3col">
+        <span class="rb-grid__row-label">Default</span>
+
+        <!-- Label end (default) -->
+        <label class="radio">
+          <input class="radio__input" type="radio" name="rb-pos-end" value="a">
+          <span class="radio__circle">
+            <span class="radio__dot"></span>
+          </span>
+          <span class="radio__label">Legales</span>
+        </label>
+
+        <!-- Label start -->
+        <label class="radio radio--label-start">
+          <input class="radio__input" type="radio" name="rb-pos-start" value="a">
+          <span class="radio__circle">
+            <span class="radio__dot"></span>
+          </span>
+          <span class="radio__label">Legales</span>
+        </label>
+      </div>
+
+      <!-- ================================================================
+           INTERACTIVE GROUP — full radio group example
+           ================================================================ -->
+
+      <h2 class="showcase__section-title">Interactive group</h2>
+
+      <div class="rb-group-demo">
+        <p class="rb-group-demo__question">Select your coverage plan</p>
+        <div class="rb-group-demo__options">
+          <label class="radio">
+            <input class="radio__input" type="radio" name="coverage" value="basic" checked>
+            <span class="radio__circle"><span class="radio__dot"></span></span>
+            <span class="radio__label">Plan Básico</span>
+          </label>
+          <label class="radio">
+            <input class="radio__input" type="radio" name="coverage" value="plus">
+            <span class="radio__circle"><span class="radio__dot"></span></span>
+            <span class="radio__label">Plan Plus</span>
+          </label>
+          <label class="radio">
+            <input class="radio__input" type="radio" name="coverage" value="full">
+            <span class="radio__circle"><span class="radio__dot"></span></span>
+            <span class="radio__label">Plan Completo</span>
+          </label>
+          <label class="radio">
+            <input class="radio__input" type="radio" name="coverage" value="premium" disabled>
+            <span class="radio__circle"><span class="radio__dot"></span></span>
+            <span class="radio__label">Plan Premium (no disponible)</span>
+          </label>
+        </div>
+      </div>
+
+    </main>
+  </body>
+</html>
