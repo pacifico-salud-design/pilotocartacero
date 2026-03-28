@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <base href="/pages/cartacero/" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Back Office — Carta 0 | Pacífico Salud</title>
+  <link rel="stylesheet" href="../../fonts/roboto.css" />
+  <link rel="stylesheet" href="../../tokens/global.css" />
+  <link rel="stylesheet" href="../../tokens/pacifico.css" />
+  <link rel="stylesheet" href="../../tokens/aliases.css" />
+  <link rel="stylesheet" href="../../tokens/base.css" />
+  <link rel="stylesheet" href="backoffice.css" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Ir al contenido</a>
+
+  <!-- ======================================================
+       LOGIN SCREEN
+  ======================================================= -->
+  <div id="loginScreen" class="login-screen">
+    <div class="login-card">
+      <img src="../../assets/pacifico-logo.svg" alt="Pacífico Salud" class="login-card__logo" />
+      <div class="login-card__text">
+        <h1 class="login-card__title">Back Office</h1>
+        <p class="login-card__subtitle">Carta 0 — Red Propia</p>
+      </div>
+
+      <div id="loginAlert" class="login-card__alert" role="alert" aria-live="polite"></div>
+
+      <form id="loginForm" class="login-form" novalidate>
+        <div class="login-form__field">
+          <label class="login-form__label" for="password">Contraseña</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="login-form__input"
+            placeholder="••••••••••••"
+            required
+            autocomplete="current-password"
+          />
+        </div>
+        <button type="submit" id="loginBtn" class="btn btn--primary btn--full">
+          <span class="btn__text">Ingresar</span>
+          <span class="btn__spinner" aria-hidden="true"></span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ======================================================
+       DASHBOARD
+  ======================================================= -->
+  <div id="dashboard" class="dashboard" hidden>
+
+    <header class="header">
+      <div class="header__container">
+        <img src="../../assets/pacifico-logo.svg" alt="Pacífico Salud" class="header__logo" />
+        <span class="header__title">Back Office — Carta 0</span>
+        <nav class="header__actions" aria-label="Acciones de sesión">
+          <button id="btnLogout" class="btn btn--ghost-negative">Cerrar sesión</button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main__container">
+
+        <!-- KPI strip -->
+        <section class="kpis" aria-label="Resumen de atenciones">
+          <div class="kpi-card">
+            <span class="kpi-card__value" id="kpiTotal">—</span>
+            <span class="kpi-card__label">Total atenciones</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-card__value" id="kpiMonto">—</span>
+            <span class="kpi-card__label">Monto total (S/)</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-card__value" id="kpiEPS">—</span>
+            <span class="kpi-card__label">EPS</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-card__value" id="kpiAMED">—</span>
+            <span class="kpi-card__label">AMED</span>
+          </div>
+        </section>
+
+        <!-- Filters + export -->
+        <section class="toolbar" aria-label="Filtros y exportar">
+          <div class="toolbar__filters">
+            <div class="toolbar__field">
+              <label class="toolbar__label" for="filterDesde">Desde</label>
+              <input type="date" id="filterDesde" class="toolbar__input" />
+            </div>
+            <div class="toolbar__field">
+              <label class="toolbar__label" for="filterHasta">Hasta</label>
+              <input type="date" id="filterHasta" class="toolbar__input" />
+            </div>
+            <button id="btnFilter" class="btn btn--secondary">Filtrar</button>
+            <button id="btnClearFilter" class="btn btn--ghost">Limpiar filtro</button>
+          </div>
+          <div class="toolbar__actions">
+            <button id="btnExport" class="btn btn--ghost">Exportar CSV</button>
+          </div>
+        </section>
+
+        <!-- Records table -->
+        <section class="table-section" aria-labelledby="tableTitle">
+          <h2 class="table-section__title" id="tableTitle">Historial de Atenciones</h2>
+          <p id="tableStatus" class="table-status" role="status" aria-live="polite"></p>
+          <div class="table-wrapper" role="region" aria-label="Tabla de atenciones" tabindex="0">
+            <table class="table" id="recordsTable">
+              <thead>
+                <tr>
+                  <th class="table__th" scope="col">Fecha</th>
+                  <th class="table__th" scope="col">Prestador</th>
+                  <th class="table__th" scope="col">Compañía</th>
+                  <th class="table__th" scope="col">Beneficio</th>
+                  <th class="table__th" scope="col">Prestación</th>
+                  <th class="table__th" scope="col">CIE10</th>
+                  <th class="table__th" scope="col">Descripción CIE10</th>
+                  <th class="table__th" scope="col">Solicitud por</th>
+                  <th class="table__th table__th--num" scope="col">Monto (S/)</th>
+                </tr>
+              </thead>
+              <tbody id="recordsBody">
+                <tr>
+                  <td colspan="9" class="table__empty">Cargando datos...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+  </div><!-- /dashboard -->
+
+  <script src="backoffice.js"></script>
+</body>
+</html>
