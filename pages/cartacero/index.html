@@ -37,33 +37,55 @@
 
           <!-- Row 1: Prestador + Compañía -->
           <div class="form__row">
-            <div class="text-field">
-              <label class="text-field__label" for="prestador">
+
+            <!-- Prestador — custom dropdown -->
+            <div class="dropdown" id="dd-prestador">
+              <span class="dropdown__label" id="dd-prestador-label">
                 Prestador <span class="text-field__required" aria-hidden="true">*</span>
-              </label>
-              <div class="text-field__container text-field__container--select">
-                <select id="prestador" name="prestador" class="text-field__input text-field__select" required aria-required="true">
-                  <option value="">Seleccionar...</option>
-                  <option value="San Felipe">San Felipe</option>
-                  <option value="Sanna El Golf">Sanna El Golf</option>
-                  <option value="CC Miraflores">CC Miraflores</option>
-                  <option value="CC San Miguel">CC San Miguel</option>
-                </select>
+              </span>
+              <div
+                class="dropdown__trigger"
+                role="combobox"
+                aria-expanded="false"
+                aria-controls="dd-prestador-menu"
+                aria-labelledby="dd-prestador-label"
+                tabindex="0"
+              >
+                <span class="dropdown__value">Seleccionar...</span>
+                <svg class="dropdown__chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M16.59 8.29L12 12.87L7.41 8.29L6 9.7L12 15.7L18 9.7L16.59 8.29Z" fill="currentColor"/>
+                </svg>
               </div>
+              <div class="dropdown__menu" role="listbox" id="dd-prestador-menu" aria-labelledby="dd-prestador-label">
+                <!-- options injected by JS -->
+              </div>
+              <input type="hidden" id="prestador" name="prestador" />
             </div>
 
-            <div class="text-field">
-              <label class="text-field__label" for="compania">
+            <!-- Compañía — custom dropdown -->
+            <div class="dropdown" id="dd-compania">
+              <span class="dropdown__label" id="dd-compania-label">
                 Compañía <span class="text-field__required" aria-hidden="true">*</span>
-              </label>
-              <div class="text-field__container text-field__container--select">
-                <select id="compania" name="compania" class="text-field__input text-field__select" required aria-required="true">
-                  <option value="">Seleccionar...</option>
-                  <option value="EPS">EPS</option>
-                  <option value="AMED">AMED</option>
-                </select>
+              </span>
+              <div
+                class="dropdown__trigger"
+                role="combobox"
+                aria-expanded="false"
+                aria-controls="dd-compania-menu"
+                aria-labelledby="dd-compania-label"
+                tabindex="0"
+              >
+                <span class="dropdown__value">Seleccionar...</span>
+                <svg class="dropdown__chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M16.59 8.29L12 12.87L7.41 8.29L6 9.7L12 15.7L18 9.7L16.59 8.29Z" fill="currentColor"/>
+                </svg>
               </div>
+              <div class="dropdown__menu" role="listbox" id="dd-compania-menu" aria-labelledby="dd-compania-label">
+                <!-- options injected by JS -->
+              </div>
+              <input type="hidden" id="compania" name="compania" />
             </div>
+
           </div>
 
           <!-- Row 2: Póliza (disabled) + Beneficio -->
@@ -89,36 +111,59 @@
               <span class="text-field__helper">Campo temporalmente deshabilitado.</span>
             </div>
 
-            <div class="text-field">
-              <label class="text-field__label" for="beneficio">
+            <!-- Beneficio — custom dropdown (options rebuilt by JS on prestador change) -->
+            <div class="dropdown" id="dd-beneficio">
+              <span class="dropdown__label" id="dd-beneficio-label">
                 Beneficio <span class="text-field__required" aria-hidden="true">*</span>
-              </label>
-              <div class="text-field__container text-field__container--select">
-                <select id="beneficio" name="beneficio" class="text-field__input text-field__select" required aria-required="true">
-                  <option value="">Seleccionar...</option>
-                  <option value="Ambulatorio">Ambulatorio</option>
-                  <option value="Hospitalario">Hospitalario</option>
-                  <option value="Chequeo preventivo">Chequeo preventivo</option>
-                </select>
+              </span>
+              <div
+                class="dropdown__trigger"
+                role="combobox"
+                aria-expanded="false"
+                aria-controls="dd-beneficio-menu"
+                aria-labelledby="dd-beneficio-label"
+                tabindex="0"
+              >
+                <span class="dropdown__value">Seleccionar...</span>
+                <svg class="dropdown__chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M16.59 8.29L12 12.87L7.41 8.29L6 9.7L12 15.7L18 9.7L16.59 8.29Z" fill="currentColor"/>
+                </svg>
               </div>
+              <div class="dropdown__menu" role="listbox" id="dd-beneficio-menu" aria-labelledby="dd-beneficio-label">
+                <!-- options injected by JS -->
+              </div>
+              <input type="hidden" id="beneficio" name="beneficio" />
             </div>
+
           </div>
 
           <!-- Row 3: Solicitud por — only shown when Prestador = San Felipe -->
           <div id="solicitudPorRow" class="form__row form__row--hidden" aria-hidden="true">
-            <div class="text-field">
-              <label class="text-field__label" for="solicitudPor">
+
+            <!-- Solicitud por — custom dropdown -->
+            <div class="dropdown" id="dd-solicitud">
+              <span class="dropdown__label" id="dd-solicitud-label">
                 Solicitud por <span class="text-field__required" aria-hidden="true">*</span>
-              </label>
-              <div class="text-field__container text-field__container--select">
-                <select id="solicitudPor" name="solicitudPor" class="text-field__input text-field__select" aria-required="false">
-                  <option value="">Seleccionar...</option>
-                  <option value="Cirugía">Cirugía</option>
-                  <option value="Tratamiento médico">Tratamiento médico</option>
-                  <option value="Hospitalización">Hospitalización</option>
-                </select>
+              </span>
+              <div
+                class="dropdown__trigger"
+                role="combobox"
+                aria-expanded="false"
+                aria-controls="dd-solicitud-menu"
+                aria-labelledby="dd-solicitud-label"
+                tabindex="0"
+              >
+                <span class="dropdown__value">Seleccionar...</span>
+                <svg class="dropdown__chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M16.59 8.29L12 12.87L7.41 8.29L6 9.7L12 15.7L18 9.7L16.59 8.29Z" fill="currentColor"/>
+                </svg>
               </div>
+              <div class="dropdown__menu" role="listbox" id="dd-solicitud-menu" aria-labelledby="dd-solicitud-label">
+                <!-- options injected by JS -->
+              </div>
+              <input type="hidden" id="solicitudPor" name="solicitudPor" aria-required="false" />
             </div>
+
           </div>
 
           <!-- Row 4: Prestación -->
@@ -141,26 +186,43 @@
             </div>
           </div>
 
-          <!-- Row 5: CIE10 code + description -->
+          <!-- Row 5: CIE10 search-input + description -->
           <div class="form__row">
-            <div class="text-field">
-              <label class="text-field__label" for="cie10">
+
+            <!-- CIE10 — search-input component -->
+            <div class="search-input" id="si-cie10">
+              <label class="search-input__label" for="si-cie10-input">
                 CIE10 <span class="text-field__required" aria-hidden="true">*</span>
               </label>
-              <div class="text-field__container">
-                <input
-                  type="text"
-                  id="cie10"
-                  name="cie10"
-                  class="text-field__input"
-                  placeholder="Ej: A00, J45.0..."
-                  list="cie10List"
-                  required
-                  aria-required="true"
-                  autocomplete="off"
-                />
-                <datalist id="cie10List"></datalist>
+              <div class="search-input__field">
+                <div class="search-input__container">
+                  <span class="search-input__icon" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                      <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="currentColor"/>
+                    </svg>
+                  </span>
+                  <input
+                    class="search-input__input"
+                    id="si-cie10-input"
+                    type="text"
+                    placeholder="Buscar código o diagnóstico..."
+                    autocomplete="off"
+                    role="combobox"
+                    aria-expanded="false"
+                    aria-autocomplete="list"
+                    aria-controls="si-cie10-menu"
+                  />
+                  <button class="search-input__clear" type="button" aria-label="Limpiar búsqueda" hidden>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                      <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/>
+                    </svg>
+                  </button>
+                </div>
+                <ul class="search-input__menu" id="si-cie10-menu" role="listbox" aria-label="Resultados CIE10"></ul>
               </div>
+              <p class="search-input__helper" id="si-cie10-helper">Escriba código o descripción para buscar</p>
+              <!-- Hidden input stores the selected code value for form submission -->
+              <input type="hidden" id="cie10" name="cie10" />
             </div>
 
             <div class="text-field">
@@ -176,6 +238,7 @@
                 />
               </div>
             </div>
+
           </div>
 
           <!-- Row 6: Monto + Fecha -->

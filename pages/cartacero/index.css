@@ -2,6 +2,7 @@
    CARTA CERO — FRONT OFFICE
    pages/cartacero/index.css
    Component CSS copied from: button.css · text-field.css · alert.css
+                               dropdown.css · search-input.css
    ============================================================ */
 
 /* --- Copied from button.css -------------------------------- */
@@ -135,7 +136,7 @@
   40%           { transform: scale(1);   opacity: 1; }
 }
 
-/* --- Adapted from text-field.css --------------------------- */
+/* --- Copied from text-field.css --------------------------- */
 .text-field {
   display: flex;
   flex-direction: column;
@@ -191,17 +192,6 @@
 
 .text-field__input::placeholder { color: var(--neutral-color-medium); }
 .text-field__input:disabled { cursor: not-allowed; }
-
-/* Select variant — note: chevron hex in data URI is an unavoidable SVG limitation */
-.text-field__container--select { padding-right: 0; }
-.text-field__select {
-  appearance: none;
-  cursor: pointer;
-  padding-right: var(--spacing-2xl);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236A6C74' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right var(--spacing-m) center;
-}
 
 /* Textarea variant */
 .text-field__container--textarea {
@@ -270,6 +260,403 @@
   color: var(--feedback-color-danger-xhigh);
 }
 
+/* --- Copied from dropdown.css ------------------------------ */
+.dropdown {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.dropdown__label {
+  display: block;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-medium);
+  letter-spacing: var(--letter-spacing-small);
+  color: var(--neutral-color-high);
+  margin-bottom: var(--spacing-2xs);
+}
+
+.dropdown--disabled .dropdown__label {
+  color: var(--neutral-color-medium);
+}
+
+.dropdown__trigger {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  height: var(--size-input);
+  padding: 0 var(--spacing-m);
+  width: 100%;
+  border-radius: var(--border-radius-small);
+  border: var(--border-width-small) solid var(--neutral-color-medium);
+  background-color: var(--neutral-color-xlow);
+  color: var(--neutral-color-medium);
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  transition: border-color var(--transition-base),
+              background-color var(--transition-base),
+              color var(--transition-base);
+}
+
+.dropdown__value {
+  flex: 1;
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-xlarge);
+  letter-spacing: var(--letter-spacing-medium);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: inherit;
+}
+
+.dropdown__trigger--has-value {
+  color: var(--neutral-color-xhigh);
+}
+
+.dropdown__chevron {
+  flex-shrink: 0;
+  color: var(--neutral-color-medium);
+  transition: transform var(--transition-base);
+}
+
+/* Hover / focus */
+.dropdown__trigger:hover,
+.dropdown.is-hover .dropdown__trigger {
+  border-color: var(--neutral-color-high);
+}
+
+.dropdown__trigger:focus,
+.dropdown__trigger:focus-visible,
+.dropdown.is-focus .dropdown__trigger {
+  border-color: var(--neutral-color-high);
+  color: var(--neutral-color-xhigh);
+  outline: none;
+}
+
+.dropdown__trigger:focus-visible {
+  outline: var(--border-width-medium) solid var(--color-brand-primary-medium);
+  outline-offset: var(--focus-outline-offset);
+}
+
+/* Open state */
+.dropdown.is-open .dropdown__trigger {
+  border-color: var(--neutral-color-high);
+  color: var(--neutral-color-xhigh);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-color: var(--neutral-color-low);
+}
+
+.dropdown.is-open .dropdown__chevron {
+  transform: rotate(180deg);
+}
+
+/* Error variant */
+.dropdown--error .dropdown__trigger {
+  background-color: var(--feedback-color-danger-xlow);
+  border-color: var(--feedback-color-danger-medium);
+}
+
+/* Disabled state */
+.dropdown--disabled .dropdown__trigger {
+  background-color: var(--neutral-color-low);
+  border-color: transparent;
+  color: var(--neutral-color-medium);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.dropdown--disabled .dropdown__chevron {
+  color: var(--neutral-color-medium);
+}
+
+/* Menu */
+.dropdown__menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: var(--z-dropdown);
+  border-radius: 0 0 var(--border-radius-medium) var(--border-radius-medium);
+  border: var(--border-width-small) solid var(--neutral-color-high);
+  border-top: none;
+  background-color: var(--neutral-color-xlow);
+  box-shadow: var(--shadow-down-large);
+  max-height: var(--size-menu-max-height);
+  overflow-y: auto;
+  padding: var(--spacing-s) var(--spacing-2xs);
+  display: none;
+}
+
+.dropdown.is-open .dropdown__menu {
+  display: block;
+}
+
+/* Options */
+.dropdown__option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-xs);
+  height: var(--size-input);
+  padding: var(--spacing-s) var(--spacing-m);
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-xlarge);
+  letter-spacing: var(--letter-spacing-medium);
+  color: var(--neutral-color-xhigh);
+  cursor: pointer;
+  border-radius: var(--border-radius-small);
+  transition: background-color var(--transition-fast);
+}
+
+.dropdown__option:hover,
+.dropdown__option.is-hover {
+  background-color: var(--color-brand-primary-xlow);
+}
+
+.dropdown__option--selected {
+  font-weight: var(--font-weight-medium);
+}
+
+.dropdown__option-check {
+  display: none;
+  flex-shrink: 0;
+  color: var(--neutral-color-xhigh);
+}
+
+.dropdown__option--selected .dropdown__option-check {
+  display: block;
+}
+
+/* --- Copied from search-input.css -------------------------- */
+.search-input {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.search-input__label {
+  display: block;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-medium);
+  letter-spacing: var(--letter-spacing-small);
+  color: var(--neutral-color-high);
+  margin-bottom: var(--spacing-2xs);
+}
+
+.search-input--disabled .search-input__label {
+  color: var(--neutral-color-medium);
+}
+
+.search-input__field {
+  position: relative;
+  width: 100%;
+}
+
+.search-input__container {
+  display: flex;
+  align-items: center;
+  height: var(--size-input);
+  padding: 0 var(--spacing-xs) 0 var(--spacing-m);
+  border-radius: var(--border-radius-small);
+  border: var(--border-width-small) solid var(--neutral-color-medium);
+  background-color: var(--neutral-color-xlow);
+  transition: border-color var(--transition-base),
+              background-color var(--transition-base);
+}
+
+.search-input.is-open .search-input__container {
+  border-color: var(--neutral-color-high);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-color: var(--neutral-color-low);
+}
+
+.search-input:not(.search-input--disabled):hover .search-input__container {
+  border-color: var(--neutral-color-high);
+}
+
+.search-input__container:focus-within {
+  border-color: var(--color-brand-primary-medium);
+  outline: var(--border-width-medium) solid var(--color-brand-primary-medium);
+  outline-offset: var(--focus-outline-offset);
+}
+
+.search-input__icon {
+  width: var(--spacing-l);
+  height: var(--spacing-l);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--neutral-color-medium);
+  margin-right: var(--spacing-xs);
+}
+
+.search-input.is-open .search-input__icon,
+.search-input--selected .search-input__icon {
+  color: var(--color-brand-primary-medium);
+}
+
+.search-input__input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-xlarge);
+  letter-spacing: var(--letter-spacing-medium);
+  color: var(--neutral-color-medium);
+  transition: color var(--transition-base);
+}
+
+.search-input__input::placeholder {
+  color: var(--neutral-color-medium);
+}
+
+.search-input__input:not(:placeholder-shown),
+.search-input__input--has-value {
+  color: var(--neutral-color-xhigh);
+}
+
+.search-input__clear[hidden] { display: none; }
+
+.search-input__clear {
+  width: var(--spacing-l);
+  height: var(--spacing-l);
+  flex-shrink: 0;
+  margin-left: var(--spacing-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  color: var(--neutral-color-medium);
+  border-radius: var(--border-radius-small);
+  transition: color var(--transition-base), background-color var(--transition-base);
+}
+
+.search-input__clear:hover {
+  color: var(--neutral-color-xhigh);
+  background-color: var(--neutral-color-low);
+}
+
+.search-input__clear:focus-visible {
+  outline: var(--border-width-medium) solid var(--color-brand-primary-medium);
+  outline-offset: var(--focus-outline-offset);
+}
+
+.search-input__menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: var(--z-dropdown);
+  border-radius: 0 0 var(--border-radius-medium) var(--border-radius-medium);
+  border: var(--border-width-small) solid var(--neutral-color-high);
+  border-top: none;
+  background-color: var(--neutral-color-xlow);
+  box-shadow: var(--shadow-down-large);
+  max-height: var(--size-menu-max-height);
+  overflow-y: auto;
+  padding: var(--spacing-s) var(--spacing-2xs);
+  list-style: none;
+  display: none;
+}
+
+.search-input.is-open .search-input__menu {
+  display: block;
+}
+
+.search-input__option {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  height: var(--size-input);
+  padding: var(--spacing-s) var(--spacing-m);
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-xlarge);
+  letter-spacing: var(--letter-spacing-medium);
+  color: var(--neutral-color-xhigh);
+  cursor: pointer;
+  border-radius: var(--border-radius-small);
+  transition: background-color var(--transition-fast);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search-input__option:hover,
+.search-input__option.is-hover,
+.search-input__option.is-active {
+  background-color: var(--color-brand-primary-xlow);
+}
+
+.search-input__option mark {
+  background: transparent;
+  color: var(--color-brand-primary-high);
+  font-weight: var(--font-weight-medium);
+}
+
+.search-input__empty {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-s);
+  padding: var(--spacing-s) var(--spacing-m);
+  height: var(--size-input);
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--letter-spacing-small);
+  color: var(--neutral-color-medium);
+}
+
+.search-input__empty strong {
+  font-weight: var(--font-weight-medium);
+  color: var(--neutral-color-xhigh);
+}
+
+.search-input__helper {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-medium);
+  letter-spacing: var(--letter-spacing-small);
+  color: var(--feedback-color-info-medium);
+  margin-top: var(--spacing-xs);
+}
+
+.search-input__helper--selected,
+.search-input--selected .search-input__helper {
+  color: var(--feedback-color-success-medium);
+}
+
+.search-input--selected .search-input__container {
+  border-color: var(--feedback-color-success-medium);
+}
+
+.search-input--selected:hover .search-input__container {
+  border-color: var(--feedback-color-success-high);
+}
+
+.search-input--disabled .search-input__container {
+  border-color: transparent;
+  background-color: var(--neutral-color-low);
+  pointer-events: none;
+}
+
 /* --- Page layout (mobile-first) ---------------------------- */
 
 /* Header — brand surface */
@@ -297,7 +684,7 @@
   font-size: var(--font-size-s);
   font-weight: var(--font-weight-medium);
   color: var(--neutral-color-xlow);
-  opacity: var(--opacity-soft); /* --opacity-soft = 0.88 */
+  opacity: var(--opacity-soft);
   letter-spacing: var(--letter-spacing-small);
 }
 
