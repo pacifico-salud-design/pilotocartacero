@@ -37,12 +37,12 @@
 
           <!-- Row 1: Prestador + Compañía -->
           <div class="form__row">
-            <div class="form__field">
-              <label class="form__label" for="prestador">
-                Prestador <span class="form__required" aria-hidden="true">*</span>
+            <div class="text-field">
+              <label class="text-field__label" for="prestador">
+                Prestador <span class="text-field__required" aria-hidden="true">*</span>
               </label>
-              <div class="form__select-wrapper">
-                <select id="prestador" name="prestador" class="form__select" required aria-required="true">
+              <div class="text-field__container text-field__container--select">
+                <select id="prestador" name="prestador" class="text-field__input text-field__select" required aria-required="true">
                   <option value="">Seleccionar...</option>
                   <option value="San Felipe">San Felipe</option>
                   <option value="Sanna El Golf">Sanna El Golf</option>
@@ -52,12 +52,12 @@
               </div>
             </div>
 
-            <div class="form__field">
-              <label class="form__label" for="compania">
-                Compañía <span class="form__required" aria-hidden="true">*</span>
+            <div class="text-field">
+              <label class="text-field__label" for="compania">
+                Compañía <span class="text-field__required" aria-hidden="true">*</span>
               </label>
-              <div class="form__select-wrapper">
-                <select id="compania" name="compania" class="form__select" required aria-required="true">
+              <div class="text-field__container text-field__container--select">
+                <select id="compania" name="compania" class="text-field__input text-field__select" required aria-required="true">
                   <option value="">Seleccionar...</option>
                   <option value="EPS">EPS</option>
                   <option value="AMED">AMED</option>
@@ -70,30 +70,31 @@
           <div class="form__row">
             <!--
               PÓLIZA: currently disabled.
-              To enable: remove the `disabled` and `aria-disabled` attributes,
-              remove the `form__field--disabled` class,
-              and uncomment the `poliza` line in form.js handleSubmit().
+              To enable: remove `text-field--disabled` class and the `disabled` / `aria-disabled` attributes,
+              and uncomment the `poliza` line in form.js handleSubmit() and functions/api/register.js.
             -->
-            <div class="form__field form__field--disabled">
-              <label class="form__label" for="poliza">Póliza / Código de Afiliado</label>
-              <input
-                type="text"
-                id="poliza"
-                name="poliza"
-                class="form__input"
-                placeholder="No disponible aún"
-                disabled
-                aria-disabled="true"
-              />
-              <span class="form__helper">Campo temporalmente deshabilitado.</span>
+            <div class="text-field text-field--disabled">
+              <label class="text-field__label" for="poliza">Póliza / Código de Afiliado</label>
+              <div class="text-field__container">
+                <input
+                  type="text"
+                  id="poliza"
+                  name="poliza"
+                  class="text-field__input"
+                  placeholder="No disponible aún"
+                  disabled
+                  aria-disabled="true"
+                />
+              </div>
+              <span class="text-field__helper">Campo temporalmente deshabilitado.</span>
             </div>
 
-            <div class="form__field">
-              <label class="form__label" for="beneficio">
-                Beneficio <span class="form__required" aria-hidden="true">*</span>
+            <div class="text-field">
+              <label class="text-field__label" for="beneficio">
+                Beneficio <span class="text-field__required" aria-hidden="true">*</span>
               </label>
-              <div class="form__select-wrapper">
-                <select id="beneficio" name="beneficio" class="form__select" required aria-required="true">
+              <div class="text-field__container text-field__container--select">
+                <select id="beneficio" name="beneficio" class="text-field__input text-field__select" required aria-required="true">
                   <option value="">Seleccionar...</option>
                   <option value="Ambulatorio">Ambulatorio</option>
                   <option value="Hospitalario">Hospitalario</option>
@@ -105,12 +106,12 @@
 
           <!-- Row 3: Solicitud por — only shown when Prestador = San Felipe -->
           <div id="solicitudPorRow" class="form__row form__row--hidden" aria-hidden="true">
-            <div class="form__field">
-              <label class="form__label" for="solicitudPor">
-                Solicitud por <span class="form__required" aria-hidden="true">*</span>
+            <div class="text-field">
+              <label class="text-field__label" for="solicitudPor">
+                Solicitud por <span class="text-field__required" aria-hidden="true">*</span>
               </label>
-              <div class="form__select-wrapper">
-                <select id="solicitudPor" name="solicitudPor" class="form__select" aria-required="false">
+              <div class="text-field__container text-field__container--select">
+                <select id="solicitudPor" name="solicitudPor" class="text-field__input text-field__select" aria-required="false">
                   <option value="">Seleccionar...</option>
                   <option value="Cirugía">Cirugía</option>
                   <option value="Tratamiento médico">Tratamiento médico</option>
@@ -122,95 +123,111 @@
 
           <!-- Row 4: Prestación -->
           <div class="form__row">
-            <div class="form__field form__field--full">
-              <label class="form__label" for="prestacion">
-                Prestación <span class="form__required" aria-hidden="true">*</span>
+            <div class="text-field text-field--full">
+              <label class="text-field__label" for="prestacion">
+                Prestación <span class="text-field__required" aria-hidden="true">*</span>
               </label>
-              <textarea
-                id="prestacion"
-                name="prestacion"
-                class="form__textarea"
-                rows="3"
-                placeholder="Ej: Colonoscopia, Endoscopia, Tomografía..."
-                required
-                aria-required="true"
-              ></textarea>
+              <div class="text-field__container text-field__container--textarea">
+                <textarea
+                  id="prestacion"
+                  name="prestacion"
+                  class="text-field__input text-field__textarea"
+                  rows="3"
+                  placeholder="Ej: Colonoscopia, Endoscopia, Tomografía..."
+                  required
+                  aria-required="true"
+                ></textarea>
+              </div>
             </div>
           </div>
 
           <!-- Row 5: CIE10 code + description -->
           <div class="form__row">
-            <div class="form__field">
-              <label class="form__label" for="cie10">
-                CIE10 <span class="form__required" aria-hidden="true">*</span>
+            <div class="text-field">
+              <label class="text-field__label" for="cie10">
+                CIE10 <span class="text-field__required" aria-hidden="true">*</span>
               </label>
-              <input
-                type="text"
-                id="cie10"
-                name="cie10"
-                class="form__input"
-                placeholder="Ej: A00, J45.0..."
-                list="cie10List"
-                required
-                aria-required="true"
-                autocomplete="off"
-              />
-              <datalist id="cie10List"></datalist>
+              <div class="text-field__container">
+                <input
+                  type="text"
+                  id="cie10"
+                  name="cie10"
+                  class="text-field__input"
+                  placeholder="Ej: A00, J45.0..."
+                  list="cie10List"
+                  required
+                  aria-required="true"
+                  autocomplete="off"
+                />
+                <datalist id="cie10List"></datalist>
+              </div>
             </div>
 
-            <div class="form__field">
-              <label class="form__label" for="cie10Desc">Descripción CIE10</label>
-              <input
-                type="text"
-                id="cie10Desc"
-                name="cie10Desc"
-                class="form__input"
-                placeholder="Se completa automáticamente"
-                autocomplete="off"
-              />
+            <div class="text-field">
+              <label class="text-field__label" for="cie10Desc">Descripción CIE10</label>
+              <div class="text-field__container">
+                <input
+                  type="text"
+                  id="cie10Desc"
+                  name="cie10Desc"
+                  class="text-field__input"
+                  placeholder="Se completa automáticamente"
+                  autocomplete="off"
+                />
+              </div>
             </div>
           </div>
 
           <!-- Row 6: Monto + Fecha -->
           <div class="form__row">
-            <div class="form__field">
-              <label class="form__label" for="monto">
-                Monto incluido IGV (S/) <span class="form__required" aria-hidden="true">*</span>
+            <div class="text-field">
+              <label class="text-field__label" for="monto">
+                Monto incluido IGV (S/) <span class="text-field__required" aria-hidden="true">*</span>
               </label>
-              <input
-                type="number"
-                id="monto"
-                name="monto"
-                class="form__input"
-                placeholder="0.00"
-                step="0.01"
-                min="0.01"
-                required
-                aria-required="true"
-              />
+              <div class="text-field__container">
+                <input
+                  type="number"
+                  id="monto"
+                  name="monto"
+                  class="text-field__input"
+                  placeholder="0.00"
+                  step="0.01"
+                  min="0.01"
+                  required
+                  aria-required="true"
+                />
+              </div>
             </div>
 
-            <div class="form__field">
-              <label class="form__label" for="fechaAtencion">
-                Fecha y Hora de Atención <span class="form__required" aria-hidden="true">*</span>
+            <div class="text-field">
+              <label class="text-field__label" for="fechaAtencion">
+                Fecha y Hora de Atención <span class="text-field__required" aria-hidden="true">*</span>
               </label>
-              <input
-                type="datetime-local"
-                id="fechaAtencion"
-                name="fechaAtencion"
-                class="form__input"
-                required
-                aria-required="true"
-              />
+              <div class="text-field__container">
+                <input
+                  type="datetime-local"
+                  id="fechaAtencion"
+                  name="fechaAtencion"
+                  class="text-field__input"
+                  required
+                  aria-required="true"
+                />
+              </div>
             </div>
           </div>
 
           <!-- Actions -->
           <div class="form__actions">
-            <button type="button" id="btnReset" class="btn btn--ghost">Limpiar</button>
+            <button type="button" id="btnReset" class="btn btn--secondary">
+              <span class="btn__label">Limpiar</span>
+            </button>
             <button type="submit" id="btnSubmit" class="btn btn--primary">
-              <span class="btn__text">Registrar Atención</span>
-              <span class="btn__spinner" aria-hidden="true"></span>
+              <span class="btn__label">Registrar Atención</span>
+              <span class="btn__dots" aria-hidden="true">
+                <span class="btn__dot"></span>
+                <span class="btn__dot"></span>
+                <span class="btn__dot"></span>
+              </span>
             </button>
           </div>
 

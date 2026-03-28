@@ -29,21 +29,27 @@
       <div id="loginAlert" class="login-card__alert" role="alert" aria-live="polite"></div>
 
       <form id="loginForm" class="login-form" novalidate>
-        <div class="login-form__field">
-          <label class="login-form__label" for="password">Contraseña</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            class="login-form__input"
-            placeholder="••••••••••••"
-            required
-            autocomplete="current-password"
-          />
+        <div class="text-field">
+          <label class="text-field__label" for="password">Contraseña</label>
+          <div class="text-field__container">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="text-field__input"
+              placeholder="••••••••••••"
+              required
+              autocomplete="current-password"
+            />
+          </div>
         </div>
-        <button type="submit" id="loginBtn" class="btn btn--primary btn--full">
-          <span class="btn__text">Ingresar</span>
-          <span class="btn__spinner" aria-hidden="true"></span>
+        <button type="submit" id="loginBtn" class="btn btn--primary btn--full-width">
+          <span class="btn__label">Ingresar</span>
+          <span class="btn__dots" aria-hidden="true">
+            <span class="btn__dot"></span>
+            <span class="btn__dot"></span>
+            <span class="btn__dot"></span>
+          </span>
         </button>
       </form>
     </div>
@@ -59,7 +65,9 @@
         <img src="../../assets/pacifico-logo.svg" alt="Pacífico Salud" class="header__logo" />
         <span class="header__title">Back Office — Carta 0</span>
         <nav class="header__actions" aria-label="Acciones de sesión">
-          <button id="btnLogout" class="btn btn--ghost-negative">Cerrar sesión</button>
+          <button id="btnLogout" class="btn btn--secondary btn--negative">
+            <span class="btn__label">Cerrar sesión</span>
+          </button>
         </nav>
       </div>
     </header>
@@ -90,19 +98,29 @@
         <!-- Filters + export -->
         <section class="toolbar" aria-label="Filtros y exportar">
           <div class="toolbar__filters">
-            <div class="toolbar__field">
-              <label class="toolbar__label" for="filterDesde">Desde</label>
-              <input type="date" id="filterDesde" class="toolbar__input" />
+            <div class="text-field toolbar__date-field">
+              <label class="text-field__label" for="filterDesde">Desde</label>
+              <div class="text-field__container">
+                <input type="date" id="filterDesde" class="text-field__input" />
+              </div>
             </div>
-            <div class="toolbar__field">
-              <label class="toolbar__label" for="filterHasta">Hasta</label>
-              <input type="date" id="filterHasta" class="toolbar__input" />
+            <div class="text-field toolbar__date-field">
+              <label class="text-field__label" for="filterHasta">Hasta</label>
+              <div class="text-field__container">
+                <input type="date" id="filterHasta" class="text-field__input" />
+              </div>
             </div>
-            <button id="btnFilter" class="btn btn--secondary">Filtrar</button>
-            <button id="btnClearFilter" class="btn btn--ghost">Limpiar filtro</button>
+            <button id="btnFilter" class="btn btn--primary">
+              <span class="btn__label">Filtrar</span>
+            </button>
+            <button id="btnClearFilter" class="btn btn--ghost">
+              <span class="btn__label">Limpiar</span>
+            </button>
           </div>
           <div class="toolbar__actions">
-            <button id="btnExport" class="btn btn--ghost">Exportar CSV</button>
+            <button id="btnExport" class="btn btn--secondary">
+              <span class="btn__label">Exportar CSV</span>
+            </button>
           </div>
         </section>
 
