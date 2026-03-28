@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '\\n[design-system] File written — run the pre-output checklist in CLAUDE.md before committing.'"
+          }
+        ]
+      }
+    ]
+  }
+}
