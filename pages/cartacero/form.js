@@ -353,9 +353,14 @@ function setupForm() {
 function setDefaultDatetime() {
   const el = document.getElementById('fechaAtencion');
   if (!el) return;
-  const now = new Date();
-  now.setSeconds(0, 0);
-  el.value = now.toISOString().slice(0, 16);
+  // Format in Lima timezone (America/Lima = UTC-5, no DST).
+  // sv-SE locale produces the YYYY-MM-DD HH:mm format required by datetime-local.
+  const formatted = new Intl.DateTimeFormat('sv-SE', {
+    timeZone: 'America/Lima',
+    year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', hour12: false,
+  }).format(new Date());
+  el.value = formatted.replace(' ', 'T');
 }
 
 // --- Alert system -------------------------------------------
